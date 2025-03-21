@@ -17,6 +17,7 @@
         modules = [
           ./hosts/j4n-r-tp6
           ./modules/base.nix
+          ./modules/dev.nix
           ./modules/nixos/desktop.nix
           ./modules/nixos/base.nix
           home-manager.nixosModules.home-manager

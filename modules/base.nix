@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 } : {
@@ -16,7 +15,8 @@
 };
 home-manager.backupFileExtension = "backup";
   environment.systemPackages = with pkgs; [
-    fastfetch
+   home-manager
+   ghostty
     neovim 
     fish
     git
@@ -33,8 +33,6 @@ home-manager.backupFileExtension = "backup";
     which
     tree
 
-    # dev stuff
-    nil #nix lsp
 
   ];
 

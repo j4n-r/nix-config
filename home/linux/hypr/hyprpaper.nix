@@ -2,7 +2,7 @@
 
 
 let
-  abstract ="../../../wallpapers/abstract.jpeg";
+  abstract ="~/nix-config/wallpapers/abstract.jpeg";
 in
 {
   services.hyprpaper = {
