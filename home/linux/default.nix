@@ -1,7 +1,9 @@
 { pkgs, ...} :
 
 {
-  imports  =[ ./hyprland/hyprland.nix ./fish.nix ./waybar/waybar.nix];
+  imports  =[ ./hypr/hyprland.nix ./hypr/hyprpaper.nix
+              ./fish.nix
+              ./waybar/waybar.nix];
   home.packages = with pkgs; [
     wofi 
     dunst 

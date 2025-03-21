@@ -3,6 +3,7 @@
   pkgs,
   ...
 } : {
+  programs.ssh.startAgent = true;
 
   programs.bash = {
   interactiveShellInit = ''
@@ -31,6 +32,10 @@ home-manager.backupFileExtension = "backup";
     findutils
     which
     tree
+
+    # dev stuff
+    nil #nix lsp
+
   ];
 
 }
