@@ -1,25 +1,24 @@
-
 {
   pkgs,
   ...
-} : {
+}:
+{
   environment.systemPackages = with pkgs; [
-   btop
-   emacs
-   chromium
+    btop
+    emacs
 
-   # build tools
-   cmake
-   ninja
-   cargo
+    # build tools
+    cmake
+    ninja
+    cargo
 
-   # languages
-   nodejs
-   python314
+    # languages
+    nodejs
+    python314
 
-   # lsp & formatter 
-   nil #nix lsp
-   nixfmt-rfc-style 
+    # lsp & formatter
+    nil # nix lsp
+    nixfmt-rfc-style
   ];
 
 }

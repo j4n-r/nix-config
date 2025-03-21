@@ -1,9 +1,10 @@
-{ config , pkgs, ...} :
+{ config, pkgs, ... }:
 
 {
-  programs.hyprland.enable = true; 
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
     hyprpaper
+    google-chrome
   ];
 }
