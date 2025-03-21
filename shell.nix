@@ -1,3 +1,4 @@
+# shell to compile emacs vterm
 with import <nixpkgs> {};
 stdenv.mkDerivation {
   name = "emacsenv";

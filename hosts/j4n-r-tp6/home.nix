@@ -16,10 +16,15 @@
       github = { user = "j4n-r";};
     };
   };
+
   imports = [
      ../../home/linux
      ../../home/base
   ];
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+  };
 
   home.stateVersion = "24.11";
   programs.home-manager.enable = true; 
