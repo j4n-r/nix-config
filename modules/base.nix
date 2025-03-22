@@ -28,6 +28,7 @@
 
     zip
     xz
+    btop
 
     wget
     curl

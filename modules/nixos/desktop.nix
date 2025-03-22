@@ -9,8 +9,8 @@
     hyprlock
 
     playerctl # used for spotify scripts
-    wl-clipboard
     wofi
+    wl-clipboard
     dunst
     waybar
     libnotify
