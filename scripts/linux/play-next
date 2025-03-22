@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 spotify_status=$(playerctl --player=spotify status 2>/dev/null)
 

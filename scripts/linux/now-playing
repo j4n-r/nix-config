@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Default maximum length
 default_max_length=26

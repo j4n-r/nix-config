@@ -41,9 +41,9 @@
         };
         "custom/spotify" = {
           interval = 1;
-          exec = "~/nix-config/scripts/now-playing";
-          on-click = "~/nix-config/scripts/play-next";
-          on-click-right = "~/nix-config/scripts/play-previous";
+          exec = "~/nix-config/scripts/linux/now-playing";
+          on-click = "~/nix-config/scripts/linux/play-next";
+          on-click-right = "~/nix-config/scripts/linux/play-previous";
           escape = true;
         };
         tray = {

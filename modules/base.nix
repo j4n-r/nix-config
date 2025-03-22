@@ -34,5 +34,6 @@
     which
     tree
 
+    spotify
   ];
 }

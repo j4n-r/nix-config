@@ -96,6 +96,10 @@ window#waybar.empty {
   border-radius: 90px;
 }
 
+#custom-spotify {
+
+}
+
 
 #network.disconnected {
   background-color: @rose;
