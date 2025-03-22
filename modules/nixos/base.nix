@@ -1,25 +1,27 @@
-{ config , pkgs, ...}:
+{ config, pkgs, ... }:
 {
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
 
-  xdg.portal.enable =true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  security.rtkit.enable =true;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable =true;
+    alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable=true;
-    };
-
+    jack.enable = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
