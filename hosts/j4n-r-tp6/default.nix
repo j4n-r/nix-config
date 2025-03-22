@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "j4n-r-tp6"; 
+  networking.hostName = "j4n-r-tp6";
+  services.mingetty.autologinUser = "j4n-r";
 
   services.xserver.xkb = {
     layout = "us";
@@ -18,10 +18,13 @@
   users.users.j4n-r = {
     isNormalUser = true;
     description = "Jan Rueggeberg";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
-  system.stateVersion = "24.11"; 
+  system.stateVersion = "24.11";
 
 }

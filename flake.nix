@@ -10,24 +10,31 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-      j4n-r-tp6 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/j4n-r-tp6
-          ./modules/base.nix
-          ./modules/dev.nix
-          ./modules/nixos/desktop.nix
-          ./modules/nixos/base.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
-          }
-        ];
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      hyprland,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        j4n-r-tp6 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/j4n-r-tp6
+            ./modules/base.nix
+            ./modules/dev.nix
+            ./modules/nixos/desktop.nix
+            ./modules/nixos/base.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+            }
+          ];
+        };
       };
     };
-  };
 }

@@ -6,5 +6,6 @@
   environment.systemPackages = with pkgs; [
     hyprpaper
     google-chrome
+    overskride # bluetooth gui
   ];
 }
