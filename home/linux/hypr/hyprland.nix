@@ -264,7 +264,6 @@
       # Power menu 
       bind = SUPER, X, exec, ~/.config/scripts/powermenu.sh
 
-      bind = SUPER, F, fullscreen
       # screenshot to clipboard
       bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy
       ##############################
