@@ -7,6 +7,7 @@
     ./fish.nix
     ./starship.nix
     ./zathura.nix
+    ./ghostty.nix
   ];
 
 }

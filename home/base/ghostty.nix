@@ -1,0 +1,34 @@
+{ ... }:
+{
+
+  programs.ghostty = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+
+      theme = "rose-pine";
+      background-opacity = 0.8;
+      window-padding-x = 8;
+      window-padding-y = 8;
+      window-decoration = false;
+      resize-overlay = "never";
+      font-size = 12;
+      mouse-hide-while-typing = true;
+      gtk-tabs-location = "bottom";
+
+      keybind = [
+        "ctrl+o=scroll_page_up"
+        "ctrl+d=scroll_page_down"
+        "ctrl+g>n=new_tab"
+        "ctrl+g>v=new_split:right"
+        "ctrl+g>h=goto_split:left"
+        "ctrl+g>l=goto_split:right"
+        "ctrl+g>j=next_tab"
+        "ctrl+g>k=previous_tab"
+        "ctrl+g>x=close_surface"
+        "global:super+t=toggle_quick_terminal"
+      ];
+
+    };
+  };
+}
