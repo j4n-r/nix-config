@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     btop
     emacs
+    cloc
 
     # build tools
     cmake

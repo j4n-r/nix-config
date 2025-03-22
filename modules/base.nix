@@ -21,6 +21,10 @@
     neovim
     fish
     git
+    tldr
+    starship
+
+    megacmd
 
     zip
     xz
@@ -35,5 +39,6 @@
     tree
 
     spotify
+    zathura
   ];
 }

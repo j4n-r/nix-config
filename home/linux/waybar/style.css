@@ -34,12 +34,6 @@
 window#waybar {
   color: @text;
   background: @base00;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-}
-
-window#waybar.empty {
-  opacity: 0.3;
 }
 
 .modules-left {
@@ -66,15 +60,6 @@ window#waybar.empty {
   background: none;
 }
 
-#custom-power {
-}
-
-#workspaces {
-}
-
-#workspaces button {
-}
-
 #workspaces button.active {
   color: @foam;
 }
@@ -97,10 +82,10 @@ window#waybar.empty {
 }
 
 #custom-spotify {
-
+    margin-left: 30px;
 }
 
 
 #network.disconnected {
-  background-color: @rose;
+  background-color: @love;
 }

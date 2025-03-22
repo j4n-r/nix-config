@@ -23,6 +23,7 @@
       $highlightHigh  = 0xff524f67
       monitor=,preferred,auto,auto
 
+
       # Huawei Matebook New
       #monitor=eDP-1,2520x1680,3440x0,1 
       #monitor=DP-3,3440x1440,0x0,1
@@ -33,9 +34,6 @@
       monitor=DP-1,3440x1440,0x0,1
       #monitor=DP-2,1920x1200,0x0,1
 
-      # set scaling or gtk apps 
-      env = GDK_SCALE, 1.5
-      env = XCURSOR_SIZE,32
       # start hyprlock on lid close
       bindl=,switch:on:Lid Switch, exec, hyprlock
 
@@ -61,13 +59,15 @@
       exec-once = swaync
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=emacs --fg-daemon
+      exec-once=hyprctl setcursor BreezeX-RosePineDawn-Linux 32
 
       #############################
       ### ENVIRONMENT VARIABLES ###
       #############################
 
-      env = XCURSOR_SIZE,24
-      env = HYPRCURSOR_SIZE,24
+      # set scaling or gtk apps 
+      env = GDK_SCALE, 1.5
+      env = XCURSOR_SIZE, 32
 
       #####################
       ### LOOK AND FEEL ###
@@ -266,7 +266,7 @@
 
       bind = SUPER, F, fullscreen
       # screenshot to clipboard
-      bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy-
+      bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy
       ##############################
       ### WINDOWS AND WORKSPACES ###
       ##############################

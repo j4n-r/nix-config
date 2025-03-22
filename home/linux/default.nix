@@ -6,13 +6,9 @@
     ./hypr/hyprpaper.nix
     ./hypr/hypridle.nix
     ./hypr/hyprlock.nix
-    ./fish.nix
     ./waybar/waybar.nix
+    ./gtk.nix
   ];
   home.packages = with pkgs; [
-    wofi
-    dunst
-    waybar
-    libnotify
   ];
 }

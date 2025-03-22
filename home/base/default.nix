@@ -4,8 +4,9 @@
 
   imports = [
     ./fonts.nix
+    ./fish.nix
+    ./starship.nix
+    ./zathura.nix
   ];
 
-  home.packages = with pkgs; [
-  ];
 }
