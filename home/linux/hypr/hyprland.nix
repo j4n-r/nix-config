@@ -167,7 +167,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#input
       input {
-          kb_layout = custom
+          kb_layout = umlauteKeymap # this is configured in linux/default.nix
 
           follow_mouse = 0
 
