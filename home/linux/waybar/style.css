@@ -84,6 +84,9 @@ window#waybar {
 #custom-spotify {
     margin-left: 30px;
 }
+#custom-power {
+  font-size: 18px;
+}
 
 
 #network.disconnected {
