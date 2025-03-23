@@ -1,8 +1,13 @@
-{ pkgs, config, ... }:
+{
+  hyprlandMonitorConfig,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = [
-    ./hypr/hyprland.nix
+    (import ./hypr/hyprland.nix { hyprlandMonitorConfig = hyprlandMonitorConfig; })
     ./hypr/hyprpaper.nix
     ./hypr/hypridle.nix
     ./hypr/hyprlock.nix

@@ -1,3 +1,4 @@
+{ hyprlandMonitorConfig }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -5,6 +6,8 @@
       ################
       ### MONITORS ###
       ################
+
+      ${hyprlandMonitorConfig}      
 
       $base           = 0xff191724
       $surface        = 0xff1f1d2e
@@ -22,17 +25,6 @@
       $highlightMed   = 0xff403d52
       $highlightHigh  = 0xff524f67
       monitor=,preferred,auto,auto
-
-
-      # Huawei Matebook New
-      #monitor=eDP-1,2520x1680,3440x0,1 
-      #monitor=DP-3,3440x1440,0x0,1
-      #monitor=DP-4,1920x1080,860x-1080,1
-
-      # Thinkpad
-      monitor=eDP-1,1920x1080,3440x0,1 
-      monitor=DP-1,3440x1440,0x0,1
-      #monitor=DP-2,1920x1200,0x0,1
 
       # start hyprlock on lid close
       bindl=,switch:on:Lid Switch, exec, hyprlock
@@ -270,22 +262,6 @@
       ### WINDOWS AND WORKSPACES ###
       ##############################
 
-
-      # # Huawei Matebook New
-      #workspace=1,monitor:DP-3
-      #workspace=2,monitor:DP-3
-      #workspace=3,monitor:DP-3
-      #workspace=4,monitor:DP-4
-      #workspace=5,monitor:DP-4
-      #workspace=6,monitor:DP-4
-
-      #Thinkpad
-      workspace=1,monitor:DP-1
-      workspace=2,monitor:DP-1
-      workspace=3,monitor:DP-1
-      workspace=4,monitor:DP-1
-      workspace=5,monitor:DP-1
-      # workspace=6,monitor: DP-1
 
       # Example config for Zathura transparency
       windowrulev2 = opacity,0.8,class:^zathura$
