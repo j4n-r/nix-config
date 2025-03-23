@@ -47,7 +47,7 @@
       exec-once=emacs --daemon
       exec-once= nm-applet
       exec-once=blueman-applet
-      exec-once=hyprpaper
+      exec-once= swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg
       exec-once = swaync
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=emacs --fg-daemon

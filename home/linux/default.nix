@@ -8,7 +8,6 @@
 {
   imports = [
     (import ./hypr/hyprland.nix { hyprlandMonitorConfig = hyprlandMonitorConfig; })
-    ./hypr/hyprpaper.nix
     ./hypr/hypridle.nix
     ./hypr/hyprlock.nix
     ./waybar/waybar.nix

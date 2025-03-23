@@ -4,6 +4,7 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
+    swaybg
     hyprpaper
     hypridle
     hyprlock

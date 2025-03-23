@@ -8,6 +8,7 @@
     ./starship.nix
     ./zathura.nix
     ./ghostty.nix
+    ./btop.nix
   ];
 
 }
