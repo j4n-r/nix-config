@@ -42,12 +42,12 @@
       ### AUTOSTART ###
       #################
 
-
+      exec-once= hyprlock
       exec-once=waybar
       exec-once=emacs --daemon
       exec-once= nm-applet
       exec-once=blueman-applet
-      exec-once= swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg
+      exec-once= swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg 
       exec-once = swaync
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=emacs --fg-daemon
@@ -68,6 +68,7 @@
       general { 
           gaps_in = 5
           gaps_out = 20
+
 
           border_size = 2
 
@@ -149,7 +150,7 @@
       misc { 
           force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
           disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
-          initial_workspace_tracking = 0
+          initial_workspace_tracking = 1
       }
 
 

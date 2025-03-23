@@ -6,7 +6,7 @@ let
     monitor=DP-1,3440x1440,0x0,1
     monitor=DP-2,1920x1200,0x0,1
 
-    workspace=1,monitor:DP-1
+    workspace=1,monitor:DP-1 , default:true
     workspace=2,monitor:DP-1
     workspace=3,monitor:DP-1
     workspace=4,monitor:DP-1
