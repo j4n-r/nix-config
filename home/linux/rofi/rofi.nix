@@ -19,7 +19,7 @@
       cycle = true;
       hover-select = false;
       auto-select = false;
-      matching = "fuzzy";
+      matching = "normal";
       transient-window = true;
       display-drun = "Search:";
     };
