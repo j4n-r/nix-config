@@ -33,6 +33,7 @@
 
     cargo
     rustc
+    rustfmt
     rust-analyzer
 
     # languages

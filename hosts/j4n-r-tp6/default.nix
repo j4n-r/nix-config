@@ -8,7 +8,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "j4n-r-tp6";
-  services.mingetty.autologinUser = "j4n-r";
+  services.getty.autologinUser = "j4n-r";
 
   services.xserver.xkb = {
     layout = "us";
