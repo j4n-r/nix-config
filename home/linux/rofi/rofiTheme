@@ -1,0 +1,91 @@
+/* ROSE PINE RAYCAST-LIKE THEME FOR ROFI */
+
+* {
+base:           #191724D0;
+surface:        #1f1d2e90;
+overlay:        #26233a90;
+muted:          #6e6a8690;
+subtle:         #908caa90;
+text:           #e0def4;
+love:           #eb6f9290;
+gold:           #f6c17790;
+rose:           #ebbcba90;
+pine:           #31748f90;
+foam:           #9ccfd890;
+iris:           #c4a7e740;
+highlightLow:   #21202e90;
+highlightMed:   #403d5290;
+highlightHigh:  #524f6790;
+
+    background-color: transparent;
+    text-color:       @text;
+    padding:          0px;
+    margin:           0px;
+}
+
+window {
+    background-color: @base;
+    border-radius: 8px;
+    //border: 1px solid @highlightMed;
+    padding: 14px;
+    width: 25%;
+}
+
+ mainbox {
+    padding: 0px;
+     background-color: transparent;
+ }
+
+inputbar {
+    text-color: @text;
+    border-radius: 8px;
+    padding: 12px;
+    spacing: 8px;
+    margin: 0px 0px 20px 0px;
+    children: [icon-search, entry];
+}
+
+
+icon-search {
+    expand: false;
+    filename: "search";
+    vertical-align: 0.5;
+    foreground: @muted;
+}
+
+entry {
+    placeholder: " Search";
+    placeholder-color: @text;
+    background-color: transparent;
+}
+
+listview {
+    background-color: transparent;
+    lines: 6;
+    fixed-height: true;
+}
+
+
+element {
+    padding: 8px 8px 8px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @iris;
+}
+
+element-icon {
+    size: 26px;
+    margin: 0px 4px 0px 0px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-text selected {
+    text-color: @text;
+}

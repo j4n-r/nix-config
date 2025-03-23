@@ -36,7 +36,7 @@
       # Set programs that you use
       $terminal = ghostty
       $fileManager = dolphin
-      $menu = wofi --show drun
+      $menu = rofi -show drun
 
       #################
       ### AUTOSTART ###
@@ -58,7 +58,7 @@
       #############################
 
       # set scaling or gtk apps 
-      env = GDK_SCALE, 1.5
+      env = GDK_SCALE, 1
       env = XCURSOR_SIZE, 32
 
       #####################
@@ -254,7 +254,7 @@
       bind = SUPER, l, exec, hyprlock
 
       # Power menu 
-      bind = SUPER, X, exec, ~/.config/scripts/powermenu.sh
+      bind = SUPER, X, exec, ~/nix-config/scripts/linux/powermenu.sh
 
       # screenshot to clipboard
       bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy

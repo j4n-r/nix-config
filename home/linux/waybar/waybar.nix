@@ -132,8 +132,6 @@
         "custom/power" = {
           format = "{icon}";
           format-icons = "";
-          exec-on-event = "true";
-          on-click = "wofi --show=drun";
         };
       }
     ];

@@ -9,7 +9,7 @@
     hyprlock
 
     playerctl # used for spotify scripts
-    wofi
+    rofi-wayland
     wl-clipboard
     dunst
     waybar

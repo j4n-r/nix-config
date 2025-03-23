@@ -29,6 +29,7 @@
     zip
     xz
     btop
+    ripgrep
 
     wget
     curl

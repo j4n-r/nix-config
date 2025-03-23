@@ -22,7 +22,7 @@
         j4n-r-hmb = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/j4n-r-tp6
+            ./hosts/j4n-r-hmb
             ./modules/base.nix
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
@@ -31,7 +31,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+              home-manager.users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
             }
           ];
         };

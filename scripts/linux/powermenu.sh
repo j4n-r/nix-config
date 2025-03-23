@@ -1,24 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-op=$(echo -e "  Shutdown\n Reboot\n Sleep\n  Lock\n  Logout" | wofi -i --dmenu | awk '{print tolower($2)}')
+choice=$(printf "  Shutdown\n Reboot\n Sleep\n  Lock\n  Logout" | rofi -dmenu -p "Power")
 
-case $op in
-shutdown)
-	systemctl poweroff
-	;;
-reboot)
-	systemctl reboot
-	;;
-sleep)
-	systemctl suspend
-	;;
-lock)
-	hyprlock
-	;;
-logout)
-	hyprctl dispatch exit
-	;;
-hibernate)
-    systemctl hibernate
-    ;;
+case "$choice" in
+  *Shutdown*) systemctl poweroff ;;
+  *Reboot*) systemctl reboot ;;
+  *Sleep*) systemctl suspend ;;
+  *Lock*) hyprlock ;;
+  *Logout*) hyprctl dispatch exit ;;
 esac
