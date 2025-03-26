@@ -8,8 +8,6 @@
     interactiveShellInit = ''
       #### disable greeeting message ####
       set -g fish_greeting
-                  ####### vi bindings ########
-                  fish_vi_key_bindings
 
                   ####### emacs vterm shell ########
                   function vterm_printf;
@@ -41,6 +39,7 @@
                   if test (tty) = "/dev/tty1"
                       exec Hyprland
                   end
+            direnv hook fish | source
     '';
   };
 }

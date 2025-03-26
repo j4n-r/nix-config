@@ -25,6 +25,7 @@
     starship
 
     megacmd
+    megasync
 
     zip
     xz

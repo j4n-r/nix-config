@@ -20,10 +20,14 @@
     google-chrome
     overskride # bluetooth gui
     xfce.thunar
+    vial
 
     gtk3
     gtk4
     nwg-look
+
+    megacmd
+    megasync
 
   ];
 }

@@ -18,6 +18,10 @@
     cloc
 
     # build tools
+    gcc
+    clang
+    llvm
+    lld
     cmake
     ninja
 
@@ -35,6 +39,7 @@
     rustc
     rustfmt
     rust-analyzer
+    clippy
 
     # languages
     nodejs

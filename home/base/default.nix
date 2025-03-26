@@ -9,6 +9,7 @@
     ./zathura.nix
     ./ghostty.nix
     ./btop.nix
+    ./direnv.nix
   ];
 
 }

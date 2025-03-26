@@ -186,7 +186,7 @@
       $mainMod = ALT
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = CTRL, SPACE, exec, $terminal
+      #bind = CTRL, SPACE, exec, $terminal
       bind = $mainMod, Q, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, $fileManager
