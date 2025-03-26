@@ -25,6 +25,7 @@
     gtk3
     gtk4
     nwg-look
+    brightnessctl
 
     megacmd
     megasync

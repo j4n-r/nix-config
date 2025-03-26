@@ -35,6 +35,7 @@
     wget
     curl
     nmap
+    usbutils
 
     file
     findutils

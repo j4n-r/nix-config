@@ -30,6 +30,8 @@
     (python3.withPackages (
       python-pkgs: with python-pkgs; [
         pandas
+        python-lsp-server
+        ruff
         numpy
         requests
       ]
