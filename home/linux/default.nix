@@ -13,6 +13,7 @@
     ./waybar/waybar.nix
     ./gtk.nix
     ./rofi/rofi.nix
+    ./dunst.nix
   ];
 
   home.file."${config.home.homeDirectory}/.config/xkb/symbols/umlauteKeymap" = {
