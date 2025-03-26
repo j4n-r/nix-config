@@ -3,7 +3,7 @@
 let
   hyprlandMonitorConfig = ''
     monitor=eDP-1,1920x1080,3440x0,1 
-    monitor=DP-1,3440x1440,0x0,1
+    monitor=DP-1,3440x1440@100,0x0,1
     monitor=DP-2,1920x1200,0x0,1
 
     workspace=1,monitor:DP-1 , default:true
