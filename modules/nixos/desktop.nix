@@ -30,5 +30,7 @@
     megacmd
     megasync
 
+    bitwarden-desktop
+    bitwarden-cli
   ];
 }
