@@ -10,6 +10,9 @@
   networking.hostName = "j4n-r-tp6";
   services.getty.autologinUser = "j4n-r";
 
+  # used for ddcutils
+  hardware.i2c.enable = true;
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -21,6 +24,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "i2c"
     ];
     packages = with pkgs; [ ];
   };

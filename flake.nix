@@ -21,6 +21,7 @@
       nixosConfigurations = {
         j4n-r-hmb = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/j4n-r-hmb
             ./modules/base.nix
@@ -37,6 +38,7 @@
         };
         j4n-r-tp6 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/j4n-r-tp6
             ./modules/base.nix
