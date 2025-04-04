@@ -54,6 +54,7 @@
     typescript
     vscode-langservers-extracted
     tailwindcss-language-server
+    nodePackages.prettier
 
     go
     gopls
