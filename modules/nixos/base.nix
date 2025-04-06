@@ -4,6 +4,8 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
 
+  services.nix-daemon.enable = true;
+
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 

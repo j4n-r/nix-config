@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,6 +56,21 @@
             }
           ];
         };
-      };
+                system = "aarch64-darwin";
+                username = "jr";
+               hostname = "MacBook-Air-100011"; 
+                modules = [
+                ./hosts/MacBook-Air-100011/configuration.nix
+                home-manager.darwinModules.home-manager
+                {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.jdoe = import ./home.nix;
+
+                    # Optionally, use home-manager.extraSpecialArgs to pass
+                    # arguments to home.nix
+                }
+                ];
+            };
     };
 }
