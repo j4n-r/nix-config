@@ -5,6 +5,7 @@
 {
 
   environment.systemPackages = with pkgs; [
+    devenv
     btop
     emacs
     (aspellWithDicts (

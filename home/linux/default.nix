@@ -33,6 +33,8 @@
     '';
   };
 
+  services.megasync.enable = true;
+
   home.packages = with pkgs; [
   ];
 }
