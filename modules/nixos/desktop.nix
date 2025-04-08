@@ -4,6 +4,7 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
+    ghostty
     swaybg
     hyprpaper
     hypridle
@@ -32,5 +33,7 @@
 
     bitwarden-desktop
     bitwarden-cli
+
+    usbutils
   ];
 }

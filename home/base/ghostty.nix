@@ -1,8 +1,12 @@
-{ ... }:
-{
-
+{ pkgs, ... }:
+let
+  ghostty-mock = pkgs.writeShellScriptBin "gostty-mock" ''
+    true
+    '';
+in{
   programs.ghostty = {
     enable = true;
+    package = ghostty-mock; # Set explicitly to null, as it is managed externally
     enableFishIntegration = true;
     settings = {
 

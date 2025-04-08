@@ -3,7 +3,7 @@
   ...
 }:
 {
-  programs.ssh.startAgent = true;
+  #programs.ssh.startAgent = true;
 
   programs.bash = {
     interactiveShellInit = ''
@@ -17,15 +17,12 @@
   home-manager.backupFileExtension = "backup";
   environment.systemPackages = with pkgs; [
     home-manager
-    ghostty
     neovim
     fish
     git
     tldr
     starship
 
-    megacmd
-    megasync
 
     zip
     xz
@@ -35,7 +32,6 @@
     wget
     curl
     nmap
-    usbutils
 
     file
     findutils

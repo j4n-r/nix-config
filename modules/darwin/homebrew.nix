@@ -11,7 +11,6 @@
     };
 
     brews = [
-      "pbcopy"
     ];
 
     casks = [

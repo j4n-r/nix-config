@@ -1,5 +1,5 @@
 {
-  home.file.".config/karabiner/karabiner.json".text = ''
+  home.file."karabiner/karabiner.json".text = ''
 {
     "profiles": [
         {

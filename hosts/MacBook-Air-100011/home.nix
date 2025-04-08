@@ -2,7 +2,9 @@
 
 {
   home.username = "jr";
-  home.homeDirectory = "/home/jr";
+  home.homeDirectory = "/Users/jr";
+
+home.sessionPath = ["/run/current-system/sw/bin"];
 
   programs.git = {
     enable = true;

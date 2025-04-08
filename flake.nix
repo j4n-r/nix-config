@@ -3,8 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-24.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -18,6 +17,7 @@
       nixpkgs,
       home-manager,
       hyprland,
+      nix-darwin,
       ...
     }:
     {
@@ -56,19 +56,24 @@
             }
           ];
         };
+      };
+      darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        username = "jr";
-        hostname = "MacBook-Air-100011";
+        specialArgs = {
+                username = "jr";
+                hostname = "MacBook-Air-100011";
+        };
         modules = [
-          ./hosts/MacBook-Air-100011
+          ./hosts/MacBook-Air-100011/user-hosts.nix
           ./modules/base.nix
           ./modules/dev.nix
           ./modules/darwin/system.nix
+          ./modules/darwin/homebrew.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jdoe = import ./home.nix;
+            home-manager.users.jr = import ./hosts/MacBook-Air-100011/home.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix

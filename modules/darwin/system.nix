@@ -21,17 +21,17 @@
     '';
 
     defaults = {
-      # menuExtraClock.Show24Hour = true;  # show 24 hour clock
+      menuExtraClock.Show24Hour = true;  # show 24 hour clock
       # customize dock
       dock = {
         autohide = true;
         show-recents = false; # disable recent apps
 
         # customize Hot Corners(触发角, 鼠标移动到屏幕角落时触发的动作)
-        wvous-tl-corner = 2; # top-left - Mission Control
-        wvous-tr-corner = 13; # top-right - Lock Screen
-        wvous-bl-corner = 3; # bottom-left - Application Windows
-        wvous-br-corner = 4; # bottom-right - Desktop
+        # wvous-tl-corner = 2; # top-left - Mission Control
+        # wvous-tr-corner = 13; # top-right - Lock Screen
+        # wvous-bl-corner = 3; # bottom-left - Application Windows
+        # wvous-br-corner = 4; # bottom-right - Desktop
       };
 
       # customize finder
@@ -70,13 +70,13 @@
         # sets how fast it repeats once it starts.
         KeyRepeat = 3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
 
-        NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
-        NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
-        NSAutomaticPeriodSubstitutionEnabled = false; # disable auto period substitution(智能句号替换)
-        NSAutomaticQuoteSubstitutionEnabled = false; # disable auto quote substitution(智能引号替换)
-        NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
-        NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
-        NSNavPanelExpandedStateForSaveMode2 = true;
+        # NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
+        # NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
+        # NSAutomaticPeriodSubstitutionEnabled = false; # disable auto period substitution(智能句号替换)
+        # NSAutomaticQuoteSubstitutionEnabled = false; # disable auto quote substitution(智能引号替换)
+        # NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
+        # NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
+        # NSNavPanelExpandedStateForSaveMode2 = true;
       };
 
       # Customize settings that not supported by nix-darwin directly
@@ -109,7 +109,7 @@
           DSDontWriteUSBStores = true;
         };
         "com.apple.spaces" = {
-          "spans-displays" = 0; # Display have seperate spaces
+          "spans-displays" = 1; # Display have seperate spaces
         };
         "com.apple.WindowManager" = {
           EnableStandardClickToShowDesktop = 0; # Click wallpaper to reveal desktop
@@ -148,13 +148,14 @@
 
       # NOTE: do NOT support remap capslock to both control and escape at the same time
       remapCapsLockToControl = false; # remap caps lock to control, useful for emac users
-      remapCapsLockToEscape = true; # remap caps lock to escape, useful for vim users
+      remapCapsLockToEscape = false; # remap caps lock to escape, useful for vim users
 
       # swap left command and left alt
       # so it matches common keyboard layout: `ctrl | command | alt`
       #
       # disabled, caused only problems!
-      swapLeftCommandAndLeftAlt = false;
+      # swapLeftCommandAndLeftAlt = false;
+       swapLeftCtrlAndFn = false;
     };
   };
 
@@ -163,13 +164,14 @@
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
   environment.shells = [
-    pkgs.zsh
+    pkgs.fish
   ];
 
   # Set your time zone.
-  time.timeZone = "Asia/shanghai";
+  time.timeZone = "Europe/Berlin";
+  nixpkgs.config.allowUnfree = true;
 
   # Fonts
   fonts = {

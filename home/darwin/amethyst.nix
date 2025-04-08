@@ -1,5 +1,5 @@
 {
-  home.file.".config/karabiner/karabiner.json".text = ''
+  home.file."amethyst/amethyst.yml".text = ''
     # Default settings for Amethyst
     # Repo: `https://github.com/ianyh/Amethyst`
     #
