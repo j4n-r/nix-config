@@ -23,7 +23,6 @@
     tldr
     starship
 
-
     zip
     xz
     btop

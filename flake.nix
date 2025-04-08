@@ -60,8 +60,8 @@
       darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
-                username = "jr";
-                hostname = "MacBook-Air-100011";
+          username = "jr";
+          hostname = "MacBook-Air-100011";
         };
         modules = [
           ./hosts/MacBook-Air-100011/user-hosts.nix
@@ -69,6 +69,7 @@
           ./modules/dev.nix
           ./modules/darwin/system.nix
           ./modules/darwin/homebrew.nix
+          ./modules/darwin/base.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
