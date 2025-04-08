@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
@@ -22,6 +27,11 @@
       "nix-command"
       "flakes"
     ];
+  };
+
+  nix.gc = {
+    automatic = lib.mkDefault true;
+    options = lib.mkDefault "--delete-older-than 7d";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";

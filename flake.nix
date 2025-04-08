@@ -56,21 +56,24 @@
             }
           ];
         };
-                system = "aarch64-darwin";
-                username = "jr";
-               hostname = "MacBook-Air-100011"; 
-                modules = [
-                ./hosts/MacBook-Air-100011/configuration.nix
-                home-manager.darwinModules.home-manager
-                {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users.jdoe = import ./home.nix;
+        system = "aarch64-darwin";
+        username = "jr";
+        hostname = "MacBook-Air-100011";
+        modules = [
+          ./hosts/MacBook-Air-100011
+          ./modules/base.nix
+          ./modules/dev.nix
+          ./modules/darwin/system.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jdoe = import ./home.nix;
 
-                    # Optionally, use home-manager.extraSpecialArgs to pass
-                    # arguments to home.nix
-                }
-                ];
-            };
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
+      };
     };
 }

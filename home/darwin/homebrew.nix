@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-homebrew = {
+  homebrew = {
     enable = true;
 
     casks = [
