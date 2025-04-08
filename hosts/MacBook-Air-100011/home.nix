@@ -4,7 +4,7 @@
   home.username = "jr";
   home.homeDirectory = "/Users/jr";
 
-home.sessionPath = ["/run/current-system/sw/bin"];
+  home.sessionPath = ["/run/current-system/sw/bin"];
 
   programs.git = {
     enable = true;

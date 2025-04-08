@@ -11,6 +11,7 @@
     };
 
     brews = [
+      "libvterm"
     ];
 
     casks = [

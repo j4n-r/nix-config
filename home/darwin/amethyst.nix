@@ -1,5 +1,5 @@
 {
-  home.file."amethyst/amethyst.yml".text = ''
+  home.file.".config/amethyst/amethyst.yml".text = ''
     # Default settings for Amethyst
     # Repo: `https://github.com/ianyh/Amethyst`
     #
@@ -395,10 +395,5 @@
 
     # true to display some optional debug information in the layout HUD (default false).
     debug-layout-info: false
-
-
-    amethyst config 
-
-    put both into home/.config/amethyst_karabiner 
   '';
 }
