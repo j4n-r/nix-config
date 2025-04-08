@@ -24,6 +24,7 @@
       "slack"
       "amethyst"
       "tuple"
+      "orbstack"
     ];
 
   };
