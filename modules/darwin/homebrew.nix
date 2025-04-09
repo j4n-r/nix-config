@@ -12,6 +12,7 @@
 
     brews = [
       "libvterm"
+      "enchant"
     ];
 
     casks = [

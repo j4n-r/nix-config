@@ -1,4 +1,4 @@
-{ hostname, username, ... }: #initialized in flake.nix
+{ hostname, username,pkgs, ... }: #initialized in flake.nix
 
 #############################################################
 #
@@ -11,10 +11,13 @@
   networking.computerName = hostname;
   system.defaults.smb.NetBIOSName = hostname;
 
-  users.users."${username}"= {
+    users.users."${username}" = {
     home = "/Users/${username}";
     description = username;
-  };
+    uid = 502;
+    shell = pkgs.fish;
+    };
+  users.knownUsers =  [username];
 
   nix.settings.trusted-users = [ username ];
 }

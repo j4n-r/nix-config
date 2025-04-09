@@ -30,7 +30,7 @@ in{
         "ctrl+g>j=next_tab"
         "ctrl+g>k=previous_tab"
         "ctrl+g>x=close_surface"
-        "global:super+t=toggle_quick_terminal"
+        "global:super+shift+t=toggle_quick_terminal"
       ];
 
     };

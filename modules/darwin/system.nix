@@ -21,7 +21,7 @@
     '';
 
     defaults = {
-      menuExtraClock.Show24Hour = true;  # show 24 hour clock
+      menuExtraClock.Show24Hour = true; # show 24 hour clock
       # customize dock
       dock = {
         autohide = true;
@@ -63,13 +63,6 @@
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
         ApplePressAndHoldEnabled = true; # enable press and hold
 
-        # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
-        # This is very useful for vim users, they use `hjkl` to move cursor.
-        # sets how long it takes before it starts repeating.
-        InitialKeyRepeat = 15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
-        # sets how fast it repeats once it starts.
-        KeyRepeat = 3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
-
         # NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
         # NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
         # NSAutomaticPeriodSubstitutionEnabled = false; # disable auto period substitution(智能句号替换)
@@ -95,10 +88,10 @@
           WebKitDeveloperExtras = true;
         };
         "com.apple.finder" = {
-          ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = true;
-          ShowMountedServersOnDesktop = true;
-          ShowRemovableMediaOnDesktop = true;
+          ShowExternalHardDrivesOnDesktop = false;
+          ShowHardDrivesOnDesktop = false;
+          ShowMountedServersOnDesktop = false;
+          ShowRemovableMediaOnDesktop = false;
           _FXSortFoldersFirst = true;
           # When performing a search, search the current folder by default
           FXDefaultSearchScope = "SCcf";
@@ -155,7 +148,7 @@
       #
       # disabled, caused only problems!
       # swapLeftCommandAndLeftAlt = false;
-       swapLeftCtrlAndFn = true;
+      swapLeftCtrlAndFn = true;
     };
   };
 
