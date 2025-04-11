@@ -31,6 +31,8 @@
     megacmd
     megasync
 
+    vlc
+
     bitwarden-desktop
     bitwarden-cli
 
