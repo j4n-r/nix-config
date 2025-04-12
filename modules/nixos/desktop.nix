@@ -37,5 +37,8 @@
     bitwarden-cli
 
     usbutils
+
+    texlive.combined.scheme-full
+
   ];
 }
