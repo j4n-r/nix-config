@@ -55,6 +55,7 @@
     typescript-language-server
     typescript
     vscode-langservers-extracted
+    tailwindcss
     tailwindcss-language-server
     nodePackages.prettier
 
