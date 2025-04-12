@@ -27,14 +27,15 @@
     ninja
 
     # for more complex things use shell.nix
-    pyright
     (python3.withPackages (
       python-pkgs: with python-pkgs; [
         pandas
         python-lsp-server
+        jedi
         ruff
         numpy
         requests
+        debugpy
       ]
     ))
 
