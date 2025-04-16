@@ -17,6 +17,7 @@
       ]
     ))
     cloc
+    #semgrep
 
     # build tools
     gcc
@@ -44,6 +45,8 @@
     rustfmt
     rust-analyzer
     clippy
+    openssl
+    pkg-config
 
     # languages
     nodejs
@@ -62,6 +65,7 @@
     go
     gopls
 
+    code-cursor
   ];
 
 }
