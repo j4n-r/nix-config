@@ -7,3 +7,8 @@ To rebuild on a new MacOS system navigate into the `nix-config` dir and run
 ```
 nix run nix-darwin/master#darwin-rebuild -- switch --flake .
 ```
+after that 
+```
+darwin-rebuild switch --flake ~/nix-config/ --show-trace
+```
+works
