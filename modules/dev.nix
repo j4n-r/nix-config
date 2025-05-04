@@ -30,9 +30,8 @@
     # for more complex things use shell.nix
     (python3.withPackages (
       python-pkgs: with python-pkgs; [
+        basedpyright
         pandas
-        python-lsp-server
-        jedi
         ruff
         numpy
         requests

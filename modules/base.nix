@@ -24,6 +24,7 @@
     starship
 
     zip
+    unzip
     xz
     btop
     ripgrep
