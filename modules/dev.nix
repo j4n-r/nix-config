@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     devenv
     btop
-    emacs
+    (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
     (aspellWithDicts (
       dicts: with dicts; [
         en
@@ -48,8 +48,9 @@
     openssl
     pkg-config
 
-    # languages
     nodejs
+    yarn
+    pnpm_10
 
     # lsp & formatter
     nil # nix lsp
@@ -65,7 +66,8 @@
     go
     gopls
 
-    code-cursor
+    postgresql_17
+    # code-cursor
   ];
 
 }
