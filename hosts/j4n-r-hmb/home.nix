@@ -35,9 +35,9 @@ in
     userEmail = "jan.ruegge@gmail.com";
 
     signing = {
+      signByDefault = true;
       format = "ssh";
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRBdapdAkHgPWcWvZudEeNIbecVFCEtvQy09GD+88b7";
-      signByDefault = true;
     };
 
     extraConfig = {
