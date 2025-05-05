@@ -4,12 +4,19 @@
   home.username = "jr";
   home.homeDirectory = "/Users/jr";
 
-  home.sessionPath = ["/run/current-system/sw/bin"];
+  home.sessionPath = [ "/run/current-system/sw/bin" ];
 
   programs.git = {
     enable = true;
     userName = "Jan Rueggeberg";
     userEmail = "jan.rueggeberg@mirantus.com";
+
+    signing = {
+      format = "ssh";
+      signByDefault = true;
+      key = "~/.ssh/id_ed25519.pub";
+    };
+
     extraConfig = {
       init = {
         defaultBranch = "main";
