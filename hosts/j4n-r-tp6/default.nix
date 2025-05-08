@@ -13,6 +13,13 @@
   # used for ddcutils
   hardware.i2c.enable = true;
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      mesa
+    ];
+  };
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";

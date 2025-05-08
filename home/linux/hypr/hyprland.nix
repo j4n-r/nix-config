@@ -52,6 +52,7 @@
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=emacs --fg-daemon
       exec-once=hyprctl setcursor BreezeX-RosePineDawn-Linux 32
+      exec-once=bitwarden
 
       #############################
       ### ENVIRONMENT VARIABLES ###

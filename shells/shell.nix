@@ -7,5 +7,6 @@ pkgs.mkShell {
     pkgs.enchant
     pkgs.pkg-config
     pkgs.libvterm-neovim
+    pkgs.libvterm
   ];
 }

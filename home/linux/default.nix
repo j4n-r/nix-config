@@ -14,6 +14,7 @@
     ./gtk.nix
     ./rofi/rofi.nix
     ./dunst.nix
+    ./chromium.nix
   ];
 
   home.file."${config.home.homeDirectory}/.config/xkb/symbols/umlauteKeymap" = {

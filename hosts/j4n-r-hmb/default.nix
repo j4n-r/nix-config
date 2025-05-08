@@ -29,6 +29,13 @@
   # used for ddcutils
   hardware.i2c.enable = true;
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      mesa
+    ];
+  };
+
   users.users.j4n-r = {
     isNormalUser = true;
     description = "Jan Rueggeberg";
