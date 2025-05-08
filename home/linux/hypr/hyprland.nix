@@ -55,6 +55,8 @@
       exec-once = [workspace 2 silent] google-chrome-stable
       exec-once = [workspace 3 silent] ghostty
       exec-once = [workspace 4 silent] bitwarden
+      exec-once = sleep 0.5 && hyprctl dispatch workspace 1
+
 
       #############################
       ### ENVIRONMENT VARIABLES ###
@@ -177,6 +179,7 @@
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
       gestures {
           workspace_swipe = true
+          workspace_swipe_fingers = 3
       }
 
 
