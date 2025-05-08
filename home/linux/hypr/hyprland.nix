@@ -50,9 +50,11 @@
       exec-once= swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg 
       exec-once = swaync
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
-      exec-once=emacs --fg-daemon
       exec-once=hyprctl setcursor BreezeX-RosePineDawn-Linux 32
-      exec-once=bitwarden
+      exec-once = [workspace 1 silent] emacs
+      exec-once = [workspace 2 silent] google-chrome-stable
+      exec-once = [workspace 3 silent] ghostty
+      exec-once = [workspace 4 silent] bitwarden
 
       #############################
       ### ENVIRONMENT VARIABLES ###
