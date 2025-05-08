@@ -34,6 +34,13 @@
     '';
   };
 
+  home.pointerCursor = {
+    name = "BreezeX-RosePineDawn-Linux";
+    package = pkgs.rose-pine-cursor;
+    size = 32;
+    gtk.enable = true;
+    x11.enable = true;
+  };
   services.megasync.enable = true;
 
   home.packages = with pkgs; [
