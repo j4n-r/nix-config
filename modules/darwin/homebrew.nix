@@ -17,6 +17,7 @@
 
     casks = [
       "1password-cli"
+      "1password"
       "karabiner-elements"
       "raycast"
       "ghostty"
