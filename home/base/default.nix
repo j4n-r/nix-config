@@ -10,7 +10,6 @@
     ./ghostty.nix
     ./btop.nix
     ./direnv.nix
-    ./ssh.nix
   ];
 
 }
