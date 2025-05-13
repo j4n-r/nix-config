@@ -17,6 +17,7 @@
       ]
     ))
     cloc
+    comrak
     #semgrep
 
     # build tools
