@@ -28,6 +28,7 @@
     xz
     btop
     ripgrep
+    fd
 
     wget
     curl
