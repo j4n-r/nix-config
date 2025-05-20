@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     devenv
     btop
-    (if pkgs.stdenv.isDarwin then emacs.override { withNativeCompilation = false; } else emacs)
+    emacs
     (aspellWithDicts (
       dicts: with dicts; [
         en
