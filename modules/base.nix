@@ -5,6 +5,8 @@
 {
   #programs.ssh.startAgent = true;
 
+  services.tailscale.enable = true;
+
   programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
