@@ -6,7 +6,11 @@
 }:
 {
   hardware.bluetooth.enable = true;
+
   networking.networkmanager.enable = true;
+  networking.useDHCP = lib.mkForce true;
+  networking.networkmanager.dhcp = "dhcpcd";
+
   time.timeZone = "Europe/Berlin";
 
   xdg.portal.enable = true;
