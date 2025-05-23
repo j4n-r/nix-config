@@ -19,6 +19,8 @@
     ))
     cloc
     comrak
+
+    yaak # api client
     #semgrep
 
     # build tools
@@ -29,10 +31,9 @@
     cmake
     ninja
 
-    # for more complex things use shell.nix
+    basedpyright
     (python3.withPackages (
       python-pkgs: with python-pkgs; [
-        basedpyright
         pandas
         ruff
         numpy

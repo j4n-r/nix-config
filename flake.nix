@@ -55,7 +55,7 @@
             }
           ];
         };
-        j4n-r-pi5 = nixpkgs.lib.nixosSystem {
+        j4n-r-rpi5 = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = { inherit inputs; };
           modules = [
