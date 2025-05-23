@@ -8,6 +8,7 @@
     devenv
     btop
     emacs
+    libvterm
     (aspellWithDicts (
       dicts: with dicts; [
         en

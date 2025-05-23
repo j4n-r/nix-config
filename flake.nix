@@ -55,6 +55,21 @@
             }
           ];
         };
+        j4n-r-pi5 = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/j4n-r-pi5
+            ./modules/base.nix
+            ./modules/nixos/base.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+            }
+          ];
+        };
       };
       darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
