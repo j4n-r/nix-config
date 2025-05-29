@@ -17,7 +17,7 @@
         de
       ]
     ))
-    cloc
+    tokei
     comrak
 
     yaak # api client
@@ -42,6 +42,7 @@
       ]
     ))
 
+    rustup
     cargo
     rustc
     rustfmt
