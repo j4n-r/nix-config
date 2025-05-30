@@ -10,6 +10,7 @@
     ./ghostty.nix
     ./btop.nix
     ./direnv.nix
+    ./cmd.nix
   ];
 
 }

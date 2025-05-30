@@ -42,6 +42,7 @@
         debugpy
       ]
     ))
+    aider-chat
 
     rustup
     cargo

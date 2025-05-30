@@ -29,8 +29,14 @@
     unzip
     xz
     btop
-    ripgrep
-    fd
+    ripgrep # better grep
+    fd # better find
+    eza # better ls
+    zoxide # better cd
+    xh # http cli
+    #disk checker
+    du-dust
+    dua
 
     wget
     curl
