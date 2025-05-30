@@ -8,7 +8,8 @@
     interactiveShellInit = ''
       #### disable greeeting message ####
       set -g fish_greeting
-      alias e="eza -l"
+      alias e="eza"
+      alias ee="eza -l"
 
 
                   ####### emacs vterm shell ########
