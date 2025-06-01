@@ -196,9 +196,7 @@
       bind = $mainMod, Q, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, $fileManager
-      bind = $mainMod, V, togglefloating,
       bind = SUPER, SPACE, exec, $menu
-      bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
 
       # Move focus with mainMod + arrow keys
@@ -242,18 +240,6 @@
       bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
       bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
 
-      # Example special workspace (scratchpad)
-      bind = $mainMod, S, togglespecialworkspace, magic
-      bind = $mainMod SHIFT, S, movetoworkspace, special:magic
-
-      # Scroll through existing workspaces with mainMod + scroll
-      bind = $mainMod, mouse_down, workspace, e+1
-      bind = $mainMod, mouse_up, workspace, e-1
-
-      # Move/resize windows with mainMod + LMB/RMB and dragging
-      bindm = $mainMod, mouse:272, movewindow
-      bindm = $mainMod, mouse:273, resizewindow
-
       # fullscreen
       bind = SUPER, F, fullscreen
 
@@ -265,6 +251,7 @@
 
       # screenshot to clipboard
       bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy
+
       ##############################
       ### WINDOWS AND WORKSPACES ###
       ##############################
