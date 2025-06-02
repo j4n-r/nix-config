@@ -9,7 +9,6 @@
     btop
     emacs
     evil-helix
-    libvterm
     (aspellWithDicts (
       dicts: with dicts; [
         en
