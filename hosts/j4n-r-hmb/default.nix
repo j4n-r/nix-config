@@ -47,6 +47,10 @@
     packages = with pkgs; [ ];
   };
 
+  nix.settings.trusted-users = [
+    "j4n-r"
+    "root"
+  ];
   system.stateVersion = "24.11";
 
 }

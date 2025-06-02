@@ -21,6 +21,8 @@
     tokei
     comrak
 
+    quickemu
+    spice
     yaak # api client
     #semgrep
 
