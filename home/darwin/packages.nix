@@ -5,5 +5,7 @@
     zed-editor
     doppler
     wireshark
+    yaak
+    packer
   ];
 }
