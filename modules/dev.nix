@@ -45,7 +45,6 @@
     ))
     aider-chat
 
-    rustup
     cargo
     rustc
     rustfmt

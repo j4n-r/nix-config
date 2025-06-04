@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs =
@@ -17,6 +21,7 @@
       home-manager,
       hyprland,
       nix-darwin,
+      rust-overlay,
       ...
     }:
     {
@@ -36,6 +41,13 @@
               home-manager.useUserPackages = true;
               home-manager.users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
             }
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+              }
+            )
           ];
         };
         j4n-r-tp6 = nixpkgs.lib.nixosSystem {
@@ -53,6 +65,13 @@
               home-manager.useUserPackages = true;
               home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
             }
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+              }
+            )
           ];
         };
         j4n-r-rpi5 = nixpkgs.lib.nixosSystem {

@@ -9,7 +9,7 @@
       #### disable greeeting message ####
       set -g fish_greeting
       alias e="eza"
-      alias ee="eza -l"
+      alias ee="eza -la"
 
 
                   ####### emacs vterm shell ########
