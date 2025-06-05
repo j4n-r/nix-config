@@ -164,7 +164,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#input
       input {
-          kb_layout = #umlauteKeymap # this is configured in linux/default.nix
+          kb_layout = eu #umlauteKeymap # this is configured in linux/default.nix
 
           follow_mouse = 0
 
@@ -198,17 +198,16 @@
       bind = SUPER, SPACE, exec, $menu
       bind = $mainMod, J, togglesplit, # dwindle
 
-      # Move focus with mainMod + arrow keys
-      bind = $mainMod, h , movefocus, l
+      bind = $mainMod, h ,movefocus, l
       bind = $mainMod, l, movefocus, r
       bind = $mainMod, k, movefocus, u
       bind = $mainMod, j, movefocus, d
 
       # Resize window
-      bind = SUPER ALT, h, resizeactive, -160 0
-      bind = SUPER ALT, l, resizeactive, 160 0
-      bind = SUPER ALT, k, resizeactive, 0 -160
-      bind = SUPER ALT, j, resizeactive, 0 160
+      bind = SUPER $mainMod, h, resizeactive, -160 0
+      bind = SUPER $mainMod, l, resizeactive, 160 0
+      bind = SUPER $mainMod, k, resizeactive, 0 -160
+      bind = SUPER $mainMod, j, resizeactive, 0 160
       # Switch workspaces with mainMod + [0-9]
       bind = ALT, 1, workspace, 1
       bind = ALT, 2, workspace, 2
