@@ -2,8 +2,9 @@
 let
   ghostty-mock = pkgs.writeShellScriptBin "gostty-mock" ''
     true
-    '';
-in{
+  '';
+in
+{
   programs.ghostty = {
     enable = true;
     package = ghostty-mock; # Set explicitly to null, as it is managed externally
@@ -30,9 +31,8 @@ in{
         "ctrl+g>j=next_tab"
         "ctrl+g>k=previous_tab"
         "ctrl+g>x=close_surface"
-        "global:super+shift+t=toggle_quick_terminal"
+        "global:super+alt+t=toggle_quick_terminal"
       ];
-
     };
   };
 }

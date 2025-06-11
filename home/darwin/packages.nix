@@ -5,7 +5,7 @@
     zed-editor
     doppler
     wireshark
-    yaak
+    coreutils-prefixed
     packer
   ];
 }

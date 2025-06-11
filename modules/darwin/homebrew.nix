@@ -12,10 +12,12 @@
 
     brews = [
       "enchant"
+      "libvterm"
     ];
 
     casks = [
       "1password-cli"
+      "yaak"
       "1password"
       "karabiner-elements"
       "raycast"

@@ -20,9 +20,8 @@
     tokei
     comrak
 
-    quickemu
-    spice
-    yaak # api client
+    # quickemu
+    # spice
     #semgrep
 
     # build tools
