@@ -188,7 +188,7 @@
 
 
       # See https://wiki.hyprland.org/Configuring/Keywords/
-      $mainMod = MOD5
+      $mainMod = ALT
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       #bind = CTRL, SPACE, exec, $terminal
