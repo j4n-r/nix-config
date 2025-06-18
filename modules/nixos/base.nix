@@ -13,8 +13,21 @@
   hardware.bluetooth.enable = true;
 
   networking.networkmanager.enable = true;
-  networking.useDHCP = lib.mkForce true;
-  networking.networkmanager.dhcp = "dhcpcd";
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+  ];
+
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
+    dnsovertls = "true";
+  };
 
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
