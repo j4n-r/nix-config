@@ -16,6 +16,9 @@
   networking.useDHCP = lib.mkForce true;
   networking.networkmanager.dhcp = "dhcpcd";
 
+  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
+
   time.timeZone = "Europe/Berlin";
 
   xdg.portal.enable = true;
