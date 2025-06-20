@@ -3,8 +3,8 @@
 let
 
   hyprlandMonitorConfig = ''
-    monitor=eDP-1,2520x1680,3440x0,1 
-    monitor=DP-1,3440x1440@100,0x0,1
+    monitor=DP-1,highres@highrr,0x0,1.3
+    monitor=eDP-1,highres@highrr,3200x0,1
 
     workspace=1,monitor:DP-1, default:true
     workspace=2,monitor:DP-1
@@ -12,6 +12,9 @@ let
     workspace=4,monitor:DP-1
     workspace=5,monitor:DP-1
     workspace=6,monitor:DP-1
+    xwayland {
+        force_zero_scaling = true
+    }
   '';
 in
 # hyprlandMonitorConfig = ''

@@ -8,15 +8,7 @@
     devenv
     btop
     emacs
-    evil-helix
-    (aspellWithDicts (
-      dicts: with dicts; [
-        en
-        en-computers
-        en-science
-        de
-      ]
-    ))
+    emacsPackages.jinx
     tokei
     comrak
 
