@@ -197,6 +197,8 @@
       bind = $mainMod, E, exec, $fileManager
       bind = SUPER, SPACE, exec, $menu
       bind = $mainMod, J, togglesplit, # dwindle
+      bind = $mainMod, W, exec, pkill -USR1 waybar
+
 
       bind = $mainMod, h ,movefocus, l
       bind = $mainMod, l, movefocus, r
