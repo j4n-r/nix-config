@@ -42,7 +42,7 @@
       ### AUTOSTART ###
       #################
 
-      exec-once=hyprlock
+       exec-once=hyprlock
       exec-once=waybar
       exec-once=emacs --daemon
       exec-once= nm-applet

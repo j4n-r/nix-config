@@ -10,6 +10,7 @@
     hypridle
     hyprlock
 
+    pwvucontrol
     playerctl # used for spotify scripts
     rofi-wayland
     wl-clipboard

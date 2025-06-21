@@ -7,6 +7,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  virtualisation.docker.enable = true;
   # udev rules for vial
   services.udev.extraRules = ''
     # beekeeb Piantor Pro
@@ -43,6 +44,7 @@
       "networkmanager"
       "wheel"
       "i2c"
+      "docker"
     ];
     packages = with pkgs; [ ];
   };
