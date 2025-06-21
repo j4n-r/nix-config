@@ -3,7 +3,7 @@
 let
 
   hyprlandMonitorConfig = ''
-    monitor=DP-1,highres@highrr,0x0,1.3
+    monitor=DP-1,highres@highrr,0x0,1.5
     monitor=eDP-1,highres@highrr,3200x0,1
 
     workspace=1,monitor:DP-1, default:true
