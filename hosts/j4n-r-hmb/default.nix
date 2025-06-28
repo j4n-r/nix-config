@@ -8,6 +8,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   virtualisation.docker.enable = true;
+
   # udev rules for vial
   services.udev.extraRules = ''
     # beekeeb Piantor Pro
@@ -15,6 +16,7 @@
   '';
 
   networking.hostName = "j4n-r-hmb";
+
   services.getty.autologinUser = "j4n-r";
 
   services.xserver.xkb = {

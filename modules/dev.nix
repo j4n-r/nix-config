@@ -3,6 +3,8 @@
   ...
 }:
 {
+  nixpkgs.config.android_sdk.accept_license = true;
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     devenv
@@ -46,6 +48,7 @@
 
     nodejs
     yarn
+    vscode
     pnpm_10
 
     # lsp & formatter

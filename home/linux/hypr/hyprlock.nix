@@ -12,14 +12,12 @@
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
       };
-
       # GENERAL
       general = {
         no_fade_in = false;
         grace = 0;
         disable_loading_bar = true;
       };
-
       # INPUT FIELD
       input-field = [
         {
@@ -41,7 +39,6 @@
           valign = "center";
         }
       ];
-
       # TIME
       label = [
         {
@@ -65,12 +62,21 @@
           valign = "top";
         }
         {
-
           monitor = "";
           text = ''cmd[update:1000] echo "$(~/nix-config/scripts/linux/now-playing)"'';
           color = "rgba(255, 255, 255, 0.6)";
           font_size = 16;
           font_family = "JetBrainsMono Nerd Font";
+          position = "0, 200";
+          halign = "center";
+          valign = "bottom";
+        }
+        {
+          monitor = "";
+          text = "Solve actual problems, not imaginary ones";
+          color = "rgba(255, 255, 255, 0.7)";
+          font_size = 18;
+          font_family = "JetBrains Mono Nerd Font";
           position = "0, 70";
           halign = "center";
           valign = "bottom";

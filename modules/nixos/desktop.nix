@@ -10,6 +10,7 @@
     hyprpaper
     hypridle
     hyprlock
+    yaak # api cliennt
 
     pwvucontrol
     playerctl # used for spotify scripts
