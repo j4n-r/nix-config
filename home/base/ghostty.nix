@@ -12,18 +12,16 @@ in
     settings = {
 
       theme = "rose-pine";
-      background-opacity = 0.8;
+      # background-opacity = 0.8;
       window-padding-x = 8;
       window-padding-y = 8;
       window-decoration = false;
       resize-overlay = "never";
-      font-size = 12;
+      font-size = 10;
       mouse-hide-while-typing = true;
       gtk-tabs-location = "bottom";
 
       keybind = [
-        "ctrl+o=scroll_page_up"
-        "ctrl+d=scroll_page_down"
         "ctrl+g>n=new_tab"
         "ctrl+g>v=new_split:right"
         "ctrl+g>h=goto_split:left"

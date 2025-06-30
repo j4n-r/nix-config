@@ -24,6 +24,7 @@
     git
     tldr
     starship
+    zellij
 
     zip
     unzip

@@ -15,7 +15,12 @@
       "libvterm"
     ];
 
+    taps = [
+      "d12frosted/emacs-plus"
+    ];
+
     casks = [
+      "emacs-plus"
       "1password-cli"
       "yaak"
       "1password"
