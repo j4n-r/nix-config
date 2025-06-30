@@ -13,14 +13,18 @@
     brews = [
       "enchant"
       "libvterm"
+      "sst/tap/opencode"
     ];
 
     taps = [
+      "sst/tap"
       "d12frosted/emacs-plus"
     ];
 
     casks = [
       "emacs-plus"
+      "virtualbox"
+      "vagrant"
       "1password-cli"
       "yaak"
       "1password"
