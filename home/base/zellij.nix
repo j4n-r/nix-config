@@ -16,7 +16,7 @@
             unbind "Ctrl h" // unbind in all modes
             normal {
                 bind "Super y" { SwitchToMode "locked"; }
-                bind "Super h" { SwitchToMode "move"; }
+                bind "Super w" { SwitchToMode "move"; }
             }
             locked {
                 bind "Super y" { SwitchToMode "normal"; }
