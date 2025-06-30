@@ -12,11 +12,14 @@
         simplified_ui false
         show_startup_tips false
         keybinds {
+            unbind "Ctrl g" // unbind in all modes
+            unbind "Ctrl h" // unbind in all modes
             normal {
-                bind "Super+y" "Super+y" { SwitchToMode "Locked"; }
+                bind "Super y" { SwitchToMode "locked"; }
+                bind "Super h" { SwitchToMode "move"; }
             }
             locked {
-                bind "Super+y" "Super+y" { SwitchToMode "Normal"; }
+                bind "Super y" { SwitchToMode "normal"; }
             }
         }
 
