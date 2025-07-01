@@ -2,7 +2,6 @@
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
   };
 
   # NOTE: the module only supports YAML config which is deprecated
@@ -16,7 +15,7 @@
             unbind "Ctrl h" // unbind in all modes
             normal {
                 bind "Super y" { SwitchToMode "locked"; }
-                bind "Super w" { SwitchToMode "move"; }
+                bind "Ctrl w" { SwitchToMode "move"; }
             }
             locked {
                 bind "Super y" { SwitchToMode "normal"; }

@@ -21,8 +21,8 @@
             cmake
             enchant
             pkg-config
-            libvterm-neovim # test next time which one works
-            libvterm
+            # libvterm-neovim # test next time which one works
+            # libvterm
           ];
         };
         # for running eduroam script from https://cat.eduroam.org/
