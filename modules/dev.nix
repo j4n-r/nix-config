@@ -9,6 +9,7 @@
     (emacs.pkgs.withPackages (epkgs: [
       epkgs.vterm
       epkgs.jinx
+      epkgs.pdf-tools
     ]))
     pkg-config
     neovim
