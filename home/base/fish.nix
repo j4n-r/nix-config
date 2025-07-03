@@ -27,7 +27,7 @@
 
 
       # Only auto-start Zellij if NOT in Emacs vterm
-      if status is-interactive; and not set -q ZELLIJ
+      if status is-interactive; and not set -q ZELLIJ; and not [ (tty) = "/dev/tty1" ]
           if set -q INSIDE_EMACS; and string match -q "*vterm*" $INSIDE_EMACS
           else
               exec zellij
