@@ -1,7 +1,7 @@
 { ... }:
 {
   programs.zellij = {
-    enable = true;
+    enable = false;
   };
 
   # NOTE: the module only supports YAML config which is deprecated
