@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
@@ -14,10 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+
   };
   outputs =
     inputs@{
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       hyprland,
       nix-darwin,
@@ -35,6 +38,7 @@
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
             ./modules/nixos/base.nix
+            ./modules/nixos/unstable.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
