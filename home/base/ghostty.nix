@@ -12,10 +12,10 @@ in
     settings = {
       theme = "rose-pine";
       # background-opacity = 0.8;
+      window-theme = "ghostty";
+      macos-titlebar-style = "tabs";
       window-padding-x = 8;
       window-padding-y = 8;
-      window-decoration = false;
-      resize-overlay = "never";
       font-size = 10;
       mouse-hide-while-typing = true;
       gtk-tabs-location = "bottom";
