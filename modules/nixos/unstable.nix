@@ -1,7 +1,13 @@
 { pkgs, inputs, ... }:
 let
-  unstable = import inputs.nixpkgs-unstable { system = pkgs.system; };
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+
+  };
 in
 {
-  environment.systemPackages = [ unstable.opencode ];
+  environment.systemPackages = [
+    unstable.opencode
+  ];
 }

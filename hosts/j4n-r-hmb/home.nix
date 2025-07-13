@@ -1,33 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
-let
-
-  hyprlandMonitorConfig = ''
-    monitor=DP-1,highres@highrr,0x0,1.5
-    monitor=eDP-1,highres@highrr,3200x0,1
-
-    workspace=1,monitor:DP-1, default:true
-    workspace=2,monitor:DP-1
-    workspace=3,monitor:DP-1
-    workspace=4,monitor:DP-1
-    workspace=5,monitor:DP-1
-    workspace=6,monitor:DP-1
-    xwayland {
-        force_zero_scaling = true
-    }
-  '';
-in
-# hyprlandMonitorConfig = ''
-#   monitor=eDP-1,2520x1680,3440x0,1
-#   monitor=DP-3,3440x1440@100,0x0,1
-#   monitor=DP-4,1920x1080,860x-1080,1
-#   workspace=1,monitor:DP-3, default:true
-#   workspace=2,monitor:DP-3
-#   workspace=3,monitor:DP-3
-#   workspace=4,monitor:DP-4
-#   workspace=5,monitor:DP-4
-#   workspace=6,monitor:DP-4
-# '';
 {
   home.username = "j4n-r";
   home.homeDirectory = "/home/j4n-r";
@@ -70,11 +42,7 @@ in
   };
 
   imports = [
-    (import ../../home/linux {
-      config = config;
-      pkgs = pkgs;
-      hyprlandMonitorConfig = hyprlandMonitorConfig;
-    })
+    ../../home/linux
     ../../home/base
   ];
   wayland.windowManager.hyprland = {

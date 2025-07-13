@@ -15,6 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    sherlock.url = "github:Skxxtz/sherlock";
 
   };
   outputs =
@@ -25,6 +26,7 @@
       hyprland,
       nix-darwin,
       rust-overlay,
+      sherlock,
       ...
     }:
     {
@@ -41,9 +43,28 @@
             ./modules/nixos/unstable.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                  hyprlandMonitorConfig = ''
+                    monitor=DP-1,highres@highrr,0x0,1.5
+                    monitor=eDP-1,highres@highrr,3200x0,1
+
+                    workspace=1,monitor:DP-1, default:true
+                    workspace=2,monitor:DP-1
+                    workspace=3,monitor:DP-1
+                    workspace=4,monitor:DP-1
+                    workspace=5,monitor:DP-1
+                    workspace=6,monitor:DP-1
+                    xwayland {
+                        force_zero_scaling = true
+                    }
+                  '';
+                };
+                users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
+              };
             }
             (
               { pkgs, ... }:
@@ -87,9 +108,27 @@
             ./modules/nixos/base.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                  hyprlandMonitorConfig = ''
+                    monitor=eDP-1,1920x1080,3440x0,1 
+                    monitor=DP-1,2560x1440@60,0x0,1.3 # 60hz is max for the usbc output
+                    monitor=DP-2,1920x1200,0x0,1
+                    monitor = , preferred, 0x0, 1
+
+                    workspace=1,monitor:DP-1 , default:true
+                    workspace=2,monitor:DP-1
+                    workspace=3,monitor:DP-1
+                    workspace=4,monitor:DP-1
+                    workspace=5,monitor:DP-1
+                    workspace=6,monitor:DP-1
+                  '';
+                };
+                users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
+              };
             }
           ];
         };

@@ -1,4 +1,4 @@
-{ hyprlandMonitorConfig }:
+{ hyprlandMonitorConfig, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -36,7 +36,8 @@
       # Set programs that you use
       $terminal = ghostty
       $fileManager = dolphin
-      $menu = rofi -show drun
+      $menu = sherlock
+      #$menu = rofi -show drun
 
       #################
       ### AUTOSTART ###
@@ -56,6 +57,7 @@
       exec-once = [workspace 3 silent] ghostty
       exec-once = [workspace 4 silent] bitwarden
       exec-once = sleep 0.5 && hyprctl dispatch workspace 1
+      exec-once = sherlock --daemonize
 
 
       #############################

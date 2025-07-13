@@ -1,22 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  hyprlandMonitorConfig = ''
-    monitor=eDP-1,1920x1080,3440x0,1 
-    monitor=DP-1,2560x1440@60,0x0,1.3 # 60hz is max for the usbc output
-    monitor=DP-2,1920x1200,0x0,1
-    monitor = , preferred, 0x0, 1
-
-
-
-    workspace=1,monitor:DP-1 , default:true
-    workspace=2,monitor:DP-1
-    workspace=3,monitor:DP-1
-    workspace=4,monitor:DP-1
-    workspace=5,monitor:DP-1
-    workspace=6,monitor:DP-1
-  '';
-in
 {
   home.username = "j4n-r";
   home.homeDirectory = "/home/j4n-r";
@@ -59,11 +42,7 @@ in
   };
 
   imports = [
-    (import ../../home/linux {
-      config = config;
-      pkgs = pkgs;
-      hyprlandMonitorConfig = hyprlandMonitorConfig;
-    })
+    ../../home/linux
     ../../home/base
   ];
   wayland.windowManager.hyprland = {
