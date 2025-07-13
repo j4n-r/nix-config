@@ -19,6 +19,7 @@ in
       font-size = 10;
       mouse-hide-while-typing = true;
       gtk-tabs-location = "bottom";
+      resize-overlay = "never";
       keybind = [
         # Tab management with Ctrl+t prefix
         "ctrl+t>n=new_tab"
