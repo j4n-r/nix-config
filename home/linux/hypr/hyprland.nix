@@ -45,7 +45,6 @@
 
        exec-once=hyprlock
       exec-once=waybar
-      exec-once=emacs --daemon
       exec-once= nm-applet
       exec-once=blueman-applet
       exec-once= swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg 
