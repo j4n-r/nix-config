@@ -25,6 +25,7 @@
     tldr
     starship
     zellij
+    bat
 
     zip
     unzip

@@ -10,6 +10,7 @@
         set -g fish_greeting
         alias e="eza"
         alias ee="eza -la"
+        alias cat="bat"
 
 
                     ####### emacs vterm shell ########

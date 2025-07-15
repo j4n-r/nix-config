@@ -263,6 +263,7 @@
       windowrulev2 = opacity,0.8,class:^zathura$
       windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
       windowrulev2 = float, class:^MainView$
+      windowrulev2 = focusonactivate, class:.*
     '';
   };
 }
