@@ -151,6 +151,19 @@
           priority = 100;
         }
         {
+          name = "Moodle";
+          display_name = "Moodle";
+          tag_start = "{keyword}";
+          tag_end = "{keyword}";
+          alias = "md";
+          type = "web_launcher";
+          args = {
+            search_engine = "https://moodle.hwr-berlin.de/my/";
+            icon = "hwr-logo";
+          };
+          priority = 100;
+        }
+        {
           name = "Debug";
           type = "debug";
           alias = "debug";
