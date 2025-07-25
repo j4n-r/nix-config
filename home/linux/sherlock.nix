@@ -129,7 +129,7 @@
           display_name = "Claude-LLM";
           tag_start = "{keyword}";
           tag_end = "{keyword}";
-          alias = "c|";
+          alias = "!c";
           type = "web_launcher";
           args = {
             search_engine = "https://claude.ai/new?q={keyword}";
@@ -142,7 +142,7 @@
           display_name = "ChatGPT";
           tag_start = "{keyword}";
           tag_end = "{keyword}";
-          alias = "g|";
+          alias = "!g";
           type = "web_launcher";
           args = {
             search_engine = "https://chatgpt.com/?q={keyword}";

@@ -198,6 +198,7 @@
       bind = $mainMod, E, exec, $fileManager
       bind = SUPER, SPACE, exec, $menu
       bind = $mainMod, J, togglesplit, # dwindle
+      bind = $mainMod, T, togglefloating
       bind = $mainMod, W, exec, pkill -USR1 waybar
 
 
@@ -249,7 +250,7 @@
       bind = SUPER, l, exec, hyprlock
 
       # Power menu 
-      bind = SUPER, X, exec, ~/nix-config/scripts/linux/powermenu.sh
+      #bind = SUPER, X, exec, ~/nix-config/scripts/linux/powermenu.sh
 
       # screenshot to clipboard
       bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy
