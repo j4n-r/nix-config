@@ -86,9 +86,28 @@
             ./modules/nixos/base.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                  hyprlandMonitorConfig = ''
+                    monitor=DP-1,highres@highrr,0x0,1.5
+                    monitor=eDP-1,highres@highrr,3200x0,1
+
+                    workspace=1,monitor:DP-1, default:true
+                    workspace=2,monitor:DP-1
+                    workspace=3,monitor:DP-1
+                    workspace=4,monitor:DP-1
+                    workspace=5,monitor:DP-1
+                    workspace=6,monitor:DP-1
+                    xwayland {
+                        force_zero_scaling = true
+                    }
+                  '';
+                };
+                users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+              };
             }
             (
               { pkgs, ... }:

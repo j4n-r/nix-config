@@ -43,14 +43,14 @@
       ### AUTOSTART ###
       #################
 
-       exec-once=hyprlock
-      exec-once=waybar
-      exec-once= nm-applet
-      exec-once=blueman-applet
-      exec-once= swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg 
+      exec-once = hyprlock
+      exec-once = waybar
+      exec-once = nm-applet
+      exec-once = blueman-applet
+      exec-once = swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg 
       exec-once = swaync
-      exec-once=/usr/lib/polkit-kde-authentication-agent-1
-      exec-once=hyprctl setcursor BreezeX-RosePineDawn-Linux 32
+      exec-once = /usr/lib/polkit-kde-authentication-agent-1
+      exec-once = hyprctl setcursor BreezeX-RosePineDawn-Linux 32
       exec-once = [workspace 1 silent] emacs
       exec-once = [workspace 2 silent] google-chrome-stable
       exec-once = [workspace 3 silent] ghostty
