@@ -4,14 +4,15 @@
 }:
 {
   nixpkgs.config.android_sdk.accept_license = true;
-  environment.systemPackages = with pkgs; [
-    (emacs.pkgs.withPackages (epkgs: [
-      epkgs.vterm
-      epkgs.jinx
-      epkgs.pdf-tools
+environment.systemPackages = with pkgs; [
+    ((emacs-unstable.override {
+        withNativeCompilation = true;
+    }).pkgs.withPackages (epkgs: [
+        epkgs.vterm
+        epkgs.jinx
+        epkgs.pdf-tools
     ]))
     pkg-config
-    neovim
     devenv
     btop
     tokei
@@ -30,6 +31,7 @@
     ninja
 
     basedpyright
+    uv
     (python3.withPackages (
       python-pkgs: with python-pkgs; [
         pandas

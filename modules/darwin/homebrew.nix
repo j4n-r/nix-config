@@ -13,6 +13,8 @@
       "enchant"
       "libvterm"
       "sst/tap/opencode"
+      "libiconv"
+
     ];
 
     taps = [
@@ -20,6 +22,7 @@
     ];
 
     casks = [
+      "claude-code"
       "virtualbox"
       "vagrant"
       "1password-cli"

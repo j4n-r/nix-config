@@ -7,5 +7,7 @@
     wireshark
     coreutils-prefixed
     packer
+    jetbrains.pycharm-professional
+    gemini-cli
   ];
 }

@@ -64,6 +64,8 @@ in
         "ctrl+shift+v=paste_from_clipboard"
         "ctrl+shift+f=toggle_fullscreen"
         "ctrl+shift+r=reload_config"
+        "ctrl++=increase_font_size:1"
+        "ctrl+-=decrease_font_size:1"
       ];
     };
   };

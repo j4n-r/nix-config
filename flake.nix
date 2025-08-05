@@ -14,8 +14,13 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay = {
+        url = "github:nix-community/emacs-overlay";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
     sherlock.url = "github:Skxxtz/sherlock";
+
 
   };
   outputs =
@@ -26,6 +31,7 @@
       hyprland,
       nix-darwin,
       rust-overlay,
+      emacs-overlay,  
       sherlock,
       ...
     }:
@@ -69,7 +75,10 @@
             (
               { pkgs, ... }:
               {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ 
+                  rust-overlay.overlays.default 
+                  emacs-overlay.overlays.default 
+                ];
                 environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
             )
@@ -112,7 +121,10 @@
             (
               { pkgs, ... }:
               {
-                nixpkgs.overlays = [ rust-overlay.overlays.default ];
+                nixpkgs.overlays = [ 
+                  rust-overlay.overlays.default 
+                  emacs-overlay.overlays.default 
+                ];
                 environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
             )
@@ -149,6 +161,12 @@
                 users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
               };
             }
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+              }
+            )
           ];
         };
       };
@@ -174,6 +192,12 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
+        (
+        { pkgs, ... }:
+        {
+            nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+        }
+        )
         ];
       };
     };
