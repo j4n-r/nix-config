@@ -17,6 +17,7 @@ environment.systemPackages = with pkgs; [
     btop
     tokei
     comrak
+    claude-code
 
     # quickemu
     # spice
@@ -25,6 +26,7 @@ environment.systemPackages = with pkgs; [
     # build tools
     gcc
     clang
+    libclang
     llvm
     lld
     cmake
@@ -67,6 +69,8 @@ environment.systemPackages = with pkgs; [
     tailwindcss-language-server
     nodePackages.prettier
 
+    typst
+    tinymist
     go
     gopls
 

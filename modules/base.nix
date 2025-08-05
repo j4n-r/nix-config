@@ -20,6 +20,7 @@
   environment.systemPackages = with pkgs; [
     home-manager
     neovim
+    vim
     fish
     git
     tldr
