@@ -51,7 +51,6 @@
             ];
           };
           priority = 1;
-          home = true;
         }
 
         {
@@ -60,7 +59,7 @@
           type = "app_launcher";
           args = { };
           priority = 2;
-          home = true;
+          home = "Home";
         }
         {
           name = "Kill Process";
@@ -191,10 +190,11 @@
       ];
       style = ''
         :root {
-            --background: 247, 23%, 15%;
-            --foreground: 249, 15%, 28%;
-            --text: 245, 50%, 91%;
-            --border: 248, 21%, 26%;
+            --background: hsl(247, 23%, 15%);
+            --foreground: hsl(249, 15%, 28%);
+            --text: hsl(245, 50%, 91%);
+            --border: hsl(248, 21%, 26%);
+        }
       '';
     };
   };

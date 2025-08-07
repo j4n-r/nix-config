@@ -199,7 +199,7 @@
       bind = SUPER, SPACE, exec, $menu
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, T, togglefloating
-      bind = $mainMod, W, exec, pkill -USR1 waybar
+      bind = $mainMod SHIFT, W, exec, pkill -USR1 waybar
 
 
       bind = $mainMod, h ,movefocus, l
