@@ -15,12 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-        url = "github:nix-community/emacs-overlay";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
-    sherlock.url = "github:Skxxtz/sherlock";
-
+    sherlock.url = "github:Skxxtz/sherlock/00ef4af93f7fdba3e9539092166300741505bb02";
 
   };
   outputs =
@@ -31,7 +30,7 @@
       hyprland,
       nix-darwin,
       rust-overlay,
-      emacs-overlay,  
+      emacs-overlay,
       sherlock,
       ...
     }:
@@ -75,9 +74,9 @@
             (
               { pkgs, ... }:
               {
-                nixpkgs.overlays = [ 
-                  rust-overlay.overlays.default 
-                  emacs-overlay.overlays.default 
+                nixpkgs.overlays = [
+                  rust-overlay.overlays.default
+                  emacs-overlay.overlays.default
                 ];
                 environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
@@ -121,9 +120,9 @@
             (
               { pkgs, ... }:
               {
-                nixpkgs.overlays = [ 
-                  rust-overlay.overlays.default 
-                  emacs-overlay.overlays.default 
+                nixpkgs.overlays = [
+                  rust-overlay.overlays.default
+                  emacs-overlay.overlays.default
                 ];
                 environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
@@ -192,12 +191,12 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
-        (
-        { pkgs, ... }:
-        {
-            nixpkgs.overlays = [ emacs-overlay.overlays.default ];
-        }
-        )
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+            }
+          )
         ];
       };
     };
