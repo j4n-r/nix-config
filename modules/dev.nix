@@ -4,15 +4,19 @@
 }:
 {
   nixpkgs.config.android_sdk.accept_license = true;
-environment.systemPackages = with pkgs; [
-    ((emacs-unstable.override {
+  environment.systemPackages = with pkgs; [
+    (
+      (emacs-unstable.override {
         withNativeCompilation = true;
-    }).pkgs.withPackages (epkgs: [
+      }).pkgs.withPackages
+      (epkgs: [
         epkgs.vterm
         epkgs.jinx
         epkgs.pdf-tools
-    ]))
+      ])
+    )
     pkg-config
+    semgrep
     devenv
     btop
     tokei

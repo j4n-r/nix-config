@@ -24,8 +24,8 @@ in
         # Tab management with Ctrl+t prefix
         "ctrl+t>n=new_tab"
         "ctrl+t>c=new_tab" # Alternative create tab
-        "ctrl+t>h=next_tab" # Next tab
-        "ctrl+t>l=previous_tab" # Previous tab
+        "ctrl+t>l=next_tab" # Next tab
+        "ctrl+t>h=previous_tab" # Previous tab
         "ctrl+t>1=goto_tab:1" # Go to tab 1
         "ctrl+t>2=goto_tab:2" # Go to tab 2
         "ctrl+t>3=goto_tab:3" # Go to tab 3

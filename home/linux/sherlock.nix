@@ -124,6 +124,40 @@
           priority = 100;
         }
         {
+          name = "hyprpicker";
+          alias = "hp";
+          type = "command";
+          args = {
+            commands = {
+              "Color picker hex" = {
+                icon = "color_picker";
+                icon_class = "reactive";
+                exec = "hyprpicker --format=hex --autocopy";
+                search_string = "hyprpicker hex color";
+                tag_start = "{hex}";
+                tag_end = "{/hex}";
+              };
+              "Color picker rgb" = {
+                icon = "color_picker";
+                icon_class = "reactive";
+                exec = "hyprpicker --format=rgb --autocopy";
+                search_string = "hyprpicker rgb color";
+                tag_start = "{rgb}";
+                tag_end = "{/rgb}";
+              };
+              "Color picker hsl" = {
+                icon = "color_picker";
+                icon_class = "reactive";
+                exec = "hyprpicker --format=hsl --autocopy";
+                search_string = "hyprpicker hsl color";
+                tag_start = "{hsl}";
+                tag_end = "{/hsl}";
+              };
+            };
+          };
+          priority = 5;
+        }
+        {
           name = "Claude";
           display_name = "Claude-LLM";
           tag_start = "{keyword}";

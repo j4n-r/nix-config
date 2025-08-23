@@ -16,6 +16,7 @@
       fi
     '';
   };
+  documentation.dev.enable = true;
   home-manager.backupFileExtension = "backup";
   environment.systemPackages = with pkgs; [
     home-manager
@@ -27,6 +28,7 @@
     starship
     zellij
     bat
+    fcp
 
     zip
     unzip
@@ -44,11 +46,14 @@
     wget
     curl
     nmap
+    lazydocker
 
     file
     findutils
     which
     tree
+    man-pages
+    man-pages-posix
 
     spotify
     zathura

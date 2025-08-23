@@ -47,6 +47,7 @@
       "wheel"
       "i2c"
       "docker"
+      "wireshark"
     ];
     packages = with pkgs; [ ];
   };

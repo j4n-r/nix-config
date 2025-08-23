@@ -3,14 +3,25 @@
 {
   programs.hyprland.enable = true;
 
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+    dumpcap.enable = true;
+    usbmon.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
     networkmanagerapplet
     ghostty
     swaybg
     hyprpaper
     hypridle
     hyprlock
-    yaak # api cliennt
+    hyprshot
+    hyprpicker
+    yaak
 
     pwvucontrol
     playerctl # used for spotify scripts

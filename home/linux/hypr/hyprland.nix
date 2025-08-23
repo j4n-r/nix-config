@@ -249,11 +249,8 @@
       # hyprlock
       bind = SUPER, l, exec, hyprlock
 
-      # Power menu 
-      #bind = SUPER, X, exec, ~/nix-config/scripts/linux/powermenu.sh
-
       # screenshot to clipboard
-      bind = SUPER, s, exec, grim -g "$(slurp -d)" - | wl-copy
+      bind = SUPER, s, exec,  hyprshort -m region --clipboard-only
 
       ##############################
       ### WINDOWS AND WORKSPACES ###

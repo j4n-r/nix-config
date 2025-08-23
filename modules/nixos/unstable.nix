@@ -9,5 +9,6 @@ in
 {
   environment.systemPackages = [
     unstable.opencode
+    unstable.tsx
   ];
 }
