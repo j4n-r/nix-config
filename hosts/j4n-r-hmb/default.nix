@@ -7,6 +7,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  powerManagement.enable = true;
+  services.tlp.enable = true;
+
   virtualisation.docker.enable = true;
 
   # udev rules for vial

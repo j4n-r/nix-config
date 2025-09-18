@@ -10,5 +10,6 @@ in
   environment.systemPackages = [
     unstable.opencode
     unstable.tsx
+    unstable.jetbrains.clion
   ];
 }

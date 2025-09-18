@@ -8,6 +8,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   virtualisation.docker.enable = true;
 
+  powerManagement.enable = true;
+  services.tlp.enable = true;
+
   networking.hostName = "j4n-r-tp6";
   services.getty.autologinUser = "j4n-r";
 

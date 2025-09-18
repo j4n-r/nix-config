@@ -19,8 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
-    sherlock.url = "github:Skxxtz/sherlock/00ef4af93f7fdba3e9539092166300741505bb02";
-
   };
   outputs =
     inputs@{
@@ -31,7 +29,6 @@
       nix-darwin,
       rust-overlay,
       emacs-overlay,
-      sherlock,
       ...
     }:
     {

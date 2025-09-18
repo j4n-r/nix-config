@@ -4,7 +4,7 @@
 
     extraConfig = {
       modes = "drun";
-      font = "JetBrainsMono 14";
+      font = "JetBrainsMono 16";
       location = 0;
       yoffset = 0;
       xoffset = 0;

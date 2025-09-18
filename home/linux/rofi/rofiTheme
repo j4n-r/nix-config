@@ -67,7 +67,7 @@ listview {
 
 
 element {
-    padding: 8px 8px 8px 12px;
+    padding: 12px 12px 12px 16px;
     border-radius: 8px;
     background-color: transparent;
 }
@@ -77,8 +77,8 @@ element selected {
 }
 
 element-icon {
-    size: 26px;
-    margin: 0px 4px 0px 0px;
+    size: 32px;
+    margin: 0px 6px 0px 0px;
     vertical-align: 0.5;
 }
 

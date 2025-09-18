@@ -54,6 +54,8 @@
     tree
     man-pages
     man-pages-posix
+    liburing
+    linux-manual
 
     spotify
     zathura

@@ -36,8 +36,8 @@
       # Set programs that you use
       $terminal = ghostty
       $fileManager = dolphin
-      $menu = sherlock
-      #$menu = rofi -show drun
+      $menu = rofi -show drun
+      $powermenu = ~/nix-config/scripts/linux/powermenu.sh
 
       #################
       ### AUTOSTART ###
@@ -56,7 +56,6 @@
       exec-once = [workspace 3 silent] ghostty
       exec-once = [workspace 4 silent] bitwarden
       exec-once = sleep 0.5 && hyprctl dispatch workspace 1
-      exec-once = sherlock --daemonize
 
 
       #############################
@@ -194,11 +193,10 @@
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       #bind = CTRL, SPACE, exec, $terminal
       bind = SUPER, Q, killactive,
-      bind = $mainMod, M, exit,
-      bind = $mainMod, E, exec, $fileManager
       bind = SUPER, SPACE, exec, $menu
+      bind = SUPER SHIFT, SPACE, exec, $powermenu
       bind = $mainMod, J, togglesplit, # dwindle
-      bind = $mainMod, T, togglefloating
+      bind = SUPER, T, togglefloating
       bind = $mainMod SHIFT, W, exec, pkill -USR1 waybar
 
 
@@ -250,7 +248,7 @@
       bind = SUPER, l, exec, hyprlock
 
       # screenshot to clipboard
-      bind = SUPER, s, exec,  hyprshort -m region --clipboard-only
+      bind = SUPER, s, exec,  hyprshot -m region --clipboard-only
 
       ##############################
       ### WINDOWS AND WORKSPACES ###

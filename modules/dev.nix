@@ -29,6 +29,7 @@
 
     # build tools
     gcc
+    gdb
     clang
     libclang
     llvm
