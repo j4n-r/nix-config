@@ -73,7 +73,7 @@
         }
         {
           monitor = "";
-          text = "Solve actual problems, not imaginary ones";
+          text = ''cmd[update:60000] ~/nix-config/scripts/linux/alternate_quotes.sh'';
           color = "rgba(255, 255, 255, 0.7)";
           font_size = 18;
           font_family = "JetBrains Mono Nerd Font";
