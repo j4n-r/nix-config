@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   programs.hyprland.enable = true;
 
   programs.wireshark = {

@@ -22,6 +22,7 @@
     tokei
     comrak
     claude-code
+    appimage-run
 
     # quickemu
     # spice

@@ -11,5 +11,9 @@ in
     unstable.opencode
     unstable.tsx
     unstable.jetbrains.clion
+
+    unstable.protonmail-desktop
+    unstable.protonvpn-gui
+
   ];
 }

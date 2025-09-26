@@ -38,6 +38,15 @@
           on-click = "activate";
           format = "{icon}";
           all-outputs = true;
+          format-icons = {
+            "1" = " ";
+            "2" = "󰛄 ";
+            "3" = "󰊠 ";
+            "4" = "󰞀 ";
+            "5" = " ";
+            "6" = " ";
+            "7" = "_ ";
+          };
         };
         "custom/spotify" = {
           interval = 1;
