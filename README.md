@@ -23,14 +23,17 @@ darwin-rebuild switch --flake ~/nix-config/ --show-trace
 ├── home
 │   ├── base
 │   │   ├── btop.nix
+│   │   ├── cmd.nix
 │   │   ├── default.nix
 │   │   ├── direnv.nix
 │   │   ├── fish.nix
 │   │   ├── fonts.nix
 │   │   ├── ghostty.nix
+│   │   ├── spell-check.nix
 │   │   ├── ssh.nix
 │   │   ├── starship.nix
-│   │   └── zathura.nix
+│   │   ├── zathura.nix
+│   │   └── zellij.nix
 │   ├── darwin
 │   │   ├── amethyst.nix
 │   │   ├── default.nix
@@ -39,6 +42,7 @@ darwin-rebuild switch --flake ~/nix-config/ --show-trace
 │   └── linux
 │       ├── chromium.nix
 │       ├── default.nix
+│       ├── desktop_entries.nix
 │       ├── dunst.nix
 │       ├── gtk.nix
 │       ├── hypr
@@ -59,6 +63,9 @@ darwin-rebuild switch --flake ~/nix-config/ --show-trace
 │   │   ├── default.nix
 │   │   ├── hardware-configuration.nix
 │   │   └── home.nix
+│   ├── j4n-r-rpi5
+│   │   ├── default.nix
+│   │   └── home.nix
 │   ├── j4n-r-tp6
 │   │   ├── default.nix
 │   │   ├── hardware-configuration.nix
@@ -66,6 +73,12 @@ darwin-rebuild switch --flake ~/nix-config/ --show-trace
 │   └── MacBook-Air-100011
 │       ├── home.nix
 │       └── user-hosts.nix
+├── icons
+│   ├── claude.svg
+│   ├── color_picker.svg
+│   ├── gemini.svg
+│   ├── hwr-logo.svg
+│   └── openai.svg
 ├── modules
 │   ├── base.nix
 │   ├── darwin
@@ -75,22 +88,26 @@ darwin-rebuild switch --flake ~/nix-config/ --show-trace
 │   ├── dev.nix
 │   └── nixos
 │       ├── base.nix
-│       └── desktop.nix
+│       ├── desktop.nix
+│       ├── insecure.nix
+│       └── unstable.nix
 ├── README.md
 ├── scripts
 │   └── linux
+│       ├── alternate_quotes.sh
 │       ├── now-playing
 │       ├── play-next
 │       ├── play-previous
 │       └── powermenu.sh
 ├── shells
-│   └── emacs-libvterm.nix
+│   ├── flake.lock
+│   └── flake.nix
 └── wallpapers
     ├── abstract.jpeg
     ├── bay.jpg
     ├── clouds.jpg
     └── moon.jpg
 
-21 directories, 54 files
+23 directories, 69 files
 
 ```

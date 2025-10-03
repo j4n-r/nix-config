@@ -29,6 +29,7 @@
     zellij
     bat
     fcp
+    fzf
 
     zip
     unzip
