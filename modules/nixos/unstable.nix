@@ -15,5 +15,6 @@ in
     unstable.protonmail-desktop
     unstable.protonvpn-gui
 
+    unstable.zls
   ];
 }

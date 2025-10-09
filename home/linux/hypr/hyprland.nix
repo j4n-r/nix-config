@@ -52,9 +52,10 @@
       exec-once = /usr/lib/polkit-kde-authentication-agent-1
       exec-once = hyprctl setcursor BreezeX-RosePineDawn-Linux 32
       exec-once = [workspace 1 silent] emacs
-      exec-once = [workspace 2 silent] google-chrome-stable
+      exec-once = [workspace 2 silent] /home/j4n-r/AppImages/helium.appimage
       exec-once = [workspace 3 silent] ghostty
-      exec-once = [workspace 4 silent] bitwarden
+      exec-once = [workspace 4 silent] proton-mail
+      exec-once = [workspace 5 silent] bitwarden
       exec-once = sleep 0.5 && hyprctl dispatch workspace 1
 
 

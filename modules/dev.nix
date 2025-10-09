@@ -15,6 +15,8 @@
         epkgs.pdf-tools
       ])
     )
+    zigpkgs.master
+
     pkg-config
     semgrep
     devenv
@@ -23,6 +25,7 @@
     comrak
     claude-code
     appimage-run
+    gf
 
     # quickemu
     # spice

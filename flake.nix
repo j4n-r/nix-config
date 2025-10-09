@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    zig-overlay.url = "github:mitchellh/zig-overlay";
   };
   outputs =
     inputs@{
@@ -29,6 +30,7 @@
       nix-darwin,
       rust-overlay,
       emacs-overlay,
+      zig-overlay, 
       ...
     }:
     {
@@ -74,6 +76,7 @@
                 nixpkgs.overlays = [
                   rust-overlay.overlays.default
                   emacs-overlay.overlays.default
+                  zig-overlay.overlays.default
                 ];
                 environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
@@ -120,6 +123,7 @@
                 nixpkgs.overlays = [
                   rust-overlay.overlays.default
                   emacs-overlay.overlays.default
+                  zig-overlay.overlays.default
                 ];
                 environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
