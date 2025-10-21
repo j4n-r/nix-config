@@ -16,6 +16,8 @@
       ])
     )
     zigpkgs.master
+    qemu
+    quickemu
 
     pkg-config
     semgrep
