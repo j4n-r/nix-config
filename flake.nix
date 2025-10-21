@@ -10,10 +10,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +24,6 @@
       home-manager,
       hyprland,
       nix-darwin,
-      rust-overlay,
       emacs-overlay,
       zig-overlay, 
       ...
@@ -74,11 +69,9 @@
               { pkgs, ... }:
               {
                 nixpkgs.overlays = [
-                  rust-overlay.overlays.default
                   emacs-overlay.overlays.default
                   zig-overlay.overlays.default
                 ];
-                environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
             )
           ];
@@ -121,11 +114,9 @@
               { pkgs, ... }:
               {
                 nixpkgs.overlays = [
-                  rust-overlay.overlays.default
                   emacs-overlay.overlays.default
                   zig-overlay.overlays.default
                 ];
-                environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
               }
             )
           ];

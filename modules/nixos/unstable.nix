@@ -10,7 +10,8 @@ in
   environment.systemPackages = [
     unstable.opencode
     unstable.tsx
-    unstable.jetbrains.clion
+    # unstable.jetbrains.clion
+    #unstable.jetbrains.rust-rover
 
     unstable.protonmail-desktop
     unstable.protonvpn-gui

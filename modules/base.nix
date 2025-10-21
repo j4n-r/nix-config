@@ -30,6 +30,7 @@
     bat
     fcp
     fzf
+    rclone
 
     zip
     unzip

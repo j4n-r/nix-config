@@ -5,6 +5,7 @@
 {
   nixpkgs.config.android_sdk.accept_license = true;
   environment.systemPackages = with pkgs; [
+    cachix
     (
       (emacs-unstable.override {
         withNativeCompilation = true;
@@ -27,6 +28,9 @@
     comrak
     claude-code
     appimage-run
+
+    jetbrains.rust-rover
+
     gf
 
     # quickemu
@@ -55,6 +59,11 @@
       ]
     ))
     aider-chat
+
+    elixir
+    elixir-ls
+    erlang
+    wxGTK32
 
     cargo
     rustc

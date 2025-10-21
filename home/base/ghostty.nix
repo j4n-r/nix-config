@@ -20,6 +20,7 @@ in
       mouse-hide-while-typing = true;
       gtk-tabs-location = "bottom";
       resize-overlay = "never";
+      # shell-integration-features = ["ssh-env" "ssh-terminfo"]; available in 1.2 
       keybind = [
         # Tab management with Ctrl+t prefix
         "ctrl+t>n=new_tab"
