@@ -51,7 +51,7 @@
       exec-once = swaync
       exec-once = /usr/lib/polkit-kde-authentication-agent-1
       exec-once = hyprctl setcursor BreezeX-RosePineDawn-Linux 32
-      exec-once = [workspace 1 silent] emacs
+      exec-once = [workspace 1 silent] emacs --fullscreen
       exec-once = [workspace 2 silent] /home/j4n-r/AppImages/helium.appimage
       exec-once = [workspace 3 silent] ghostty
       exec-once = [workspace 4 silent] proton-mail
