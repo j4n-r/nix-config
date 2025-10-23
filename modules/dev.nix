@@ -19,6 +19,7 @@
     zigpkgs.master
     qemu
     quickemu
+    zotero
 
     pkg-config
     semgrep
@@ -64,6 +65,9 @@
     elixir-ls
     erlang
     wxGTK32
+
+    go
+    gopls
 
     cargo
     rustc
