@@ -29,6 +29,11 @@
       # start hyprlock on lid close
       bindl=,switch:on:Lid Switch, exec, hyprlock
 
+      animations {
+          enabled = false
+      }
+
+
       ###################
       ### MY PROGRAMS ###
       ###################
@@ -51,11 +56,11 @@
       exec-once = swaync
       exec-once = /usr/lib/polkit-kde-authentication-agent-1
       exec-once = hyprctl setcursor BreezeX-RosePineDawn-Linux 32
-      exec-once = [workspace 1 silent] emacs --fullscreen
+      exec-once = [workspace 1 silent] emacs 
+      exec-once = [workspace 1 silent] ghostty
       exec-once = [workspace 2 silent] /home/j4n-r/AppImages/helium.appimage
-      exec-once = [workspace 3 silent] ghostty
-      exec-once = [workspace 4 silent] proton-mail
-      exec-once = [workspace 5 silent] bitwarden
+      exec-once = [workspace 3 silent; group set always] proton-mail
+      exec-once = [workspace 3 silent; group set always] bitwarden
       exec-once = sleep 0.5 && hyprctl dispatch workspace 1
 
 
@@ -75,14 +80,10 @@
           gaps_in = 5
           gaps_out = 20
 
-
           border_size = 2
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-          # col.active_border = $rose $pine $love $iris 90deg 
           col.active_border = $iris
-          #col.inactive_border = rgba(595959aa)
           col.inactive_border = $overlay
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -94,63 +95,14 @@
           layout = dwindle
       }
 
-      # https://wiki.hyprland.org/Configuring/Variables/#decoration
       decoration {
           rounding = 10
-
-          # Change transparency of focused and unfocused windows
-          # active_opacity = 0.85
-          # inactive_opacity = 0.75 
-
-          # drop_shadow = true
-          # shadow_range = 4
-          # shadow_render_power = 3
-          # col.shadow = rgba(1a1a1aee)
-
-          # https://wiki.hyprland.org/Configuring/Variables/#blur
-          blur {
-              enabled = true
-              size = 3
-              passes = 1
-              
-              vibrancy = 0.1696
-          }
       }
 
-      # https://wiki.hyprland.org/Configuring/Variables/#animations
-      animations {
-          enabled = false
-
-          # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
-          # animation = windows, 1, 4, myBezier
-          # animation = windowsOut, 1, 4, default, popin 80%
-          # animation = border, 1, 10, default
-          # animation = borderangle, 1, 4, default
-          # animation = fade, 1, 4, default
-          # animation = workspaces, 1, 4, default
-
-
-          animation = windows, 1, 2, myBezier
-          animation = windowsOut, 1, 2, default, popin 80%
-          animation = border, 1, 4, default
-          animation = borderangle, 1, 2, default
-          animation = fade, 1, 2, default
-          animation = workspaces, 1, 2, default
-      }
-
-      # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
       dwindle {
           pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
           preserve_split = true # You probably want this
       }
-
-      # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-      # master {
-      #     new_is_master = true
-      # }
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc { 
@@ -159,6 +111,34 @@
           initial_workspace_tracking = 1
       }
 
+      group {
+          # Group border colors - more subtle
+          col.border_active = $iris
+          col.border_inactive = $muted
+          col.border_locked_active = $rose
+          col.border_locked_inactive = $subtle
+          
+          # Groupbar (tab bar) styling
+          groupbar {
+              enabled = true
+              font_family = JetBrainsMono Nerd Font
+              font_size = 10
+              gradients = false  # Disabled for cleaner look
+              height = 16
+              priority = 3
+              render_titles = true
+              scrolling = true
+              
+              # Tab colors - subtle palette
+              col.active = $highlightHigh
+              col.inactive = $highlightLow
+              col.locked_active = $highlightMed
+              col.locked_inactive = $overlay
+              
+              # Text colors
+              text_color = $text
+          }
+      }
       #############
       ### INPUT ###
       #############
@@ -241,6 +221,27 @@
       bind = ALT SHIFT, 9, movetoworkspacesilent, 9
       bind = ALT SHIFT, 0, movetoworkspacesilent, 10
 
+      # Toggle group mode
+      bind = SUPER SHIFT, G, togglegroup  # Remove comma after SUPER
+
+      # Cycle
+      bind = SUPER, C, changegroupactive, f  
+      bind = SUPER SHIFT, C, changegroupactive, b  
+
+      # Remove window from group
+      bind = SUPER SHIFT, R, moveoutofgroup
+
+      # Lock/unlock group (prevent accidental changes)
+      bind = SUPER SHIFT, L, lockgroups, toggle  # Remove comma after SUPER
+
+      # Add to group (directional)
+      bind = SUPER SHIFT, H, moveintogroup, l  # Add to group on left
+      bind = SUPER SHIFT, L, moveintogroup, r  # Add to group on right
+
+      binds {
+          drag_threshold = 10  # Fire a drag event only after dragging for more than 10px
+      }
+      bindm = ALT, mouse:272, movewindow      # ALT + LMB: Move a window by dragging more than 10px.
 
       # fullscreen
       bind = SUPER, F, fullscreen
@@ -255,12 +256,19 @@
       ### WINDOWS AND WORKSPACES ###
       ##############################
 
+      workspace = 1, persistent:true
+      workspace = 2, persistent:true
+      workspace = 3, persistent:true
 
-      # Example config for Zathura transparency
-      windowrulev2 = opacity,0.8,class:^zathura$
+      # Fix some dragging issues with XWayland
+      windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
       windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
       windowrulev2 = float, class:^MainView$
       windowrulev2 = focusonactivate, class:.*
-    '';
+      # fix jetbrains
+      windowrulev2 = noinitialfocus,class:(jetbrains-)(.*),title:^win(.*), initialTitle:win.*, floating:1  
+
+      windowrulev2 = maximize, class:^(Emacs)$, workspace:1
+      windowrulev2 = maximize, class:^(com.mitchellh.ghostty)$, workspace:3    '';
   };
 }

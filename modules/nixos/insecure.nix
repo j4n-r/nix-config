@@ -10,4 +10,3 @@
     beekeeper-studio
   ];
 }
-

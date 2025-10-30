@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 {
   xdg.desktopEntries.org-protocol = {
     name = "org-protocol";

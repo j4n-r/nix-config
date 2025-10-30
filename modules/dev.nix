@@ -68,6 +68,8 @@
 
     go
     gopls
+    delve
+    gdlv
 
     cargo
     rustc
@@ -84,6 +86,7 @@
 
     # lsp & formatter
     nil # nix lsp
+    nixfmt-tree
     nixfmt-rfc-style
 
     typescript-language-server

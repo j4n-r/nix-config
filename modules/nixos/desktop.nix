@@ -13,6 +13,17 @@
     usbmon.enable = true;
   };
 
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      droidcam-obs
+    ];
+  };
+  programs.droidcam.enable = true;
+
+
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk

@@ -10,6 +10,8 @@ in
   environment.systemPackages = [
     unstable.opencode
     unstable.tsx
+
+    unstable.zed-editor
     # unstable.jetbrains.clion
     #unstable.jetbrains.rust-rover
 
