@@ -36,6 +36,7 @@
       "networkmanager"
       "wheel"
       "i2c"
+      "docker"
     ];
     packages = with pkgs; [ ];
   };

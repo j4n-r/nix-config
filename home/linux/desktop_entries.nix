@@ -5,7 +5,8 @@
     Helium = {
       name = "Helium";
       genericName = "Web Browser";
-      exec = "appimage-run /home/j4n-r/AppImages/helium.appimage";
+      exec = "appimage-run /home/j4n-r/AppImages/helium.appimage --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo
+";
       terminal = false;
       categories = [
         "Application"
