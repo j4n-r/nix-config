@@ -11,6 +11,11 @@
     };
   };
 
+swapDevices = [{
+  device = "/var/lib/swapfile";
+  size = 32*1024; # 32 GB
+}];
+
   powerManagement.enable = true;
   services.tlp.enable = true;
 
@@ -74,35 +79,35 @@
     };
   };
 
-  systemd.services."rclone-sync-books" = {
-    script = ''
-      set -eu
-      ${pkgs.rclone}/bin/rclone bisync proton:books /home/j4n-r/proton-drive/books
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "j4n-r";
-    };
-  };
+  # systemd.services."rclone-sync-books" = {
+  #   script = ''
+  #     set -eu
+  #     ${pkgs.rclone}/bin/rclone bisync proton:books /home/j4n-r/proton-drive/books
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "j4n-r";
+  #   };
+  # };
 
-  systemd.timers."rclone-sync-notes" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "30m";
-      Unit = "rclone-sync-notes.service";
-    };
-  };
+  # systemd.timers."rclone-sync-notes" = {
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnBootSec = "5m";
+  #     OnUnitActiveSec = "30m";
+  #     Unit = "rclone-sync-notes.service";
+  #   };
+  # };
 
-  systemd.services."rclone-sync-notes" = {
-    script = ''
-      set -eu
-      ${pkgs.rclone}/bin/rclone bisync proton:personal/notes/denote /home/j4n-r/notes/
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "j4n-r";
-    };
-  };
+  # systemd.services."rclone-sync-notes" = {
+  #   script = ''
+  #     set -eu
+  #     ${pkgs.rclone}/bin/rclone bisync proton:personal/notes/denote /home/j4n-r/notes/
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "j4n-r";
+  #   };
+  # };
 
 }

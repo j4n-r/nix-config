@@ -6,6 +6,7 @@
   #programs.ssh.startAgent = true;
 
   services.tailscale.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   programs.bash = {
     interactiveShellInit = ''
@@ -36,12 +37,11 @@
     unzip
     xz
     btop
-    ripgrep # better grep
-    fd # better find
-    eza # better ls
-    zoxide # better cd
-    xh # http cli
-    #disk checker
+    ripgrep 
+    fd 
+    eza 
+    zoxide
+    xh 
     du-dust
     dua
 

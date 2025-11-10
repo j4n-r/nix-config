@@ -41,25 +41,25 @@
     packages = with pkgs; [ ];
   };
 
-  systemd.timers."rclone-sync-notes" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "30m";
-      Unit = "rclone-sync-notes.service";
-    };
-  };
+  # systemd.timers."rclone-sync-notes" = {
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnBootSec = "5m";
+  #     OnUnitActiveSec = "30m";
+  #     Unit = "rclone-sync-notes.service";
+  #   };
+  # };
 
-  systemd.services."rclone-sync-notes" = {
-    script = ''
-      set -eu
-      ${pkgs.rclone}/bin/rclone bisync proton:personal/notes/denote /home/j4n-r/notes/
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "j4n-r";
-    };
-  };
+  # systemd.services."rclone-sync-notes" = {
+  #   script = ''
+  #     set -eu
+  #     ${pkgs.rclone}/bin/rclone bisync proton:personal/notes/denote /home/j4n-r/notes/
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "j4n-r";
+  #   };
+  # };
 
   nix.settings.trusted-users = [
     "j4n-r"

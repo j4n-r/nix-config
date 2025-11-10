@@ -50,6 +50,7 @@ in
         "ctrl+w>x=close_surface" # Close current pane
         "ctrl+w>z=toggle_split_zoom" # Toggle pane zoom (like tmux)
         "ctrl+w>equal=equalize_splits" # Equalize panes
+        "ctrl+w>s=new_split:down" # Horizontal split (down)
 
         # Resize panes
         "ctrl+w>shift+h=resize_split:left,30"

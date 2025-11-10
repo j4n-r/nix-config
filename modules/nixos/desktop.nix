@@ -27,6 +27,7 @@
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
+    discord-ptb
     networkmanagerapplet
     ghostty
     swaybg

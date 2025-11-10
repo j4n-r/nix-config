@@ -39,6 +39,12 @@
   };
   programs.ssh = {
     enable = true;
+    extraConfig = ''
+Host gitea-rpi
+    HostName 100.94.200.120
+    User git
+    IdentitiesOnly yes
+'';
   };
 
   imports = [
