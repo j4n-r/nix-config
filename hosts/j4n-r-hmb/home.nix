@@ -44,6 +44,9 @@ Host gitea-rpi
     HostName 100.94.200.120
     User git
     IdentitiesOnly yes
+Host u505154.your-storagebox.de
+    IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
+    IdentitiesOnly yes
 '';
   };
 

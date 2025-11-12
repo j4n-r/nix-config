@@ -44,7 +44,6 @@
     gtk.enable = true;
     x11.enable = true;
   };
-  services.megasync.enable = true;
 
   home.packages = with pkgs; [
   ];

@@ -57,9 +57,6 @@
     nwg-look
     brightnessctl
 
-    megacmd
-    megasync
-
     vlc
 
     bitwarden-desktop

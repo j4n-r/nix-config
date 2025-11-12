@@ -24,6 +24,8 @@
     neovim
     vim
     fish
+    fishPlugins.bass
+    fish
     git
     tldr
     starship

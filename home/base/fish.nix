@@ -4,6 +4,12 @@
   programs.fish = {
     enable = true;
     # use bash as login shell the switch to fish
+    plugins = [
+        {
+            name = "bass";
+            src = pkgs.fishPlugins.bass.src;
+        }
+        ];
 
     interactiveShellInit = ''
         #### disable greeeting message ####
