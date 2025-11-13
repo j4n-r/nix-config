@@ -88,6 +88,7 @@
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
             ./modules/nixos/base.nix
+            ./modules/nixos/unstable.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
