@@ -14,7 +14,7 @@
       signByDefault = true;
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINKDCTdkwQIPBPTq4hCkxPhOEDzMfG3dCScdZE5ychiK";
     };
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "main";
       };

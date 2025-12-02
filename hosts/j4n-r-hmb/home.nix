@@ -19,7 +19,7 @@
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRBdapdAkHgPWcWvZudEeNIbecVFCEtvQy09GD+88b7";
     };
 
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "main";
       };
