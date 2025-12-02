@@ -2,12 +2,12 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
@@ -69,7 +69,6 @@
               };
             }
             (
-              { pkgs, ... }:
               {
                 nixpkgs.overlays = [
                   emacs-overlay.overlays.default
@@ -115,7 +114,6 @@
               };
             }
             (
-              { pkgs, ... }:
               {
                 nixpkgs.overlays = [
                   emacs-overlay.overlays.default
@@ -157,7 +155,6 @@
               };
             }
             (
-              { pkgs, ... }:
               {
                 nixpkgs.overlays = [ emacs-overlay.overlays.default ];
               }
@@ -188,7 +185,6 @@
             # arguments to home.nix
           }
           (
-            { pkgs, ... }:
             {
               nixpkgs.overlays = [ emacs-overlay.overlays.default ];
             }

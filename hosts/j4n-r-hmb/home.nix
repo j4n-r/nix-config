@@ -6,8 +6,12 @@
 
   programs.git = {
     enable = true;
-    userName = "j4n-r";
-    userEmail = "jan.rueggeberg@pm.me";
+    settings = {
+      user = {
+        name = "j4n-r";
+        email = "jan.rueggeberg@pm.me";
+      };
+    };
 
     signing = {
       signByDefault = true;

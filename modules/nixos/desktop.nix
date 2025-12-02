@@ -40,7 +40,7 @@
 
     pwvucontrol
     playerctl # used for spotify scripts
-    rofi-wayland
+    rofi
     wl-clipboard
     dunst
     waybar

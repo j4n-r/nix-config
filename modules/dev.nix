@@ -88,6 +88,7 @@
     nil # nix lsp
     nixfmt-tree
     nixfmt-rfc-style
+    nix-index
 
     typescript-language-server
     typescript

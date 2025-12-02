@@ -31,9 +31,9 @@
     starship
     zellij
     bat
-    fcp
     fzf
     rclone
+    jq
 
     zip
     unzip
@@ -44,7 +44,7 @@
     eza 
     zoxide
     xh 
-    du-dust
+    dust
     dua
 
     wget
