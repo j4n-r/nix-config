@@ -237,8 +237,10 @@
       binds {
           drag_threshold = 10  # Fire a drag event only after dragging for more than 10px
       }
-      bindm = ALT, mouse:272, movewindow      # ALT + LMB: Move a window by dragging more than 10px.
-
+      bindm = SUPER, mouse:272, movewindow
+      bindm = SUPER, Control_L, movewindow
+      bindm = SUPER, mouse:273, resizewindow
+      bindm = SUPER, ALT_L, resizewindow
       # fullscreen
       bind = SUPER, F, fullscreen
 
