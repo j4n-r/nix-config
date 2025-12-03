@@ -1,16 +1,16 @@
 { pkgs, ... }:
-let
-  ghostty-mock = pkgs.writeShellScriptBin "gostty-mock" ''
-    true
-  '';
-in
+# let
+#   ghostty-mock = pkgs.writeShellScriptBin "gostty-mock" ''
+#     true
+#   '';
+# in
 {
   programs.ghostty = {
     enable = true;
-    package = ghostty-mock; # Set explicitly to null, as it is managed externally
+    # package = ghostty-mock; # Set explicitly to null, as it is managed externally
     enableFishIntegration = true;
     settings = {
-      theme = "rose-pine";
+      theme = "Rose Pine";
       # background-opacity = 0.8;
       window-theme = "ghostty";
       macos-titlebar-style = "tabs";
