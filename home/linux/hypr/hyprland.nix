@@ -48,7 +48,6 @@
       ### AUTOSTART ###
       #################
 
-      exec-once = hyprlock
       exec-once = waybar
       exec-once = nm-applet
       exec-once = blueman-applet

@@ -43,6 +43,11 @@
   };
   programs.ssh = {
     enable = true;
+    extraConfig = ''
+Host 188.245.240.115
+    IdentityFile ~/.ssh/SWE_HWR.pub
+    IdentitiesOnly yes
+'';
   };
 
   imports = [

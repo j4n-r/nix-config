@@ -12,7 +12,17 @@
   services.tlp.enable = true;
 
   networking.hostName = "j4n-r-tp6";
-  services.getty.autologinUser = "j4n-r";
+  # services.getty.autologinUser = "j4n-r";
+
+  services.displayManager.ly = {
+      enable = true;
+      # # Optional: nicer settings
+      # settings = {
+      #   hide_borders = true;
+      # };
+    };
+
+# services.displayManager.defaultSession = "hyprland";
 
   # used for ddcutils
   hardware.i2c.enable = true;
@@ -40,6 +50,9 @@
     ];
     packages = with pkgs; [ ];
   };
+  environment.sessionVariables = {
+    SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
+    };
 
   # systemd.timers."rclone-sync-notes" = {
   #   wantedBy = [ "timers.target" ];

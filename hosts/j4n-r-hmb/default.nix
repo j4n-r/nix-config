@@ -29,11 +29,15 @@ swapDevices = [{
 
   networking.hostName = "j4n-r-hmb";
 
-  services.getty.autologinUser = "j4n-r";
+  # services.getty.autologinUser = "j4n-r";
 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+  };
+
+services.displayManager.ly = {
+    enable = true;
   };
   # boot.kernelModules = [
   #   "i2c-dev"
