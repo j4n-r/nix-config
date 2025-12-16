@@ -15,7 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
-    niri.url = "github:sodiboo/niri-flake";
     zig-overlay.url = "github:mitchellh/zig-overlay";
   };
   outputs =
@@ -27,7 +26,6 @@
       nix-darwin,
       emacs-overlay,
       zig-overlay,
-      niri,
       ...
     }:
     {
