@@ -51,6 +51,12 @@ Host gitea-rpi
 Host u505154.your-storagebox.de
     IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
     IdentitiesOnly yes
+Host 188.245.240.115
+    IdentityFile ~/.ssh/SWE_HWR.pub
+    IdentitiesOnly yes
+Host codeberg.org
+    IdentityFile ~/.ssh/Codeberg.pub
+    IdentitiesOnly yes
 '';
   };
 
