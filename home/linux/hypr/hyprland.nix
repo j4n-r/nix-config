@@ -61,6 +61,7 @@
       exec-once = [workspace 4 silent; group set always] proton-mail
       exec-once = [workspace 4 silent; group set always] bitwarden
       exec-once = sleep 0.5 && hyprctl dispatch workspace 1
+      exec-once = hypridle
 
 
       #############################

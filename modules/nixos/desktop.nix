@@ -42,6 +42,7 @@
 
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
+    hypridle
     xdg-desktop-portal-gtk
     discord-ptb
     networkmanagerapplet

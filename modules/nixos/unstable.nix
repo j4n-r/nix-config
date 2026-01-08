@@ -9,6 +9,7 @@ in
 {
   environment.systemPackages = [
     unstable.opencode
+    unstable.codex
     unstable.tsx
 
     unstable.gemini-cli-bin
