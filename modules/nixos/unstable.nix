@@ -1,14 +1,14 @@
 { pkgs, inputs, ... }:
 let
   unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
   opencode_dev = inputs."opencode-dev";
 in
 {
   environment.systemPackages = [
-    opencode_dev.packages.${pkgs.system}.default
+    opencode_dev.packages.${pkgs.stdenv.hostPlatform.system}.default
     unstable.codex
     unstable.tsx
 

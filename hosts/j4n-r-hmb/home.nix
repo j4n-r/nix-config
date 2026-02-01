@@ -43,21 +43,33 @@
   };
   programs.ssh = {
     enable = true;
+    matchBlocks."*" = {
+      forwardAgent = false;
+      addKeysToAgent = "no";
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
     extraConfig = ''
-Host gitea-rpi
-    HostName 100.94.200.120
-    User git
-    IdentitiesOnly yes
-Host u505154.your-storagebox.de
-    IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
-    IdentitiesOnly yes
-Host 188.245.240.115
-    IdentityFile ~/.ssh/SWE_HWR.pub
-    IdentitiesOnly yes
-Host codeberg.org
-    IdentityFile ~/.ssh/Codeberg.pub
-    IdentitiesOnly yes
-'';
+      Host gitea-rpi
+         HostName 100.94.200.120
+         User git
+         IdentitiesOnly yes
+      Host u505154.your-storagebox.de
+         IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
+         IdentitiesOnly yes
+      Host 188.245.240.115
+         IdentityFile ~/.ssh/SWE_HWR.pub
+         IdentitiesOnly yes
+      Host codeberg.org
+         IdentityFile ~/.ssh/Codeberg.pub
+         IdentitiesOnly yes
+    '';
   };
 
   imports = [

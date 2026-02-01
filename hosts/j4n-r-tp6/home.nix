@@ -43,11 +43,23 @@
   };
   programs.ssh = {
     enable = true;
+    matchBlocks."*" = {
+      forwardAgent = false;
+      addKeysToAgent = "no";
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
     extraConfig = ''
-Host 188.245.240.115
-    IdentityFile ~/.ssh/SWE_HWR.pub
-    IdentitiesOnly yes
-'';
+      Host 188.245.240.115
+         IdentityFile ~/.ssh/SWE_HWR.pub
+         IdentitiesOnly yes
+    '';
   };
 
   imports = [

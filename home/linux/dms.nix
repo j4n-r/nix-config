@@ -6,7 +6,7 @@
 }:
 let
   unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
 in
@@ -91,9 +91,9 @@ in
               enabled = true;
             }
             {
-            id = "diskUsage";
-            enabled = true;
-            mountPath = "/";
+              id = "diskUsage";
+              enabled = true;
+              mountPath = "/";
             }
             {
               id = "notificationButton";
