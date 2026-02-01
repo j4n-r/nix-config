@@ -123,6 +123,10 @@
                   '';
                 };
                 users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+                sharedModules = [
+                  inputs.dms.homeModules.dank-material-shell
+                  inputs.dms-plugin-registry.modules.default
+                ];
               };
             }
             ({

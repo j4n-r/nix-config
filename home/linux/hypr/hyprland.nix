@@ -26,19 +26,13 @@
       $highlightHigh  = 0xff524f67
       monitor=,preferred,auto,auto
 
-      # start hyprlock on lid close
-      bindl=,switch:on:Lid Switch, exec, hyprlock
-
       animations {
           enabled = false
       }
 
-
       #################
       ### AUTOSTART ###
       #################
-
-      exec-once = dms run
 
       exec-once = /usr/lib/polkit-kde-authentication-agent-1
       exec-once = [workspace 1 silent] emacs --fullscreen
@@ -58,8 +52,8 @@
       #############################
 
       # set scaling or gtk apps 
-      # env = GDK_SCALE, 1
-      # env = XCURSOR_SIZE, 32
+      env = GDK_SCALE, 1
+      env = XCURSOR_SIZE, 32
       env = QT_QPA_PLATFORM,wayland
       env = ELECTRON_OZONE_PLATFORM_HINT,auto
       env = QT_QPA_PLATFORMTHEME,gtk3
