@@ -91,6 +91,11 @@ in
               enabled = true;
             }
             {
+            id = "diskUsage";
+            enabled = true;
+            mountPath = "/";
+            }
+            {
               id = "notificationButton";
               enabled = true;
             }
