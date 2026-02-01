@@ -18,7 +18,9 @@
     '';
   };
   documentation.dev.enable = true;
-  home-manager.backupFileExtension = "backup";
+  home-manager.backupCommand = ''
+    mv -f "$1" "$1.backup"
+  '';
   environment.systemPackages = with pkgs; [
     home-manager
     neovim
@@ -39,18 +41,22 @@
     unzip
     xz
     btop
-    ripgrep 
-    fd 
-    eza 
+    ripgrep
+    fd
+    eza
     zoxide
-    xh 
+    xh
     dust
     dua
 
     wget
     curl
     nmap
+    perf
+    flamegraph
     lazydocker
+
+    ffmpeg
 
     file
     findutils

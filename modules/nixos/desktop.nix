@@ -65,7 +65,6 @@
     grim
     slurp
     google-chrome
-    overskride # bluetooth gui
     xfce.thunar
     vial
 
@@ -82,6 +81,8 @@
     usbutils
 
     texlive.combined.scheme-full
-
+    prismlauncher
+    mcpelauncher-ui-qt
+    
   ];
 }

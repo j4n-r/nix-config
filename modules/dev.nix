@@ -16,10 +16,12 @@
         epkgs.pdf-tools
       ])
     )
+    zed-editor
     zigpkgs.master
     qemu
     quickemu
     zotero
+    tlaplus-toolbox
 
     pkg-config
     semgrep
@@ -78,6 +80,11 @@
     clippy
     openssl
     pkg-config
+
+    racket
+
+    ghc
+    haskell-language-server
 
     nodejs
     yarn

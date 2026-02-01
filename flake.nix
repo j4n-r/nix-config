@@ -16,6 +16,17 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     zig-overlay.url = "github:mitchellh/zig-overlay";
+    # waiting for an upstream fix for bun version
+    opencode-dev.url = "github:anomalyco/opencode";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs =
     inputs@{
@@ -26,6 +37,7 @@
       nix-darwin,
       emacs-overlay,
       zig-overlay,
+      opencode-dev,
       ...
     }:
     {
@@ -49,6 +61,7 @@
                   inherit inputs;
                   hyprlandMonitorConfig = ''
                     monitor=DP-1,highres@highrr,0x0,1.5
+                    # monitor=DP-1,2560x1440@120.00,0x0,1 # for gaming
                     monitor=eDP-1,highres@highrr,3200x0,1
 
                     workspace=1,monitor:DP-1, default:true
@@ -63,16 +76,18 @@
                   '';
                 };
                 users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
+                sharedModules = [
+                  inputs.dms.homeModules.dank-material-shell
+                  inputs.dms-plugin-registry.modules.default
+                ];
               };
             }
-            (
-              {
-                nixpkgs.overlays = [
-                  emacs-overlay.overlays.default
-                  zig-overlay.overlays.default
-                ];
-              }
-            )
+            ({
+              nixpkgs.overlays = [
+                emacs-overlay.overlays.default
+                zig-overlay.overlays.default
+              ];
+            })
           ];
         };
         j4n-r-tp6 = nixpkgs.lib.nixosSystem {
@@ -110,14 +125,12 @@
                 users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
               };
             }
-            (
-              {
-                nixpkgs.overlays = [
-                  emacs-overlay.overlays.default
-                  zig-overlay.overlays.default
-                ];
-              }
-            )
+            ({
+              nixpkgs.overlays = [
+                emacs-overlay.overlays.default
+                zig-overlay.overlays.default
+              ];
+            })
           ];
         };
         j4n-r-rpi5 = nixpkgs.lib.nixosSystem {
@@ -151,11 +164,9 @@
                 users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
               };
             }
-            (
-              {
-                nixpkgs.overlays = [ emacs-overlay.overlays.default ];
-              }
-            )
+            ({
+              nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+            })
           ];
         };
       };
@@ -181,11 +192,9 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
-          (
-            {
-              nixpkgs.overlays = [ emacs-overlay.overlays.default ];
-            }
-          )
+          ({
+            nixpkgs.overlays = [ emacs-overlay.overlays.default ];
+          })
         ];
       };
     };

@@ -34,34 +34,23 @@
       }
 
 
-      ###################
-      ### MY PROGRAMS ###
-      ###################
-
-      # Set programs that you use
-      $terminal = ghostty
-      $fileManager = dolphin
-      $menu = rofi -show drun
-      $powermenu = ~/nix-config/scripts/linux/powermenu.sh
-
       #################
       ### AUTOSTART ###
       #################
 
-      exec-once = waybar
-      exec-once = nm-applet
-      exec-once = blueman-applet
-      exec-once = swaybg -o "*" -m "stretch" -i ~/nix-config/wallpapers/abstract.jpeg 
-      exec-once = swaync
+      exec-once = dms run
+
       exec-once = /usr/lib/polkit-kde-authentication-agent-1
-      exec-once = hyprctl setcursor BreezeX-RosePineDawn-Linux 32
       exec-once = [workspace 1 silent] emacs --fullscreen
       exec-once = [workspace 3 silent] ghostty
       exec-once = [workspace 2 silent] /home/j4n-r/AppImages/helium.appimage
       exec-once = [workspace 4 silent; group set always] proton-mail
       exec-once = [workspace 4 silent; group set always] bitwarden
       exec-once = sleep 0.5 && hyprctl dispatch workspace 1
-      exec-once = hypridle
+      exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      exec-once = systemctl --user start hyprland-session.target
+      exec-once = bash -c "wl-paste --watch cliphist store &"
+
 
 
       #############################
@@ -69,8 +58,12 @@
       #############################
 
       # set scaling or gtk apps 
-      env = GDK_SCALE, 1
-      env = XCURSOR_SIZE, 32
+      # env = GDK_SCALE, 1
+      # env = XCURSOR_SIZE, 32
+      env = QT_QPA_PLATFORM,wayland
+      env = ELECTRON_OZONE_PLATFORM_HINT,auto
+      env = QT_QPA_PLATFORMTHEME,gtk3
+      env = QT_QPA_PLATFORMTHEME_QT6,gtk3
 
       #####################
       ### LOOK AND FEEL ###
@@ -108,6 +101,7 @@
       misc { 
           force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
           disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
+          disable_splash_rendering = true
           initial_workspace_tracking = 1
       }
 
@@ -167,14 +161,27 @@
       # See https://wiki.hyprland.org/Configuring/Keywords/
       $mainMod = ALT
 
-      # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      #bind = CTRL, SPACE, exec, $terminal
-      bind = SUPER, Q, killactive,
-      bind = SUPER, SPACE, exec, $menu
-      bind = SUPER SHIFT, SPACE, exec, $powermenu
-      bind = $mainMod, J, togglesplit, # dwindle
-      bind = SUPER, T, togglefloating
-      bind = $mainMod SHIFT, W, exec, pkill -USR1 waybar
+      bind = Super, space, exec, dms ipc call spotlight toggle
+      bind = Super Shift, space, exec, dms ipc powermenu toggle
+      bind = Super, V, exec, dms ipc call clipboard toggle
+      bind = Super, M, exec, dms ipc call processlist focusOrToggle
+      bind = Super, comma, exec, dms ipc call settings focusOrToggle
+      bind = Super, N, exec, dms ipc call notifications toggle
+      bind = Super, TAB, exec, dms ipc call hypr toggleOverview      
+      bind = Super, L, exec, dms ipc call lock lock
+
+      # hyprlock
+      #bind = SUPER, l, exec, hyprlock
+      # bind = SUPER, SPACE, exec, $menu
+      # bind = SUPER SHIFT, SPACE, exec, $powermenu
+
+      # bind = $mainMod SHIFT, W, exec, pkill -USR1 waybar
+
+       bind = $mainMod, J, togglesplit, # dwindle
+       bind = SUPER, T, togglefloating
+       bind = SUPER, Q, killactive,
+
+      bind = $mainMod, TAB, exec, dms ipc call hypr toggleOverview
 
 
       bind = $mainMod, h ,movefocus, l
@@ -244,15 +251,23 @@
       # fullscreen
       bind = SUPER, F, fullscreen
 
-      # hyprlock
-      bind = SUPER, l, exec, hyprlock
-
       # screenshot to clipboard
       bind = SUPER, s, exec,  hyprshot -m region --clipboard-only
+
+      # Audio Controls
+      bindel = , XF86AudioRaiseVolume, exec, dms ipc call audio increment 3
+      bindel = , XF86AudioLowerVolume, exec, dms ipc call audio decrement 3
+      bindl = , XF86AudioMute, exec, dms ipc call audio mute
+
+      # Brightness Controls
+      bindel = , XF86MonBrightnessUp, exec, dms ipc call brightness increment 5
+      bindel = , XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5
 
       ##############################
       ### WINDOWS AND WORKSPACES ###
       ##############################
+
+      layerrule = noanim, ^(dms)$
 
       workspace = 1, persistent:true
       workspace = 2, persistent:true
