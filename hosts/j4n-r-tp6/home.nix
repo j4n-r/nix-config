@@ -56,10 +56,14 @@
       controlPersist = "no";
     };
     extraConfig = ''
-      Host 188.245.240.115
-         IdentityFile ~/.ssh/SWE_HWR.pub
-         IdentitiesOnly yes
-    '';
+Host 188.245.240.115
+    IdentityFile ~/.ssh/SWE_HWR.pub
+    IdentitiesOnly yes
+
+Host codeberg.org
+    IdentityFile ~/.ssh/Codeberg.pub
+    IdentitiesOnly yes
+'';
   };
 
   imports = [
