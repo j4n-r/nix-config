@@ -108,7 +108,7 @@
                 extraSpecialArgs = {
                   inherit inputs;
                   hyprlandMonitorConfig = ''
-                    monitor=DP-1,highres@highrr,0x0,1.5
+                    monitor=DP-1, 2560x1440@59.95Hz,0x0,1
                     monitor=eDP-1,highres@highrr,3200x0,1
 
                     workspace=1,monitor:DP-1, default:true
@@ -123,6 +123,53 @@
                   '';
                 };
                 users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
+                sharedModules = [
+                  inputs.dms.homeModules.dank-material-shell
+                  inputs.dms-plugin-registry.modules.default
+                ];
+              };
+            }
+            ({
+              nixpkgs.overlays = [
+                emacs-overlay.overlays.default
+                zig-overlay.overlays.default
+              ];
+            })
+          ];
+        };
+        SQS-P14s-jan00339 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/SQS-P14s-jan-00339
+            ./modules/base.nix
+            ./modules/dev.nix
+            ./modules/nixos/desktop.nix
+            ./modules/nixos/base.nix
+            ./modules/nixos/unstable.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                  hyprlandMonitorConfig = ''
+                    monitor=DP-1, 2560x1440@59.95Hz,0x0,1
+                    monitor=eDP-1,highres@highrr,3200x0,1
+
+                    workspace=1,monitor:DP-1, default:true
+                    workspace=2,monitor:DP-1
+                    workspace=3,monitor:DP-1
+                    workspace=4,monitor:DP-1
+                    workspace=5,monitor:DP-1
+                    workspace=6,monitor:DP-1
+                    xwayland {
+                        force_zero_scaling = true
+                    }
+                  '';
+                };
+                # users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
                 sharedModules = [
                   inputs.dms.homeModules.dank-material-shell
                   inputs.dms-plugin-registry.modules.default
