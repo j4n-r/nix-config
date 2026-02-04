@@ -2,7 +2,7 @@
 {
 
   services.dunst = {
-    enable = true;
+    enable = false;
     iconTheme = {
       name = "rose-pine";
       package = pkgs.rose-pine-icon-theme;
