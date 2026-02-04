@@ -12,7 +12,7 @@
     ./waybar/waybar.nix
     ./gtk.nix
     ./rofi/rofi.nix
-    ./dunst.nix
+    #./dunst.nix
     ./chromium.nix
     ./desktop_entries.nix
     ./org-capture.nix

@@ -70,10 +70,11 @@ in
           ];
           centerWidgets = [
             "music"
-            "weather"
             "clock"
           ];
           rightWidgets = [
+            "dankPomodoroTimer"
+            "weather"
             {
               id = "hueManager";
               enabled = true;
@@ -168,6 +169,7 @@ in
     plugins = {
       # Simply enable plugins by their ID (from the registry)
       dankBatteryAlerts.enable = true;
+      dankPomodoroTimer.enable = true;
       dockerManager.enable = true;
       hueManager.enable = true;
 

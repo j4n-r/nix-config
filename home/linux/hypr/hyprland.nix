@@ -98,6 +98,9 @@
           disable_splash_rendering = true
           initial_workspace_tracking = 1
       }
+      render {
+       cm_auto_hdr = 0
+      }
 
       group {
           # Group border colors - more subtle
