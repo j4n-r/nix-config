@@ -141,7 +141,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/SQS-P14s-jan-00339
+            ./hosts/SQS-P14s-jan00339
             ./modules/base.nix
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
