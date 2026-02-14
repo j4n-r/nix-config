@@ -26,6 +26,10 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
   outputs =
@@ -38,6 +42,7 @@
       emacs-overlay,
       zig-overlay,
       opencode-dev,
+      niri,
       ...
     }:
     {
@@ -79,6 +84,8 @@
                 sharedModules = [
                   inputs.dms.homeModules.dank-material-shell
                   inputs.dms-plugin-registry.modules.default
+                  inputs.dms.homeModules.niri
+                  inputs.niri.homeModules.niri
                 ];
               };
             }
@@ -86,6 +93,7 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
                 zig-overlay.overlays.default
+                niri.overlays.niri
               ];
             })
           ];

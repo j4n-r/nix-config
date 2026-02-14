@@ -65,7 +65,7 @@
     man-pages
     man-pages-posix
     liburing
-    linux-manual
+    #linux-manual
 
     spotify
     zathura

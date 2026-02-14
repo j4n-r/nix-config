@@ -41,7 +41,7 @@
 
   programs.dank-material-shell.greeter = {
     enable = true;
-    compositor.name = "hyprland"; 
+    compositor.name = "hyprland";
     compositor.customConfig = ''
       # Optional custom compositor configuration
       misc { 

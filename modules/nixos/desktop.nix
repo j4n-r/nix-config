@@ -5,6 +5,7 @@
   programs.appimage.binfmt = true;
 
   programs.hyprland.enable = true;
+  programs.niri.enable = true;
 
   programs.wireshark = {
     enable = true;
@@ -55,11 +56,11 @@
     hyprpicker
     yaak
 
+    xwayland-satellite
     pwvucontrol
     playerctl # used for spotify scripts
     rofi
     wl-clipboard
-    dunst
     waybar
     libnotify
     grim

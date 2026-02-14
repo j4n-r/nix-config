@@ -8,7 +8,8 @@ let
 in
 {
   environment.systemPackages = [
-    opencode_dev.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # opencode_dev.packages.${pkgs.stdenv.hostPlatform.system}.default
+    unstable.opencode
     unstable.codex
     unstable.tsx
 

@@ -12,11 +12,11 @@
     ./waybar/waybar.nix
     ./gtk.nix
     ./rofi/rofi.nix
-    #./dunst.nix
     ./chromium.nix
     ./desktop_entries.nix
     ./org-capture.nix
     ./dms.nix
+    ./niri.nix
   ];
 
   # not changed to use EurKey layout for now (use AltGr to write umlaut (altgr + 5 for €)
