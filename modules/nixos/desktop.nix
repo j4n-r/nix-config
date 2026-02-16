@@ -14,6 +14,10 @@
     usbmon.enable = true;
   };
 
+  programs.qgroundcontrol.enable = true;
+  # optional if you’ll use serial radios / autopilots later:
+  services.udev.packages = [ pkgs.qgroundcontrol ];
+
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
@@ -42,6 +46,7 @@
   programs.droidcam.enable = true;
 
   environment.systemPackages = with pkgs; [
+    xhost
     xdg-desktop-portal-hyprland
     hypridle
     xdg-desktop-portal-gtk

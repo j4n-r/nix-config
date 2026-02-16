@@ -14,7 +14,13 @@
       };
       input = {
         mod-key = "Alt";
-        keyboard.numlock = true;
+        keyboard = {
+          numlock = true;
+          xkb = {
+            layout = "umlauteKeymap";
+            variant = "basic";
+          };
+        };
         touchpad = {
           tap = true;
           natural-scroll = true;
@@ -31,7 +37,7 @@
         default-column-width.proportion = 0.5;
         border = {
           enable = false;
-          width = 4;
+          width = 1;
           active.color = "#707070";
           inactive.color = "#d0d0d0";
           urgent.color = "#cc4444";
