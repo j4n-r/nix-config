@@ -75,6 +75,7 @@
   imports = [
     ../../home/linux
     ../../home/base
+    ../../home/shared
   ];
   wayland.windowManager.hyprland = {
     enable = true;

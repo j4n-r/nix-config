@@ -95,6 +95,10 @@ in
             "dankPomodoroTimer"
             "weather"
             {
+              id = "idleInhibitor";
+              enabled = true;
+            }
+            {
               id = "hueManager";
               enabled = true;
             }

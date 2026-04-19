@@ -18,6 +18,8 @@
   # optional if you’ll use serial radios / autopilots later:
   services.udev.packages = [ pkgs.qgroundcontrol ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
@@ -60,6 +62,9 @@
     hyprshot
     hyprpicker
     yaak
+    appimage-run
+    remmina
+    rustdesk
 
     xwayland-satellite
     pwvucontrol

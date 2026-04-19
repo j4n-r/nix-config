@@ -36,6 +36,7 @@
     fzf
     rclone
     jq
+    just
 
     zip
     unzip

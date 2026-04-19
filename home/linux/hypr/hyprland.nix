@@ -137,6 +137,8 @@
       # https://wiki.hyprland.org/Configuring/Variables/#input
       input {
           kb_layout = umlauteKeymap # this is configured in linux/default.nix
+          kb_variant = basic
+          kb_options = ctrl:ralt_rctrl
 
           follow_mouse = 0
 

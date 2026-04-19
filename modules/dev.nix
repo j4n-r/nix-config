@@ -1,9 +1,11 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   nixpkgs.config.android_sdk.accept_license = true;
+
   environment.systemPackages = with pkgs; [
     cachix
     (
@@ -16,12 +18,11 @@
         epkgs.pdf-tools
       ])
     )
-    zed-editor
+    vscode
     zigpkgs.master
     qemu
     quickemu
     zotero
-    tlaplus-toolbox
 
     pkg-config
     semgrep
@@ -29,18 +30,7 @@
     btop
     tokei
     comrak
-    claude-code
-    appimage-run
 
-    jetbrains.rust-rover
-
-    gf
-
-    # quickemu
-    # spice
-    #semgrep
-
-    # build tools
     gcc
     gdb
     clang
@@ -61,7 +51,6 @@
         debugpy
       ]
     ))
-    aider-chat
 
     elixir
     elixir-ls
@@ -88,7 +77,6 @@
 
     nodejs
     yarn
-    vscode
     pnpm_10
 
     # lsp & formatter
@@ -110,7 +98,6 @@
     gopls
 
     postgresql_17
-    # code-cursor
   ];
 
 }

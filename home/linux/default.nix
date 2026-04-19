@@ -20,7 +20,7 @@
   ];
 
   # not changed to use EurKey layout for now (use AltGr to write umlaut (altgr + 5 for €)
-
+ 
   home.file."${config.home.homeDirectory}/.config/xkb/symbols/umlauteKeymap" = {
     enable = true;
     text = ''
@@ -37,7 +37,7 @@
       };
     '';
   };
-
+  home.keyboard.options = [ "ctrl:ralt_rctrl" ];
   home.pointerCursor = {
     name = "BreezeX-RosePineDawn-Linux";
     package = pkgs.rose-pine-cursor;
