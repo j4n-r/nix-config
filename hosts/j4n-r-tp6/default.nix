@@ -32,6 +32,13 @@
     configHome = "/home/j4n-r";
   };
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024; # 32 GB
+    }
+  ];
+
 # services.displayManager.defaultSession = "hyprland";
 
   # used for ddcutils
