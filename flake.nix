@@ -138,6 +138,9 @@
                 sharedModules = [
                   inputs.dms.homeModules.dank-material-shell
                   inputs.dms-plugin-registry.modules.default
+                  inputs.dms.homeModules.niri
+                  inputs.niri.homeModules.niri
+
                 ];
               };
             }
@@ -145,6 +148,8 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
                 zig-overlay.overlays.default
+                niri.overlays.niri
+
               ];
             })
           ];
