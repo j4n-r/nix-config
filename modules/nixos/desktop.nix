@@ -64,7 +64,7 @@
     yaak
     appimage-run
     remmina
-    rustdesk
+    # rustdesk
 
     xwayland-satellite
     pwvucontrol

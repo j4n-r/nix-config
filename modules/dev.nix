@@ -16,6 +16,7 @@
         epkgs.vterm
         epkgs.jinx
         epkgs.pdf-tools
+        # epkgs.tuareg
       ])
     )
     vscode
@@ -35,10 +36,18 @@
     gdb
     clang
     libclang
+    gnumake
     llvm
     lld
     cmake
     ninja
+
+     ocaml
+    dune_3
+    ocamlPackages.ocaml-lsp
+    ocamlPackages.odoc
+    ocamlPackages.ocamlformat
+    ocamlPackages.utop
 
     basedpyright
     uv
@@ -98,6 +107,8 @@
     gopls
 
     postgresql_17
+
+    
   ];
 
 }
