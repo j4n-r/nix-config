@@ -55,16 +55,10 @@
     discord-ptb
     networkmanagerapplet
     ghostty
-    swaybg
-    hyprpaper
-    hypridle
-    hyprlock
-    hyprshot
-    hyprpicker
     yaak
     appimage-run
     remmina
-    # rustdesk
+    #rustdesk
 
     xwayland-satellite
     pwvucontrol

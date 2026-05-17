@@ -16,8 +16,8 @@ in
   ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
     opencode
     gemini-cli
-    codex
-    pi
+    # codex
+    # pi
     # ... other tools
   ]);
 }

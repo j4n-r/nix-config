@@ -68,6 +68,7 @@
          IdentitiesOnly yes
       Host codeberg.org
          IdentityFile ~/.ssh/Codeberg.pub
+         AddressFamily inet
          IdentitiesOnly yes
     '';
   };

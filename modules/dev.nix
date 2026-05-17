@@ -16,7 +16,7 @@
         epkgs.vterm
         epkgs.jinx
         epkgs.pdf-tools
-        # epkgs.tuareg
+        epkgs.lsp-grammarly
       ])
     )
     vscode
@@ -100,6 +100,9 @@
     tailwindcss
     tailwindcss-language-server
     nodePackages.prettier
+
+    clojure
+    clojure-lsp
 
     typst
     tinymist

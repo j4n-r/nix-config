@@ -37,6 +37,7 @@
     rclone
     jq
     just
+    gnumake
 
     zip
     unzip
