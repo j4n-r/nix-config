@@ -1,15 +1,14 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
-  programs.hyprland.enable = true;
   programs.niri.enable = true;
 
   programs.wireshark = {
     enable = true;
-    package = pkgs.wireshark-qt;
+    package = pkgs.wireshark;
     dumpcap.enable = true;
     usbmon.enable = true;
   };
@@ -19,46 +18,30 @@
   services.udev.packages = [ pkgs.qgroundcontrol ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.EDITOR = "emacsclient";
+  environment.sessionVariables.VISUAL = "emacsclient";
 
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
-    plugins =
-      with pkgs.obs-studio-plugins;
-      [
-      ]
-      ++ [
-        (
-          (pkgs.obs-studio-plugins.droidcam-obs.override {
-            ffmpeg_7 = pkgs.ffmpeg;
-          }).overrideAttrs
-          (prev: {
-            version = "2.4.2-unstable-2025-10-14";
-
-            src = pkgs.fetchFromGitHub {
-              owner = "dev47apps";
-              repo = "droidcam-obs-plugin";
-              rev = "161cb95b8dc5fe77185e52a9783dc45c6d137165";
-              sha256 = "sha256-3GClykaJjjmasEnSVGU5jnz+xoznaSYTxBz7jkhj0m4=";
-            };
-          })
-        )
-      ];
+    plugins = [
+      pkgs.obs-studio-plugins.droidcam-obs
+    ];
   };
   programs.droidcam.enable = true;
 
   environment.systemPackages = with pkgs; [
     xhost
     xdg-desktop-portal-hyprland
-    hypridle
     xdg-desktop-portal-gtk
     discord-ptb
     networkmanagerapplet
     ghostty
-    yaak
     appimage-run
     remmina
     #rustdesk
+    bruno
+    yaak
 
     xwayland-satellite
     pwvucontrol
@@ -67,16 +50,16 @@
     wl-clipboard
     waybar
     libnotify
-    grim
-    slurp
-    google-chrome
-    xfce.thunar
+    thunar
     vial
 
     gtk3
     gtk4
     nwg-look
     brightnessctl
+
+    spotify
+    zathura
 
     vlc
 
@@ -88,6 +71,5 @@
     texlive.combined.scheme-full
     prismlauncher
     mcpelauncher-ui-qt
-    
   ];
 }

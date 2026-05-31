@@ -37,42 +37,40 @@
       };
     };
   };
-    home.sessionVariables.SSH_AUTH_SOCK =
-    "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+  home.sessionVariables.SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
 
   programs.ssh = {
     enable = true;
-    matchBlocks."*" = {
-      forwardAgent = false;
-      addKeysToAgent = "no";
-      compression = false;
-      serverAliveInterval = 0;
-      serverAliveCountMax = 3;
-      hashKnownHosts = false;
-      userKnownHostsFile = "~/.ssh/known_hosts";
-      controlMaster = "no";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "no";
+    enableDefaultConfig = false;
+    settings = {
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
     };
     extraConfig = ''
-Host 188.245.240.115
-    IdentityFile ~/.ssh/SWE_HWR.pub
-    IdentitiesOnly yes
+      Host 188.245.240.115
+          IdentityFile ~/.ssh/SWE_HWR.pub
+          IdentitiesOnly yes
 
-Host codeberg.org
-    IdentityFile ~/.ssh/Codeberg.pub
-    IdentitiesOnly yes
-'';
+      Host codeberg.org
+          IdentityFile ~/.ssh/Codeberg.pub
+          IdentitiesOnly yes
+    '';
   };
 
   imports = [
     ../../home/linux
     ../../home/base
   ];
-  wayland.windowManager.hyprland = {
-    enable = true;
-
-  };
 
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;

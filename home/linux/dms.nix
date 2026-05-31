@@ -141,12 +141,13 @@ in
               enabled = true;
             }
           ];
-          spacing = 4;
+          spacing = 0;
+          edgeSpacing = 0;
           innerPadding = 4;
-          bottomGap = -4;
-          transparency = 0;
-          widgetTransparency = 0.3;
-          squareCorners = false;
+          bottomGap = -2;
+          transparency = 100;
+          widgetTransparency = 0.7;
+          squareCorners = true;
           noBackground = false;
           gothCornersEnabled = false;
           gothCornerRadiusOverride = false;

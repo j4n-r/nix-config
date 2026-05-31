@@ -6,21 +6,13 @@
 
 {
   imports = [
-    ./hypr/hyprland.nix
-    ./hypr/hypridle.nix
-    ./hypr/hyprlock.nix
-    ./waybar/waybar.nix
     ./gtk.nix
-    ./rofi/rofi.nix
-    ./chromium.nix
     ./desktop_entries.nix
-    ./org-capture.nix
     ./dms.nix
     ./niri.nix
   ];
 
-  # not changed to use EurKey layout for now (use AltGr to write umlaut (altgr + 5 for €)
- 
+  # not changed to use EurKey layout for now (use AltGr to write umlaut (altgr + 5 for €) 
   home.file."${config.home.homeDirectory}/.config/xkb/symbols/umlauteKeymap" = {
     enable = true;
     text = ''

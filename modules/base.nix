@@ -39,6 +39,8 @@
     just
     gnumake
 
+    acpi
+
     zip
     unzip
     xz
@@ -68,8 +70,5 @@
     man-pages-posix
     liburing
     #linux-manual
-
-    spotify
-    zathura
   ];
 }

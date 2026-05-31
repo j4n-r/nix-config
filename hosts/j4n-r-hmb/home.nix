@@ -43,7 +43,9 @@
   };
   programs.ssh = {
     enable = true;
-    matchBlocks."*" = {
+    enableDefaultConfig = false;
+    settings = {
+      "*" = {
       forwardAgent = false;
       addKeysToAgent = "no";
       compression = false;
@@ -54,6 +56,7 @@
       controlMaster = "no";
       controlPath = "~/.ssh/master-%r@%n:%p";
       controlPersist = "no";
+      };
     };
     extraConfig = ''
       Host gitea-rpi
@@ -78,10 +81,6 @@
     ../../home/base
     ../../home/shared
   ];
-  wayland.windowManager.hyprland = {
-    enable = true;
-
-  };
 
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;

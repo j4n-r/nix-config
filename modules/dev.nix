@@ -44,11 +44,7 @@
 
      ocaml
     dune_3
-    ocamlPackages.ocaml-lsp
-    ocamlPackages.odoc
-    ocamlPackages.ocamlformat
-    ocamlPackages.utop
-
+    
     basedpyright
     uv
     (python3.withPackages (
@@ -60,11 +56,6 @@
         debugpy
       ]
     ))
-
-    elixir
-    elixir-ls
-    erlang
-    wxGTK32
 
     go
     gopls
@@ -79,38 +70,15 @@
     openssl
     pkg-config
 
-    racket
-
-    ghc
-    haskell-language-server
-
-    nodejs
-    yarn
-    pnpm_10
-
     # lsp & formatter
     nil # nix lsp
+    nixfmt
     nixfmt-tree
-    nixfmt-rfc-style
     nix-index
-
-    typescript-language-server
-    typescript
-    vscode-langservers-extracted
-    tailwindcss
-    tailwindcss-language-server
-    nodePackages.prettier
-
-    clojure
-    clojure-lsp
-
+    
     typst
     tinymist
-    go
-    gopls
-
     postgresql_17
-
     
   ];
 
