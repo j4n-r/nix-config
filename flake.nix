@@ -11,13 +11,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
+      url = "github:nix-community/emacs-overlay/b4cc9132f8ded6135bba1950eb8a554054fe7f6e";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
     zig-overlay.url = "github:mitchellh/zig-overlay";
     # waiting for an upstream fix for bun version
-    opencode-dev.url = "github:anomalyco/opencode";
+    opencode-dev.url = "github:anomalyco/opencode/v1.17.11";
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,7 +73,7 @@
                 users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
                 sharedModules = [
                   inputs.dms.homeModules.dank-material-shell
-                  inputs.dms-plugin-registry.modules.default
+                  inputs.dms-plugin-registry.nixosModules.default
                   inputs.dms.homeModules.niri
                   inputs.niri.homeModules.niri
                 ];
@@ -109,7 +109,7 @@
                 users.j4n-r = import ./hosts/j4n-r-tp6/home.nix;
                 sharedModules = [
                   inputs.dms.homeModules.dank-material-shell
-                  inputs.dms-plugin-registry.modules.default
+                  inputs.dms-plugin-registry.nixosModules.default
                   inputs.dms.homeModules.niri
                   inputs.niri.homeModules.niri
 
