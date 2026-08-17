@@ -9,6 +9,7 @@
     ./gtk.nix
     ./desktop_entries.nix
     ./dms.nix
+    ./herdr.nix
     ./niri.nix
   ];
 

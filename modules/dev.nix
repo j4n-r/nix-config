@@ -26,6 +26,7 @@
     zotero
 
     pkg-config
+    nodejs
     semgrep
     devenv
     btop
@@ -42,8 +43,17 @@
     cmake
     ninja
 
+    jujutsu
+
+    pandoc
+    go-grip
+
+    zed-editor
+    
      ocaml
     dune_3
+
+ydotool    
     
     basedpyright
     uv

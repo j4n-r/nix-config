@@ -12,12 +12,14 @@ in
     unstable.protonmail-desktop
     unstable.proton-vpn
     unstable.zls
+    unstable.opencode-desktop
+    unstable.herdr
   ]
   ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
-    opencode
+    opencode2
     gemini-cli
     # codex
-    # pi
+    pi
     # ... other tools
   ]);
 }

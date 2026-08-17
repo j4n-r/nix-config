@@ -18,8 +18,8 @@
   services.udev.packages = [ pkgs.qgroundcontrol ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.EDITOR = "emacsclient";
-  environment.sessionVariables.VISUAL = "emacsclient";
+  environment.sessionVariables.EDITOR = "emacs -nw";
+  environment.sessionVariables.VISUAL = "emacs -nw";
 
   programs.obs-studio = {
     enable = true;
@@ -42,7 +42,10 @@
     #rustdesk
     bruno
     yaak
+    seadrive-gui
 
+    obsidian
+ 
     xwayland-satellite
     pwvucontrol
     playerctl # used for spotify scripts

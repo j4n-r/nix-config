@@ -32,11 +32,10 @@
         background-color = "transparent";
         center-focused-column = "never";
         preset-column-widths = [
-          { proportion = 0.33333; }
           { proportion = 0.5; }
-          { proportion = 0.66667; }
+          { proportion = 1.0; }
         ];
-        default-column-width.proportion = 0.5;
+        default-column-width.proportion = 1.0;
         border = {
           enable = false;
           width = 1;
@@ -202,11 +201,7 @@
         }
       ];
       debug.honor-xdg-activation-with-invalid-serial = true;
-      binds = {
-        "Mod+D" = {
-          repeat = false;
-          action.toggle-overview = [ ];
-        };
+     binds = {
         "Super+Tab" = {
           repeat = false;
           action.toggle-overview = [ ];
@@ -427,7 +422,6 @@
           repeat = false;
           action.close-window = [ ];
         };
-        "Super+F".action.maximize-column = [ ];
         "Super+Shift+F".action.fullscreen-window = [ ];
         "Super+T".action.toggle-window-floating = [ ];
         "Mod+Shift+T".action.toggle-window-floating = [ ];
@@ -523,8 +517,9 @@
         "Mod+Shift+9".action.move-column-to-workspace = 9;
         "Mod+BracketLeft".action.consume-or-expel-window-left = [ ];
         "Mod+BracketRight".action.consume-or-expel-window-right = [ ];
-        "Mod+Period".action.expel-window-from-column = [ ];
-        "Mod+R".action.switch-preset-column-width = [ ];
+         "Mod+Period".action.expel-window-from-column = [ ];
+         "Mod+F".action.switch-preset-column-width = [ ];
+         "Mod+R".action.switch-preset-column-width = [ ];
         "Mod+Shift+R".action.switch-preset-window-height = [ ];
         "Mod+Ctrl+R".action.reset-window-height = [ ];
         "Mod+Ctrl+F".action.expand-column-to-available-width = [ ];

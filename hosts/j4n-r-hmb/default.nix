@@ -10,6 +10,9 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    extraModprobeConfig = ''
+      options btusb enable_autosuspend=0
+    '';
   };
 
   swapDevices = [
@@ -20,15 +23,21 @@
   ];
 
   powerManagement.enable = true;
-  services.tlp.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   virtualisation.docker.enable = true;
 
   # udev rules for vial
-  services.udev.extraRules = ''
-    # beekeeb Piantor Pro
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="beeb", ATTRS{idProduct}=="0002", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  '';
+services.udev.extraRules = ''
+  # beekeeb Piantor Pro / Vial
+  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="beeb", ATTRS{idProduct}=="0002", MODE="0660", GROUP="users", TAG+="uaccess"
+
+  # Beekeeb Toucan2 / ZMK Studio
+  SUBSYSTEM=="tty", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="615e", MODE="0660", TAG+="uaccess"
+
+  # The Realtek Bluetooth adapter drops BLE HID connections after autosuspend.
+  ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1358", ATTR{idProduct}=="c123", TEST=="power/control", ATTR{power/control}="on"
+'';
 
   networking.hostName = "j4n-r-hmb";
 
@@ -80,6 +89,7 @@
       "i2c"
       "docker"
       "wireshark"
+        "dialout"
     ];
     packages = with pkgs; [ ];
   };

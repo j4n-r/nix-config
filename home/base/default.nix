@@ -17,6 +17,7 @@
     ./cmd.nix
     ./spell-check.nix
     ./zellij.nix
+    ./pi.nix
   ];
 
 }

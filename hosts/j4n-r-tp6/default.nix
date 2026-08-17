@@ -10,7 +10,7 @@
   virtualisation.docker.enable = true;
 
   powerManagement.enable = true;
-  services.tlp.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   networking.hostName = "j4n-r-tp6";
   # services.getty.autologinUser = "j4n-r";
