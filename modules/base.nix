@@ -7,6 +7,13 @@
 
   services.tailscale.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  services.netbird.clients.wt0 = {
+    port = 51821;
+    ui.enable = true;
+    openFirewall = true;
+    openInternalFirewall = true;
+  };
+
 
   programs.bash = {
     interactiveShellInit = ''
@@ -38,6 +45,8 @@
     jq
     just
     gnumake
+
+    gh
 
     acpi
 

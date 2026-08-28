@@ -6,6 +6,8 @@
 
 {
 
+  home.sessionVariables.AMP_DISABLE_AMP_COAUTHOR_TRAILER = "1";
+
   imports = [
     ./fonts.nix
     ./fish.nix

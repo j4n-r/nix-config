@@ -1,10 +1,25 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
+  imports = [ inputs.openwhispr.nixosModules.default ];
+
+  programs.openwhispr = {
+    enable = true;
+    users = [ "j4n-r" ];
+  };
+
+  # OpenWhispr's native listener bypasses unsupported Wayland global shortcuts.
+  users.users.j4n-r.extraGroups = [ "input" ];
+
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
+  programs.steam.enable = true;
+
   programs.niri.enable = true;
+
+  # Battery information provider used by DankMaterialShell.
+  services.upower.enable = true;
 
   programs.wireshark = {
     enable = true;
@@ -45,7 +60,7 @@
     seadrive-gui
 
     obsidian
- 
+    marktext
     xwayland-satellite
     pwvucontrol
     playerctl # used for spotify scripts
@@ -66,7 +81,6 @@
 
     vlc
 
-    bitwarden-desktop
     bitwarden-cli
 
     usbutils

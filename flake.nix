@@ -14,10 +14,7 @@
       url = "github:nix-community/emacs-overlay/b4cc9132f8ded6135bba1950eb8a554054fe7f6e";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
     zig-overlay.url = "github:mitchellh/zig-overlay";
-    # waiting for an upstream fix for bun version
-    opencode-dev.url = "github:anomalyco/opencode/v1.18.11";
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,19 +30,19 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+    openwhispr = {
+      url = "github:OpenWhispr/openwhispr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
       nixpkgs,
-      nixpkgs-unstable,
       home-manager,
-      hyprland,
       nix-darwin,
       emacs-overlay,
       zig-overlay,
-      opencode-dev,
       niri,
-      llm-agents,
       ...
     }:
     {

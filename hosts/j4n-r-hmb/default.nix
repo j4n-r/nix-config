@@ -80,6 +80,13 @@ services.udev.extraRules = ''
     ];
   };
 
+    services.sunshine = {
+    enable = true;
+    autoStart = true;  # optional: starts Sunshine automatically on login
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   users.users.j4n-r = {
     isNormalUser = true;
     description = "Jan Rueggeberg";
@@ -89,7 +96,8 @@ services.udev.extraRules = ''
       "i2c"
       "docker"
       "wireshark"
-        "dialout"
+      "dialout"
+      "netbird-wt0"
     ];
     packages = with pkgs; [ ];
   };

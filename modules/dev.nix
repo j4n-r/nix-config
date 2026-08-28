@@ -49,6 +49,11 @@
     go-grip
 
     zed-editor
+
+    nixd
+    nixfmt
+    alejandra
+    
     
      ocaml
     dune_3

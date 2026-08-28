@@ -785,6 +785,26 @@
         "type": "github"
       }
     },
+    "openwhispr": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785449150,
+        "narHash": "sha256-NGY8LtFi19nFCdWt3tKkpgmvc+zjk0aDkTIO9FY4l8o=",
+        "owner": "OpenWhispr",
+        "repo": "openwhispr",
+        "rev": "bf8b7e0b4e1de0c9779c63f4752bd80bdd39ee2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "OpenWhispr",
+        "repo": "openwhispr",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -820,6 +840,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "opencode-dev": "opencode-dev",
+        "openwhispr": "openwhispr",
         "zig-overlay": "zig-overlay"
       }
     },
