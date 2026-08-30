@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/b4cc9132f8ded6135bba1950eb8a554054fe7f6e";
+      url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zig-overlay.url = "github:mitchellh/zig-overlay";
@@ -135,7 +135,7 @@
           ];
         };
       };
-      
+
       darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
@@ -155,8 +155,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.jr = import ./hosts/MacBook-Air-100011/home.nix;
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
           ({
             nixpkgs.overlays = [ emacs-overlay.overlays.default ];
