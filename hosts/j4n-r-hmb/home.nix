@@ -59,6 +59,7 @@
       };
     };
     extraConfig = ''
+      Include /etc/ssh/ssh_config.d/*.conf
       Host 100.94.200.120
          IdentityFile ~/.ssh/Forgejo.pub
          IdentitiesOnly yes
@@ -72,7 +73,12 @@
          IdentityFile ~/.ssh/Codeberg.pub
          AddressFamily inet
          IdentitiesOnly yes
+      Host 152.53.17.131
+         IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
+         AddressFamily inet
+         IdentitiesOnly yes
     '';
+    
   };
 
   imports = [

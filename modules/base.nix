@@ -6,14 +6,11 @@
   #programs.ssh.startAgent = true;
 
   services.tailscale.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  services.netbird.clients.wt0 = {
-    port = 51821;
-    ui.enable = true;
-    openFirewall = true;
-    openInternalFirewall = true;
-  };
 
+  nix.settings.extra-substituters = [ "http://netcache:5000" ];
+  nix.settings.extra-trusted-public-keys = [
+    "netcache-1:v6JEdkx0xERSZ0RqRTJZvZBVs7e1Tvl4CbXSjIa664g="
+  ];
 
   programs.bash = {
     interactiveShellInit = ''

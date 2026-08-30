@@ -34,6 +34,10 @@
       url = "github:OpenWhispr/openwhispr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
@@ -122,27 +126,16 @@
             })
           ];
         };
-        j4n-r-rpi5 = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+        netcache = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/j4n-r-pi5
-            ./modules/base.nix
-            ./modules/nixos/base.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.j4n-r = import ./hosts/j4n-r-hmb/home.nix;
-              };
-            }
-            ({
-              nixpkgs.overlays = [ emacs-overlay.overlays.default ];
-            })
+            inputs.disko.nixosModules.disko
+            ./hosts/netcache
           ];
         };
       };
+      
       darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
