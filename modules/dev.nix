@@ -77,11 +77,6 @@ ydotool
     delve
     gdlv
 
-    cargo
-    rustc
-    rustfmt
-    rust-analyzer
-    clippy
     openssl
     pkg-config
 

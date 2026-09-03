@@ -34,11 +34,20 @@ in
     unstable.zls
     unstable.opencode-desktop
     unstable.herdr
+    
+    unstable.cargo
+    unstable.rustc
+    unstable.rustfmt
+    unstable.rust-analyzer
+    unstable.clippy
+
   ]
   ++ (with llmAgents; [
     opencode2
     amp
     piWithNativeLibs
+    chatgpt
+    codex
     # ... other tools
   ]);
 }

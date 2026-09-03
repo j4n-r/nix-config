@@ -33,8 +33,8 @@
   services.udev.packages = [ pkgs.qgroundcontrol ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.EDITOR = "emacs -nw";
-  environment.sessionVariables.VISUAL = "emacs -nw";
+  environment.sessionVariables.EDITOR = "nvim";
+  environment.sessionVariables.VISUAL = "nvim";
 
   programs.obs-studio = {
     enable = true;

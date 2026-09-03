@@ -8,12 +8,14 @@
   nix.settings.extra-substituters = [
     "http://netcache:5000"
     "https://nix-community.cachix.org"
-     "https://devenv.cachix.org"
+    "https://devenv.cachix.org"
+    "https://cache.numtide.com"
   ];
   nix.settings.extra-trusted-public-keys = [
     "netcache-1:v6JEdkx0xERSZ0RqRTJZvZBVs7e1Tvl4CbXSjIa664g="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-     "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw"
+    "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw"
+    "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" 
   ];
 
   programs.bash = {
@@ -71,6 +73,8 @@
     lazydocker
 
     ffmpeg
+
+    sops
 
     file
     findutils

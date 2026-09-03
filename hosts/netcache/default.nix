@@ -1,6 +1,5 @@
 {
   modulesPath,
-
   ...
 }:
 {
@@ -30,9 +29,16 @@
     };
   };
 
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    secrets."harmonia" = {
+      restartUnits = [ "harmonia.s" ];
+    };
+  };
+
   services.harmonia.cache = {
     enable = true;
-    signKeyPaths = [ "/var/lib/secrets/harmonia.secret" ];
+    signKeyPaths = [ "/run/secrets/harmonia" ];
   };
 
   services.tailscale.enable = true;
@@ -41,6 +47,14 @@
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH62v4unWbspLD2wtIqdMo+r7fRNaPixCF9vXfk4Vyxa Netcup VPS (netcache)"
   ];
+
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
+
+  # Accept locally built, unsigned paths uploaded over SSH.
+  nix.settings.require-sigs = false;
 
   nix.settings.experimental-features = [
     "nix-command"
