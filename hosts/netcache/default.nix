@@ -10,7 +10,6 @@
 
   networking = {
     hostName = "netcache";
-
   };
 
   boot.loader.grub = {
@@ -32,7 +31,7 @@
   sops = {
     defaultSopsFile = ./secrets.yaml;
     secrets."harmonia" = {
-      restartUnits = [ "harmonia.s" ];
+      restartUnits = [ "harmonia.service" ];
     };
   };
 
@@ -50,7 +49,6 @@
 
   nix.settings.trusted-users = [
     "root"
-    "@wheel"
   ];
 
   # Accept locally built, unsigned paths uploaded over SSH.

@@ -53,7 +53,8 @@
     nixd
     nixfmt
     alejandra
-    
+
+    deploy-rs
     
      ocaml
     dune_3

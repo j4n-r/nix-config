@@ -42,9 +42,14 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
+      self,
       nixpkgs,
       home-manager,
       nix-darwin,
@@ -52,6 +57,7 @@
       zig-overlay,
       niri,
       sops-nix,
+      deploy-rs,
       ...
     }:
     {
@@ -141,6 +147,14 @@
           ];
         };
       };
+      deploy.nodes.netcache = {
+        hostname = "netcache";
+        sshUser = "root";
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.netcache;
+        };
+      };
 
       darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -167,5 +181,6 @@
           })
         ];
       };
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }

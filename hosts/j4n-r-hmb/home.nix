@@ -73,7 +73,9 @@
          IdentityFile ~/.ssh/Codeberg.pub
          AddressFamily inet
          IdentitiesOnly yes
-      Host 152.53.17.131
+      Host netcache 152.53.17.131
+         HostName 100.95.163.72
+         User root
          IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
          AddressFamily inet
          IdentitiesOnly yes

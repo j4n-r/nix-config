@@ -62,7 +62,36 @@ sops = {
 Binary cache server (Harmonia) + Tailscale. Config in `hosts/netcache/`, secrets in
 `hosts/netcache/secrets.yaml` (encrypted, safe to commit).
 
-### Deploy
+### Deploy (deploy-rs)
+
+deploy-rs is defined in `flake.nix` (`deploy.nodes.netcache`) and runs from the laptop:
+
+```bash
+deploy .#netcache    # deploy-rs is in the devShell (modules/dev.nix): nix develop -c deploy .#netcache
+```
+
+```nix
+deploy.nodes.netcache = {
+  hostname = "netcache";
+  sshUser = "root";               # SSH connection user (overrides ~/.ssh/config's User)
+  profiles.system = {
+    user = "root";                # profile owner on the target, activation runs as this
+    path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.netcache;
+  };
+};
+```
+
+Notes:
+- deploy-rs always connects as `<sshUser>@<hostname>` explicitly, so it **ignores
+  `~/.ssh/config`'s `User`** — `sshUser` must be set in the flake (without it, it falls
+  back to your *local* username and the deploy fails).
+- If `sshUser` differs from the profile `user`, deploy-rs activates via `sudo -u <user>`;
+  since both are `root` here, no sudo is involved.
+- deploy-rs activates atomically and auto-rolls back on boot failure (magic rollback).
+- `checks` in `flake.nix` runs `deployChecks`, so `nix flake check` also verifies all
+  deploy targets.
+
+### Deploy (nixos-rebuild alternative)
 
 From the laptop (builds locally, uploads the closure, decrypts on the target):
 
@@ -73,24 +102,27 @@ nixos-rebuild switch --flake .#netcache --target-host netcache --use-remote-sudo
 `netcache` resolves via `~/.ssh/config`. Do **not** run this under `sudo` — root has no
 access to your SSH keys. Let the *target* elevate with `--use-remote-sudo` instead.
 
-### Verify
+### Push to the cache
 
-```bash
-ssh root@netcache
-ls -la /run/secrets/                 # secret present, root:root 0400
-systemctl status harmonia.service    # socket-activated: inactive until first request is fine
-curl -s http://localhost:5000/nix-cache-info
-journalctl -u harmonia -n 20
+Build all host closures, upload, sign remotely (signing key never leaves the box):
+
+```fish
+for host in j4n-r-hmb j4n-r-tp6 netcache
+  set out (nix build --print-out-paths ".#nixosConfigurations.$host.config.system.build.toplevel")
+  nix copy --to ssh://netcache "$out"
+  ssh root@netcache "nix store sign --key-file /run/secrets/harmonia -r $out"
+end
 ```
 
-### Troubleshooting
+Clients need netcache as substituter + its public key
+(`ssh root@netcache 'nix store key convert-secret-to-public < /run/secrets/harmonia'`):
 
-- `mac mismatch` / `no matching recipients` — encrypted file not encrypted for this host;
-  check its age pub key in `.sops.yaml` against `ssh-to-age` of its host key
-- `Failed at step CREDENTIALS` — name mismatch between the YAML key, `sops.secrets."<name>"`,
-  and the consuming path (e.g. `signKeyPaths`); all three must be identical,
-  `systemctl reset-failed harmonia.service` to recover
-- `sops.defaultSopsFile has no value` — set `sops.defaultSopsFile = ./secrets.yaml;`
+```nix
+nix.settings = {
+  substituters = [ "http://152.53.17.131:5000" ];
+  trusted-public-keys = [ "<cachename>:<base64pubkey>" ];
+};
+```
 
 ## Overview
 ```
@@ -141,9 +173,6 @@ journalctl -u harmonia -n 20
 │   ├── j4n-r-hmb
 │   │   ├── default.nix
 │   │   ├── hardware-configuration.nix
-│   │   └── home.nix
-│   ├── j4n-r-rpi5
-│   │   ├── default.nix
 │   │   └── home.nix
 │   ├── j4n-r-tp6
 │   │   ├── default.nix
