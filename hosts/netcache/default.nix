@@ -6,12 +6,14 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disk-config.nix
+    ./alloy.nix
   ];
 
   networking = {
     hostName = "netcache";
   };
 
+  
   boot.loader.grub = {
     enable = true;
     efiSupport = false;
@@ -33,7 +35,11 @@
     secrets."harmonia" = {
       restartUnits = [ "harmonia.service" ];
     };
+    secrets."alloy.env" = {
+      restartUnits = [ "alloy.service" ];
+    }; 
   };
+
 
   services.harmonia.cache = {
     enable = true;
@@ -60,4 +66,5 @@
   ];
 
   system.stateVersion = "26.05";
+  
 }
