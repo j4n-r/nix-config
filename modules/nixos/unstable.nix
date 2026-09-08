@@ -48,6 +48,7 @@ in
     piWithNativeLibs
     chatgpt
     codex
+    
     # ... other tools
   ]);
 }

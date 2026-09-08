@@ -62,6 +62,7 @@
       Include /etc/ssh/ssh_config.d/*.conf
       Host 100.94.200.120
          IdentityFile ~/.ssh/Forgejo.pub
+         IdentityFile ~/.ssh/ssh_j4n-rpi5.pub
          IdentitiesOnly yes
       Host u505154.your-storagebox.de
          IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
@@ -78,6 +79,10 @@
          User root
          IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
          AddressFamily inet
+         IdentitiesOnly yes
+      Host hetzner 91.99.52.144
+         IdentityFile ~/.ssh/Root_Hetzner_Coolify_Server.pub
+         User root
          IdentitiesOnly yes
     '';
     

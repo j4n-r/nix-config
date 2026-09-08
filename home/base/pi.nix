@@ -23,9 +23,7 @@
       "ctrl+n"
     ];
     "tui.editor.deleteWordBackward" = [
-      "ctrl+w"
       "alt+backspace"
-      "ctrl+backspace"
     ];
 
     # Ctrl+P is otherwise globally bound to model cycling, which takes

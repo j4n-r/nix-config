@@ -107,7 +107,7 @@ access to your SSH keys. Let the *target* elevate with `--use-remote-sudo` inste
 Build all host closures, upload, sign remotely (signing key never leaves the box):
 
 ```fish
-for host in j4n-r-hmb j4n-r-tp6 netcache
+for host in  j4n-r-tp6 
   set out (nix build --print-out-paths ".#nixosConfigurations.$host.config.system.build.toplevel")
   nix copy --to ssh://netcache "$out"
   ssh root@netcache "nix store sign --key-file /run/secrets/harmonia -r $out"

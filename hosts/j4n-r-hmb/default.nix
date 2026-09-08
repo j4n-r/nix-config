@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.dms.nixosModules.greeter
+    inputs.dank-greeter.nixosModules.default
   ];
   boot = {
     loader = {
@@ -48,19 +48,9 @@ services.udev.extraRules = ''
     variant = "";
   };
 
-  programs.dank-material-shell.greeter = {
+  programs.dms-greeter = {
     enable = true;
-    compositor.name = "hyprland";
-    compositor.customConfig = ''
-      # Optional custom compositor configuration
-      misc { 
-          force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
-          disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
-          disable_splash_rendering = true
-          initial_workspace_tracking = 1
-      }
-      exec-once = hyprctl setcursor BreezeX-RosePineDawn-Linux 32
-    '';
+    compositor.name = "niri";
     configHome = "/home/j4n-r";
   };
 
