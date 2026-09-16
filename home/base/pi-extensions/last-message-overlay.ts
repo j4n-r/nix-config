@@ -138,7 +138,9 @@ export default function (pi: ExtensionAPI): void {
 					overlay: true,
 					overlayOptions: {
 						anchor: "center",
-						width: "28%",
+						// 60% of the terminal width, capped at a comfortable reading
+						// width so very wide screens don't get oversized lines.
+						width: Math.min(Math.floor((process.stdout.columns || 80) * 0.6), 100),
 						minWidth: 44,
 						maxHeight: "80%",
 						offsetX: process.env.HERDR_ENV ? -10 : 0,

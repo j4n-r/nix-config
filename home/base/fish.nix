@@ -12,6 +12,9 @@
         ];
 
     interactiveShellInit = ''
+        # Use Emacs bindings consistently across hosts.
+        fish_default_key_bindings
+
         #### disable greeeting message ####
         set -g fish_greeting
         alias e="eza"

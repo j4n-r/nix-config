@@ -12,6 +12,18 @@
   home.file.".pi/agent/extensions/last-message-overlay.ts".source =
     ./pi-extensions/last-message-overlay.ts;
 
+  # Pi discovers directory extensions through extensions/<name>/index.ts.
+  home.file.".pi/agent/extensions/subagent/index.ts".source =
+    ./pi-extensions/subagent/index.ts;
+  home.file.".pi/agent/extensions/subagent/agents.ts".source =
+    ./pi-extensions/subagent/agents.ts;
+
+  # Agent definitions are discovered separately from the extension itself.
+  home.file.".pi/agent/agents" = {
+    source = ./pi-extensions/subagent/agents;
+    recursive = true;
+  };
+
   home.file.".pi/agent/keybindings.json".text = builtins.toJSON {
     # Emacs-style navigation for slash-command and other selectors.
     "tui.select.up" = [

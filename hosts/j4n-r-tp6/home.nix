@@ -57,13 +57,24 @@
       };
     };
     extraConfig = ''
+      Include /etc/ssh/ssh_config.d/*.conf
+      Host 100.94.200.120
+         IdentityFile ~/.ssh/Forgejo.pub
+         IdentitiesOnly yes
+      Host u505154.your-storagebox.de
+         IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
+         IdentitiesOnly yes
       Host 188.245.240.115
-          IdentityFile ~/.ssh/SWE_HWR.pub
-          IdentitiesOnly yes
-
+         IdentityFile ~/.ssh/SWE_HWR.pub
+         IdentitiesOnly yes
       Host codeberg.org
-          IdentityFile ~/.ssh/Codeberg.pub
-          IdentitiesOnly yes
+         IdentityFile ~/.ssh/Codeberg.pub
+         AddressFamily inet
+         IdentitiesOnly yes
+      Host 152.53.17.131
+         IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
+         AddressFamily inet
+         IdentitiesOnly yes
     '';
   };
 
