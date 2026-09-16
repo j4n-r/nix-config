@@ -115,7 +115,7 @@ end
 ```
 
 Clients need netcache as substituter + its public key
-(`ssh root@netcache 'nix store key convert-secret-to-public < /run/secrets/harmonia'`):
+(`ssh root@netcache 'nix key convert-secret-to-public < /run/secrets/harmonia'`):
 
 ```nix
 nix.settings = {
