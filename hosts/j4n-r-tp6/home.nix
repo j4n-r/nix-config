@@ -16,7 +16,8 @@
     signing = {
       signByDefault = true;
       format = "ssh";
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRBdapdAkHgPWcWvZudEeNIbecVFCEtvQy09GD+88b7";
+      # Decrypted by sops-nix at boot; Git does not use the Bitwarden SSH agent for signing.
+      key = "/run/secrets/git-signing-key";
     };
 
     settings = {
