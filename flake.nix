@@ -74,10 +74,12 @@
             ./modules/base.nix
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
+            ./modules/nixos/git-signing.nix
             ./modules/nixos/base.nix
             ./modules/nixos/unstable.nix
             ./modules/nixos/insecure.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             {
               home-manager = {
                 useGlobalPkgs = true;
@@ -111,9 +113,11 @@
             ./modules/base.nix
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
+            ./modules/nixos/git-signing.nix
             ./modules/nixos/base.nix
             ./modules/nixos/unstable.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             {
               home-manager = {
                 useGlobalPkgs = true;

@@ -3,6 +3,10 @@ keys:
   - &netcache age1xahur69ljdqc8qveugtkey3gt0uny8f5xx6ylzk5vjrppf29qdhq0spyhr
 
 creation_rules:
+  - path_regex: secrets/git-signing-key\.yaml$
+    key_groups:
+      - age:
+        - *jan
   - path_regex: hosts/netcache/secrets\.yaml$
     key_groups:
       - age:
