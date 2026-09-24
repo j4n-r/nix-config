@@ -23,6 +23,21 @@ let
         }
     '';
   };
+
+  # opencode2's TUI (OpenTUI's libopentui.so) dlopens libwayland-client.so.0 at
+  # runtime for clipboard access. NixOS does not have that soname on the default
+  # loader path, so the native clipboard backend reports "unsupported" and Ctrl+V
+  # silently pastes nothing (images included). pi gets away with it because it
+  # shells out to wl-paste instead.
+  opencode2WithWayland = pkgs.symlinkJoin {
+    name = "opencode2-with-wayland";
+    paths = [ llmAgents.opencode2 ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/opencode2 \
+        --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath [ pkgs.wayland ]}
+    '';
+  };
 in
 {
   environment.systemPackages = [
@@ -34,6 +49,7 @@ in
     unstable.zls
     unstable.opencode-desktop
     unstable.herdr
+    unstable.typescript
     
     unstable.cargo
     unstable.rustc
@@ -43,11 +59,12 @@ in
 
   ]
   ++ (with llmAgents; [
-    opencode2
+    opencode2WithWayland
     amp
     piWithNativeLibs
     chatgpt
     codex
+    t3code-desktop
     
     # ... other tools
   ]);

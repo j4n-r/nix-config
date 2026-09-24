@@ -72,6 +72,8 @@
     flamegraph
     lazydocker
 
+    proton-vpn-cli
+
     ffmpeg
 
     sops
