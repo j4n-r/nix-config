@@ -47,6 +47,13 @@ in
       acMonitorTimeout = 600;
       acLockTimeout = 300;
 
+      # Battery alerts are built into DMS natively now
+      # (the dankBatteryAlerts plugin was removed from the registry)
+      batteryNotifyLow = true;
+      batteryLowThreshold = 20;
+      batteryNotifyCritical = true;
+      batteryCriticalThreshold = 10;
+
       currentThemeName = "dynamic";
       currentThemeCategory = "dynamic";
       dynamicTheming = true;
@@ -190,7 +197,6 @@ in
     managePluginSettings = true;
     plugins = {
       # Simply enable plugins by their ID (from the registry)
-      dankBatteryAlerts.enable = true;
       dankPomodoroTimer.enable = true;
       dockerManager.enable = true;
       hueManager.enable = true;
