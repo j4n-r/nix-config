@@ -11,6 +11,7 @@
     ./dms.nix
     ./herdr.nix
     ./niri.nix
+    ./typora.nix
   ];
 
   # not changed to use EurKey layout for now (use AltGr to write umlaut (altgr + 5 for €) 

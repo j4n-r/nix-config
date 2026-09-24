@@ -2,6 +2,18 @@
 
 {
   xdg.desktopEntries = {
+    Neomacs = {
+      name = "NEO Emacs";
+      genericName = "Text Editor";
+      exec = "/home/j4n-r/AppImages/neomacs-0.0.18-x86_64-unknown-linux-gnu.AppImage %F";
+      icon = "${../../icons/neomacs.svg}";
+      terminal = false;
+      categories = [
+        "Development"
+        "TextEditor"
+      ];
+      mimeType = [ "text/plain" ];
+    };
     Helium = {
       name = "Helium";
       genericName = "Web Browser";

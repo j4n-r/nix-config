@@ -59,6 +59,7 @@
     yaak
     seadrive-gui
 
+    typora
     obsidian
     marktext
     xwayland-satellite
