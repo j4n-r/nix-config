@@ -50,6 +50,10 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    roc-overlay = {
+      url = "github:roc-lang/roc-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
@@ -62,6 +66,7 @@
       niri,
       sops-nix,
       deploy-rs,
+      roc-overlay,
       ...
     }:
     {
@@ -96,13 +101,14 @@
                 ];
               };
             }
-            ({
+            {
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
                 zig-overlay.overlays.default
                 niri.overlays.niri
+                roc-overlay.overlays.default
               ];
-            })
+            }
           ];
         };
         j4n-r-tp6 = nixpkgs.lib.nixosSystem {
