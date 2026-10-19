@@ -5,11 +5,11 @@
     enable = true;
     # use bash as login shell the switch to fish
     plugins = [
-        {
-            name = "bass";
-            src = pkgs.fishPlugins.bass.src;
-        }
-        ];
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
+    ];
 
     interactiveShellInit = ''
         # Use Emacs bindings consistently across hosts.
