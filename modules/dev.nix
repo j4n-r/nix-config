@@ -12,18 +12,17 @@
       (emacs-unstable.override {
         withNativeCompilation = true;
       }).pkgs.withPackages
-      (epkgs: [
-        epkgs.vterm
-        epkgs.jinx
-        epkgs.pdf-tools
-        epkgs.lsp-grammarly
-      ])
+        (epkgs: [
+          epkgs.vterm
+          epkgs.jinx
+          epkgs.pdf-tools
+          epkgs.lsp-grammarly
+        ])
     )
     vscode
     zigpkgs.master
     qemu
     quickemu
-    zotero
 
     pkg-config
     nodejs
@@ -48,19 +47,17 @@
     pandoc
     go-grip
 
-    zed-editor
-
     nixd
     nixfmt
     alejandra
 
     deploy-rs
-    
-     ocaml
+
+    ocaml
     dune_3
 
-ydotool    
-    
+    ydotool
+
     basedpyright
     uv
     (python3.withPackages (
@@ -72,6 +69,10 @@ ydotool
         debugpy
       ]
     ))
+
+    lazygit
+    tree-sitter
+    prettier
 
     go
     gopls
@@ -86,11 +87,11 @@ ydotool
     nixfmt
     nixfmt-tree
     nix-index
-    
+
     typst
     tinymist
     postgresql_17
-    
+
   ];
 
 }

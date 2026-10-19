@@ -3,6 +3,9 @@ let
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
+    config.permittedInsecurePackages = [
+      "firefox-esr-140-bin-unwrapped-140.17.0esr"
+    ];
   };
   llmAgents = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
 
@@ -50,13 +53,17 @@ in
     unstable.opencode-desktop
     unstable.herdr
     unstable.typescript
-    
+    unstable.zed-editor
+
     unstable.cargo
     unstable.rustc
     unstable.rustfmt
     unstable.rust-analyzer
     unstable.clippy
 
+    unstable.zotero
+
+    pkgs.rocpkgs.nightly
   ]
   ++ (with llmAgents; [
     opencode2WithWayland
@@ -65,7 +72,9 @@ in
     chatgpt
     codex
     t3code-desktop
-    
+    claude-code
+    claude-desktop
+
     # ... other tools
   ]);
 }
