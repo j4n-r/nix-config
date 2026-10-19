@@ -207,10 +207,6 @@
           action.toggle-overview = [ ];
         };
         "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
-        "Mod+T" = {
-          hotkey-overlay.title = "Open Terminal";
-          action.spawn = [ "ghostty" ];
-        };
         "Super+Space" = {
           hotkey-overlay.title = "Application Launcher";
           action.spawn = [
