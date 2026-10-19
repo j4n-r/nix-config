@@ -1,5 +1,10 @@
 { inputs, pkgs, ... }:
 
+let
+  opencode2 =
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode2;
+in
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,6 +18,11 @@
     extraModprobeConfig = ''
       options btusb enable_autosuspend=0
     '';
+    # Compressed RAM cache in front of the swapfile; the shrinker moves cold pages to disk.
+    kernelParams = [
+      "zswap.enabled=1"
+      "zswap.shrinker_enabled=1"
+    ];
   };
 
   swapDevices = [
@@ -40,6 +50,49 @@ services.udev.extraRules = ''
 '';
 
   networking.hostName = "j4n-r-hmb";
+
+  # Keep the laptop awake when the lid is closed.
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+  };
+
+  # Keep the OpenCode server reachable: disallow systemd sleep states even if
+  # a desktop app explicitly requests one. Shutdown/reboot remain available.
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
+
+  # Only reachable over the Tailscale interface, not the LAN.
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
+  systemd.services.opencode-server = {
+    description = "OpenCode server";
+
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+
+    serviceConfig = {
+      User = "j4n-r";
+      WorkingDirectory = "/home/j4n-r";
+      Environment = [
+        "HOME=/home/j4n-r"
+        "USER=j4n-r"
+        "LOGNAME=j4n-r"
+        "PATH=/run/current-system/sw/bin:/home/j4n-r/.nix-profile/bin"
+      ];
+
+      ExecStart = "${opencode2}/bin/opencode2 serve --service --hostname 0.0.0.0 --port 4096";
+
+      Restart = "always";
+      RestartSec = "5s";
+    };
+  };
 
   # services.getty.autologinUser = "j4n-r";
 

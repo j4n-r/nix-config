@@ -46,6 +46,9 @@ in
       soundsEnabled = false;
       acMonitorTimeout = 600;
       acLockTimeout = 300;
+      # DMS has its own idle suspend timer, independent of logind's lid policy.
+      acSuspendTimeout = 0;
+      batterySuspendTimeout = 0;
 
       # Battery alerts are built into DMS natively now
       # (the dankBatteryAlerts plugin was removed from the registry)
