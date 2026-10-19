@@ -6,7 +6,11 @@
 }:
 {
 
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    # Delta's downloaded binary loads these at runtime for Wayland and graphics.
+    libraries = with pkgs; [ wayland vulkan-loader ];
+  };
 
   hardware.bluetooth.enable = true;
 
