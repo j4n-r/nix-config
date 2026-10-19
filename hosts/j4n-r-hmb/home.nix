@@ -6,6 +6,9 @@
 
   programs.git = {
     enable = true;
+    # Typst PDFs contain no NUL bytes in their header, so git would diff them
+    # as text; that dumps raw bytes into Magit and triggers coding prompts.
+    attributes = [ "*.pdf binary" ];
     settings = {
       user = {
         name = "j4n-r";
@@ -39,6 +42,30 @@
     };
   };
 
+  # delta: syntax-highlighting diff pager (used by git diff and lazygit)
+  programs.git.delta = {
+    enable = true;
+    options = {
+      # keep plain; lazygit passes its own flags ("delta --dark --paging=never")
+      navigate = true;
+      line-numbers = true;
+      side-by-side = true;
+    };
+  };
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git = {
+        paging = {
+          colorArg = "always";
+          pager = "delta --dark --paging=never --side-by-side=false";
+        };
+        diffContextSize = 6;
+      };
+    };
+  };
+
   home.sessionVariables = {
     SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
   };
@@ -47,16 +74,16 @@
     enableDefaultConfig = false;
     settings = {
       "*" = {
-      forwardAgent = false;
-      addKeysToAgent = "no";
-      compression = false;
-      serverAliveInterval = 0;
-      serverAliveCountMax = 3;
-      hashKnownHosts = false;
-      userKnownHostsFile = "~/.ssh/known_hosts";
-      controlMaster = "no";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "no";
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
       };
     };
     extraConfig = ''
@@ -86,7 +113,7 @@
          User root
          IdentitiesOnly yes
     '';
-    
+
   };
 
   imports = [
