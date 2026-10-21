@@ -12,8 +12,10 @@ let
 in
 {
 
-  home.packages = [
-    pkgs.openhue-cli
+  # The homeAssistantMonitor plugin imports QtWebSockets, which the dms wrapper
+  # doesn't ship; the wrapper prefixes its own QML path, so this is appended.
+  systemd.user.services.dms.Service.Environment = [
+    "NIXPKGS_QT6_QML_IMPORT_PATH=${pkgs.kdePackages.qtwebsockets}/${pkgs.qt6.qtbase.qtQmlPrefix}"
   ];
 
   programs.dank-material-shell = {
@@ -42,6 +44,9 @@ in
     };
 
     settings = {
+      # Without this DMS treats the file as pre-2.0 and reruns every migration on
+      # each load, e.g. doubling all controlCenterWidgets widths. Bump with DMS.
+      configVersion = 42;
       monoFontFamily = "JetBrainsMono NF";
       soundsEnabled = false;
       acMonitorTimeout = 600;
@@ -100,20 +105,13 @@ in
             "clock"
           ];
           rightWidgets = [
-            "dankPomodoroTimer"
-            "weather"
             {
-              id = "idleInhibitor";
+              id = "dankPomodoroTimer";
               enabled = true;
+              overflowMode = "always";
             }
-            {
-              id = "hueManager";
-              enabled = true;
-            }
-            {
-              id = "dockerManager";
-              enabled = true;
-            }
+            "homeAssistantMonitor"
+            "dankscale"
             {
               id = "cpuUsage";
               enabled = true;
@@ -176,6 +174,9 @@ in
           shadowClorMode = "primary";
           shadowIntensity = 10;
           widgetOutlineEnabled = false;
+          # What the 2.0 migration set; keeps the custom transparency above.
+          followInterfaceStyle = false;
+          widgetFollowInterfaceStyle = false;
         }
       ];
     };
@@ -201,8 +202,18 @@ in
     plugins = {
       # Simply enable plugins by their ID (from the registry)
       dankPomodoroTimer.enable = true;
-      dockerManager.enable = true;
-      hueManager.enable = true;
+
+      # Tailscale; needs the operator flag set in modules/nixos/desktop.nix.
+      dankscale.enable = true;
+
+      homeAssistantMonitor = {
+        enable = true;
+        settings = {
+          hassUrl = "http://192.168.0.46:8123";
+          # Decrypted by sops-nix (modules/nixos/desktop.nix).
+          hassTokenPath = "/run/secrets/home-assistant-token";
+        };
+      };
 
       # Add plugin-specific settings
       mediaPlayer = {

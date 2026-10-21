@@ -21,6 +21,16 @@
   # Battery information provider used by DankMaterialShell.
   services.upower.enable = true;
 
+  # Lets the DMS dankscale plugin run tailscale up/down, exit nodes etc. without root.
+  services.tailscale.extraSetFlags = [ "--operator=j4n-r" ];
+
+  # Long-lived access token for the DMS homeAssistantMonitor plugin.
+  sops.secrets."home-assistant-token" = {
+    sopsFile = ../../secrets/home-assistant.yaml;
+    mode = "0400";
+    owner = "j4n-r";
+  };
+
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
