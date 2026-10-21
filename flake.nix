@@ -122,6 +122,7 @@
             ./modules/nixos/git-signing.nix
             ./modules/nixos/base.nix
             ./modules/nixos/unstable.nix
+            ./modules/nixos/insecure.nix
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             {
@@ -146,7 +147,7 @@
                 emacs-overlay.overlays.default
                 zig-overlay.overlays.default
                 niri.overlays.niri
-
+                roc-overlay.overlays.default
               ];
             })
           ];

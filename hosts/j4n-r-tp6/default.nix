@@ -52,6 +52,8 @@
       "wheel"
       "i2c"
       "docker"
+      "wireshark"
+      "dialout"
     ];
     packages = with pkgs; [ ];
   };

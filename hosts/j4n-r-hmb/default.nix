@@ -140,7 +140,6 @@ services.udev.extraRules = ''
       "docker"
       "wireshark"
       "dialout"
-      "netbird-wt0"
     ];
     packages = with pkgs; [ ];
   };
@@ -150,26 +149,6 @@ services.udev.extraRules = ''
     "root"
   ];
   system.stateVersion = "24.11";
-
-  systemd.timers."rclone-sync-books" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "30m";
-      Unit = "rclone-sync-books.service";
-    };
-  };
-
-  # systemd.services."rclone-sync-books" = {
-  #   script = ''
-  #     set -eu
-  #     ${pkgs.rclone}/bin/rclone bisync proton:books /home/j4n-r/proton-drive/books
-  #   '';
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     User = "j4n-r";
-  #   };
-  # };
 
   # systemd.timers."rclone-sync-notes" = {
   #   wantedBy = [ "timers.target" ];

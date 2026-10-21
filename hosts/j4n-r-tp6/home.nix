@@ -6,6 +6,9 @@
 
   programs.git = {
     enable = true;
+    # Typst PDFs contain no NUL bytes in their header, so git would diff them
+    # as text; that dumps raw bytes into Magit and triggers coding prompts.
+    attributes = [ "*.pdf binary" ];
     settings = {
       user = {
         name = "j4n-r";
@@ -61,6 +64,7 @@
       Include /etc/ssh/ssh_config.d/*.conf
       Host 100.94.200.120
          IdentityFile ~/.ssh/Forgejo.pub
+         IdentityFile ~/.ssh/ssh_j4n-rpi5.pub
          IdentitiesOnly yes
       Host u505154.your-storagebox.de
          IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
@@ -72,9 +76,15 @@
          IdentityFile ~/.ssh/Codeberg.pub
          AddressFamily inet
          IdentitiesOnly yes
-      Host 152.53.17.131
+      Host netcache 152.53.17.131
+         HostName 100.95.163.72
+         User root
          IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
          AddressFamily inet
+         IdentitiesOnly yes
+      Host hetzner 91.99.52.144
+         IdentityFile ~/.ssh/Root_Hetzner_Coolify_Server.pub
+         User root
          IdentitiesOnly yes
     '';
   };
