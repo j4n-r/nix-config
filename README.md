@@ -2,13 +2,16 @@
 
 Some Linux Desktop stuff expects this directory to be `~/nix-config`
 
-## Nix Darwin 
-To rebuild on a new MacOS system navigate into the `nix-config` dir and run 
+## Nix Darwin
+
+To rebuild on a new MacOS system navigate into the `nix-config` dir and run
+
 ```
 nix run nix-darwin/master#darwin-rebuild -- switch --flake .
 ```
 
 after the initial install the normal command will work
+
 ```
 darwin-rebuild switch --flake ~/nix-config/ --show-trace
 ```
@@ -23,12 +26,12 @@ automatically from `/etc/ssh/ssh_host_ed25519_key`. Public `age1...` keys live i
 
 ```yaml
 keys:
-  - &jan age1...           # personal
-  - &netcache age1...      # host
-creation_rules:            # first match wins; per-host regex so hosts can't read each other
+  - &jan age1... # personal
+  - &netcache age1... # host
+creation_rules: # first match wins; per-host regex so hosts can't read each other
   - path_regex: hosts/netcache/secrets\.yaml$
     key_groups:
-      - age: [ *jan, *netcache ]
+      - age: [*jan, *netcache]
 ```
 
 ### Editing secrets
@@ -82,9 +85,10 @@ deploy.nodes.netcache = {
 ```
 
 Notes:
+
 - deploy-rs always connects as `<sshUser>@<hostname>` explicitly, so it **ignores
   `~/.ssh/config`'s `User`** — `sshUser` must be set in the flake (without it, it falls
-  back to your *local* username and the deploy fails).
+  back to your _local_ username and the deploy fails).
 - If `sshUser` differs from the profile `user`, deploy-rs activates via `sudo -u <user>`;
   since both are `root` here, no sudo is involved.
 - deploy-rs activates atomically and auto-rolls back on boot failure (magic rollback).
@@ -100,14 +104,14 @@ nixos-rebuild switch --flake .#netcache --target-host netcache --use-remote-sudo
 ```
 
 `netcache` resolves via `~/.ssh/config`. Do **not** run this under `sudo` — root has no
-access to your SSH keys. Let the *target* elevate with `--use-remote-sudo` instead.
+access to your SSH keys. Let the _target_ elevate with `--use-remote-sudo` instead.
 
 ### Push to the cache
 
 Build all host closures, upload, sign remotely (signing key never leaves the box):
 
 ```fish
-for host in  j4n-r-tp6 
+for host in  j4n-r-tp6
   set out (nix build --print-out-paths ".#nixosConfigurations.$host.config.system.build.toplevel")
   nix copy --to ssh://netcache "$out"
   ssh root@netcache "nix store sign --key-file /run/secrets/harmonia -r $out"
@@ -125,6 +129,7 @@ nix.settings = {
 ```
 
 ## Overview
+
 ```
 .
 ├── color-schemes
