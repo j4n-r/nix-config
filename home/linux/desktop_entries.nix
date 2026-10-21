@@ -42,5 +42,16 @@
       ];
       icon = "todoist";
     };
+    # en_GB so date properties show DD/MM/YYYY; Electron ignores LC_TIME
+    obsidian = {
+      name = "Obsidian";
+      comment = "Knowledge base";
+      exec = "env LANG=en_GB.UTF-8 obsidian %u";
+      icon = "obsidian";
+      terminal = false;
+      categories = [ "Office" ];
+      mimeType = [ "x-scheme-handler/obsidian" ];
+      settings.StartupWMClass = "md.Obsidian";
+    };
   };
 }
