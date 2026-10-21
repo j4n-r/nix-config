@@ -28,9 +28,10 @@
     '';
   };
   documentation.dev.enable = true;
-  home-manager.backupCommand = ''
+  # Home Manager runs this as a single command, not a shell snippet, so "$1" needs a real script.
+  home-manager.backupCommand = "${pkgs.writeShellScript "hm-backup" ''
     mv -f "$1" "$1.backup"
-  '';
+  ''}";
   environment.systemPackages = with pkgs; [
     home-manager
     neovim
