@@ -84,6 +84,7 @@
 
     # lsp & formatter
     nil # nix lsp
+    lua-language-server # Neovim config
     nixfmt
     nixfmt-tree
     nix-index
