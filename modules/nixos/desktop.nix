@@ -1,15 +1,7 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [ inputs.openwhispr.nixosModules.default ];
-
-  programs.openwhispr = {
-    enable = true;
-    users = [ "j4n-r" ];
-  };
-
-  # OpenWhispr's native listener bypasses unsupported Wayland global shortcuts.
-  users.users.j4n-r.extraGroups = [ "input" ];
+  imports = [ inputs.niri.nixosModules.binary-cache ];
 
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
@@ -17,6 +9,9 @@
   programs.steam.enable = true;
 
   programs.niri.enable = true;
+  programs.niri.package = pkgs.niri-unstable;
+
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
   # Battery information provider used by DankMaterialShell.
   services.upower.enable = true;

@@ -28,15 +28,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
-    openwhispr = {
-      url = "github:OpenWhispr/openwhispr";
-      inputs.nixpkgs.follows = "nixpkgs";
+    hex = {
+      url = "github:anomalyco/hex/v3.2.0";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager";
     };
     disko = {
       url = "github:nix-community/disko";
@@ -63,7 +64,6 @@
       nix-darwin,
       emacs-overlay,
       zig-overlay,
-      niri,
       sops-nix,
       deploy-rs,
       roc-overlay,
@@ -105,7 +105,6 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
                 zig-overlay.overlays.default
-                niri.overlays.niri
                 roc-overlay.overlays.default
               ];
             }
@@ -146,7 +145,6 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlays.default
                 zig-overlay.overlays.default
-                niri.overlays.niri
                 roc-overlay.overlays.default
               ];
             })

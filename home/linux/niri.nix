@@ -1,12 +1,17 @@
-{ pkgs, ... }:
+{ osConfig, ... }:
 {
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = osConfig.programs.niri.package;
     settings.environment."NIXOS_OZONE_WL" = "1";
     settings = {
       config-notification.disable-failed = true;
-      gestures.hot-corners.enable = false;
+      gestures.hot-corners = {
+        top-left = false;
+        top-right = false;
+        bottom-left = false;
+        bottom-right = false;
+      };
       workspaces = {
         emacs.open-on-output = "DP-1";
         browser.open-on-output = "DP-1";
