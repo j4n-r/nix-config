@@ -1,31 +1,20 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
   home.username = "j4n-r";
   home.homeDirectory = "/home/j4n-r";
 
-  programs.hex = {
-    enable = true;
-    # English-only, and faster than the multilingual cohere_transcribe.
-    model = "parakeet_unified_en";
-    # Ghostty pastes only on Ctrl+Shift+V; a plain Ctrl+V reaches TUIs like Amp as a raw key.
-    settings.paste_with_shift = true;
-  };
-
-  # Use compositor-owned shortcuts without the GlobalShortcuts portal.
-  programs.niri.settings.binds = {
-    "Alt+Space" = {
-      repeat = false;
-      hotkey-overlay.title = "Hold to dictate with Hex";
-      press.spawn = [ "${config.programs.hex.package}/bin/hex" "dictation" "start" ];
-      release.spawn = [ "${config.programs.hex.package}/bin/hex" "dictation" "stop" ];
-    };
-    "Ctrl+Alt+V" = {
-      repeat = false;
-      hotkey-overlay.title = "Paste last Hex dictation";
-      action.spawn = [ "${config.programs.hex.package}/bin/hex" "paste-last" ];
-    };
-  };
+  # Pin only Hex to the laptop's digital mic; every other app keeps the system
+  # default input (the AirPods for calls). Hex records through PipeWire's ALSA
+  # plugin, which sends the stream to PIPEWIRE_NODE instead of the default.
+  systemd.user.services.hex.Service.Environment = [
+    "PIPEWIRE_NODE=alsa_input.pci-0000_03_00.6.HiFi__Mic1__source"
+  ];
 
   programs.git = {
     enable = true;
@@ -143,7 +132,6 @@
     ../../home/linux
     ../../home/base
     ../../home/shared
-    inputs.hex.homeManagerModules.default
   ];
 
   home.stateVersion = "24.11";

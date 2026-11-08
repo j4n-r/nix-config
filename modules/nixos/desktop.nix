@@ -10,6 +10,9 @@
 
   programs.niri.enable = true;
   programs.niri.package = pkgs.niri-unstable;
+  # This Niri revision doesn't implement GNOME's shortcut provider. Advertising
+  # it makes Hex fail BindShortcuts instead of accepting compositor commands.
+  xdg.portal.config.niri."org.freedesktop.impl.portal.GlobalShortcuts" = "none";
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 

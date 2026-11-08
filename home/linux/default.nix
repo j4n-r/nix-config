@@ -10,6 +10,7 @@
     ./desktop_entries.nix
     ./dms.nix
     ./herdr.nix
+    ./hex.nix
     ./niri.nix
     ./typora.nix
   ];
