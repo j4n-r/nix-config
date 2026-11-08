@@ -11,6 +11,11 @@
       }
     ];
 
+    shellInit = ''
+        # Binaries installed with `go install`.
+        fish_add_path -g $HOME/go/bin
+    '';
+
     interactiveShellInit = ''
         # Use Emacs bindings consistently across hosts.
         fish_default_key_bindings
@@ -20,6 +25,7 @@
         alias e="eza"
         alias ee="eza -la"
         alias cat="bat"
+        alias copy="dms clipboard copy"
 
 
                     ####### emacs vterm shell ########
