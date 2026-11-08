@@ -58,5 +58,14 @@ in
       mimeType = [ "x-scheme-handler/obsidian" ];
       settings.StartupWMClass = "md.Obsidian";
     };
+    LearnHarness = {
+      name = "LearnHarness";
+      comment = "Agent harness for learning";
+      exec = "appimage-run /home/j4n-r/AppImages/LearnHarness-0.3.7-x86_64.AppImage %U";
+      icon = "${../../icons/learnharness.png}";
+      terminal = false;
+      categories = [ "Education" ];
+      settings.StartupWMClass = "learnharness";
+    };
   };
 }
