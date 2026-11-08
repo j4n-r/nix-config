@@ -69,9 +69,6 @@ in
     opencode2WithWayland
     amp
     piWithNativeLibs
-    chatgpt
-    codex
-    t3code-desktop
     claude-code
     claude-desktop
 
