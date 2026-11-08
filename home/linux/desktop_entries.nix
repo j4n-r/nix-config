@@ -1,6 +1,13 @@
-{ ... }:
+{ pkgs, inputs, ... }:
 
+let
+  # Ships its own helium.desktop. For extra Chromium flags use
+  # .override { commandLineArgs = "--enable-features=..."; }
+  helium = inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in
 {
+  home.packages = [ helium ];
+
   xdg.desktopEntries = {
     Neomacs = {
       name = "NEO Emacs";
@@ -14,33 +21,31 @@
       ];
       mimeType = [ "text/plain" ];
     };
-    Helium = {
-      name = "Helium";
-      genericName = "Web Browser";
-#       exec = "appimage-run /home/j4n-r/AppImages/helium.appimage --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo
-# ";
-      exec = "/home/j4n-r/AppImages/helium.appimage";
-      terminal = false;
-      categories = [
-        "Application"
-        "Network"
-        "WebBrowser"
-      ];
-      mimeType = [
-        "text/html"
-        "text/xml"
-      ];
-    };
     Todoist = {
       name = "Todoist";
       genericName = "Task Manager";
-      exec = "appimage-run /home/j4n-r/AppImages/helium.appimage --app=https://todoist.com/app";
+      exec = "${pkgs.lib.getExe helium} --app=https://todoist.com/app";
       terminal = false;
       categories = [
         "Office"
         "ProjectManagement"
       ];
       icon = "todoist";
+    };
+    # Helium web apps. Helium's own shortcuts would point at a versioned store path.
+    Amp = {
+      name = "Amp";
+      exec = "${pkgs.lib.getExe helium} --profile-directory=Default --app-id=bpgpkfmeagdpdcenbogglipmfkalmple";
+      icon = "chrome-bpgpkfmeagdpdcenbogglipmfkalmple-Default";
+      terminal = false;
+      settings.StartupWMClass = "crx_bpgpkfmeagdpdcenbogglipmfkalmple";
+    };
+    ProtonDocs = {
+      name = "Proton Docs";
+      exec = "${pkgs.lib.getExe helium} --profile-directory=Default --app-id=pmijndpkpdodmjcnaoaocgnlempcpplp";
+      icon = "chrome-pmijndpkpdodmjcnaoaocgnlempcpplp-Default";
+      terminal = false;
+      settings.StartupWMClass = "crx_pmijndpkpdodmjcnaoaocgnlempcpplp";
     };
     # en_GB so date properties show DD/MM/YYYY; Electron ignores LC_TIME
     obsidian = {

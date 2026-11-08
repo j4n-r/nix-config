@@ -262,6 +262,26 @@
         "type": "github"
       }
     },
+    "helium": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793905744,
+        "narHash": "sha256-Mt7SC8lr9XisvIsPGSIqHWLeM2x5sVB+Qtx5SYcWxlI=",
+        "owner": "amaanq",
+        "repo": "helium-flake",
+        "rev": "a7a4fc5016d1f33abfa534fa494dae540a7b7ef8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "amaanq",
+        "repo": "helium-flake",
+        "type": "github"
+      }
+    },
     "hex": {
       "inputs": {
         "home-manager": [
@@ -547,6 +567,7 @@
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",
         "emacs-overlay": "emacs-overlay",
+        "helium": "helium",
         "hex": "hex",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",

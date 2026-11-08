@@ -55,6 +55,11 @@
       url = "github:roc-lang/roc-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Tracks imputnet/helium-linux releases via CI; `nix flake update` bumps Helium
+    helium = {
+      url = "github:amaanq/helium-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs@{
