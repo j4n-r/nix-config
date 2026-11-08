@@ -134,6 +134,8 @@ services.udev.extraRules = ''
   users.users.j4n-r = {
     isNormalUser = true;
     description = "Jan Rueggeberg";
+    # Start user services (the Amp runner) at boot, without a login session.
+    linger = true;
     extraGroups = [
       "networkmanager"
       "wheel"

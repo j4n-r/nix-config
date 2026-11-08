@@ -9,6 +9,7 @@
   home.sessionVariables.AMP_DISABLE_AMP_COAUTHOR_TRAILER = "1";
 
   imports = [
+    ./amp.nix
     ./fonts.nix
     ./fish.nix
     ./starship.nix

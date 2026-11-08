@@ -134,6 +134,37 @@
     ../../home/shared
   ];
 
+  # Headless Amp runner so threads can be started on this PC from ampcode.com
+  # and the iOS app. Starts at boot (user lingering is enabled in default.nix).
+  systemd.user.services.amp-runner = {
+    Unit = {
+      Description = "Amp runner (amp --no-tui)";
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
+    Service = {
+      WorkingDirectory = "%h";
+      ExecStart = builtins.concatStringsSep " " [
+        "/run/current-system/sw/bin/amp --no-tui"
+        "--runner-id j4n-r-hmb"
+        "--discover-dirs=%h/dev"
+        "--discover-dirs=%h/arrivo"
+        "--dir %h/nix-config"
+        "--dir %h/me"
+        "--dir %h/vault"
+        "--remote-control-terminal"
+      ];
+      # User services get a minimal PATH; give threads the same tools as a login shell.
+      Environment = [
+        "PATH=/run/wrappers/bin:%h/.nix-profile/bin:/etc/profiles/per-user/j4n-r/bin:/run/current-system/sw/bin"
+        "SSH_AUTH_SOCK=%h/.bitwarden-ssh-agent.sock"
+      ];
+      Restart = "always";
+      RestartSec = 10;
+    };
+    Install.WantedBy = [ "default.target" ];
+  };
+
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
 }

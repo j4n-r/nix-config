@@ -64,6 +64,7 @@
         # Additional useful bindings
         "ctrl+shift+c=copy_to_clipboard"
         "ctrl+shift+v=paste_from_clipboard"
+        "ctrl+enter=unbind"
         "ctrl+shift+f=toggle_fullscreen"
         "ctrl+shift+r=reload_config"
         "ctrl++=increase_font_size:1"
