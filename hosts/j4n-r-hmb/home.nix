@@ -69,8 +69,9 @@
   };
 
   # delta: syntax-highlighting diff pager (used by git diff and lazygit)
-  programs.git.delta = {
+  programs.delta = {
     enable = true;
+    enableGitIntegration = true;
     options = {
       # keep plain; lazygit passes its own flags ("delta --dark --paging=never")
       navigate = true;
