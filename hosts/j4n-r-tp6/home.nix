@@ -19,14 +19,28 @@
     signing = {
       signByDefault = true;
       format = "ssh";
-      # Decrypted by sops-nix at boot; Git does not use the Bitwarden SSH agent for signing.
+      # Decrypted by sops-nix at boot.
       key = "/run/secrets/git-signing-key";
+      # ssh-keygen -Y sign prefers the agent when it holds the same key, which
+      # makes Bitwarden ask for approval on every commit. Sign from the file.
+      signer = toString (
+        pkgs.writeShellScript "ssh-keygen-no-agent" ''
+          unset SSH_AUTH_SOCK
+          exec ${pkgs.openssh}/bin/ssh-keygen "$@"
+        ''
+      );
     };
 
     settings = {
       init = {
         defaultBranch = "main";
       };
+      # Public half of /run/secrets/git-signing-key, so git can verify signatures.
+      gpg.ssh.allowedSignersFile = toString (
+        pkgs.writeText "git-allowed-signers" ''
+          jan.rueggeberg@pm.me ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDEg2nmtDqX7L73SCGOv8RsWY+OKPp1hf0Cm0LW4OU6S
+        ''
+      );
       push = {
         autoSetupRemote = true;
       };
