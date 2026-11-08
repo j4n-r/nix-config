@@ -29,9 +29,6 @@
     owner = "j4n-r";
   };
 
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
   # API token for the local DMS togglTrack plugin.
   sops.secrets."toggl-api-token" = {
     sopsFile = ../../secrets/toggl.yaml;
@@ -39,6 +36,9 @@
     owner = "j4n-r";
   };
 
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
     dumpcap.enable = true;
     usbmon.enable = true;
   };
@@ -71,11 +71,15 @@
     remmina
     #rustdesk
     bruno
-    yaak
+    # yaak 2025.6.1 fails to build on nixos-26.05 (wasm-pack finds no .wasm)
+    # and isn't cached; re-enable once it is.
+    #yaak
     seadrive-gui
 
     typora
-    obsidian
+    # nixpkgs electron 43.8.3 renders an empty window (NixOS/nixpkgs#578970).
+    # Electron 44 avoids it without relying on the end-of-life Electron 42.
+    (obsidian.override { electron = electron_44; })
     marktext
     xwayland-satellite
     pwvucontrol
