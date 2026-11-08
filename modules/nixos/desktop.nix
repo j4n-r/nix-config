@@ -29,6 +29,13 @@
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark;
+  # API token for the local DMS togglTrack plugin.
+  sops.secrets."toggl-api-token" = {
+    sopsFile = ../../secrets/toggl.yaml;
+    mode = "0400";
+    owner = "j4n-r";
+  };
+
     dumpcap.enable = true;
     usbmon.enable = true;
   };

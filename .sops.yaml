@@ -11,6 +11,10 @@ creation_rules:
     key_groups:
       - age:
         - *jan
+  - path_regex: secrets/toggl\.yaml$
+    key_groups:
+      - age:
+        - *jan
   - path_regex: hosts/netcache/secrets\.yaml$
     key_groups:
       - age:

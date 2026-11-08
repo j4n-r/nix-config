@@ -1,0 +1,16 @@
+{
+    "id": "togglTrack",
+    "name": "Toggl Track",
+    "description": "Show, start, stop and continue Toggl Track time entries from the bar",
+    "version": "0.1.0",
+    "license": "MIT",
+    "author": "j4n-r",
+    "icon": "timer",
+    "component": "./TogglTrackWidget.qml",
+    "settings": "./TogglTrackSettings.qml",
+    "permissions": [
+        "settings_read",
+        "network"
+    ],
+    "requires_dms": ">=2.0.0"
+}

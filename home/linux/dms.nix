@@ -18,6 +18,12 @@ in
     "NIXPKGS_QT6_QML_IMPORT_PATH=${pkgs.kdePackages.qtwebsockets}/${pkgs.qt6.qtbase.qtQmlPrefix}"
   ];
 
+  # Quickshell's QML cache is keyed by path + mtime, and every Nix store file has
+  # mtime 1, so an edited local plugin keeps loading its stale compiled copy.
+  xdg.configFile."dms/plugins/togglTrack".onChange = ''
+    rm -rf "${config.xdg.cacheHome}/quickshell/qmlcache"
+  '';
+
   programs.dank-material-shell = {
     enable = true;
     niri = {
@@ -105,6 +111,7 @@ in
             "clock"
           ];
           rightWidgets = [
+            "togglTrack"
             {
               id = "dankPomodoroTimer";
               enabled = true;
@@ -212,6 +219,18 @@ in
           hassUrl = "http://192.168.0.46:8123";
           # Decrypted by sops-nix (modules/nixos/desktop.nix).
           hassTokenPath = "/run/secrets/home-assistant-token";
+        };
+      };
+
+      # Local plugin, see ./dms-plugins/togglTrack.
+      togglTrack = {
+        enable = true;
+        src = ./dms-plugins/togglTrack;
+        settings = {
+          # Decrypted by sops-nix (modules/nixos/desktop.nix).
+          tokenPath = "/run/secrets/toggl-api-token";
+          pollMinutes = "5";
+          showDescription = true;
         };
       };
 
