@@ -33,7 +33,11 @@
         };
       };
       layout = {
-        focus-ring.width = 2;
+        gaps = 0;
+        focus-ring = {
+          enable = false;
+          width = 2;
+        };
         background-color = "transparent";
         center-focused-column = "never";
         preset-column-widths = [
