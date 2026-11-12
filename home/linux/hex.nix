@@ -25,8 +25,11 @@ in
   home.packages = [ pkgs.pulseaudio ];
 
   # Use compositor-owned shortcuts without the GlobalShortcuts portal.
+  # Not Alt+Space: Niri swallows Space, so the focused app sees a lone Alt tap,
+  # which focuses Electron menu bars (Amp desktop) and catches Hex's paste.
+  # Not Ctrl+Space either: Neovim uses it for completion.
   programs.niri.settings.binds = {
-    "Alt+Space" = {
+    "Ctrl+Shift+Space" = {
       repeat = false;
       hotkey-overlay.title = "Hold to dictate with Hex";
       press.spawn = [
