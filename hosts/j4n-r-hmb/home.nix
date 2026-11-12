@@ -107,38 +107,40 @@
         serverAliveInterval = 0;
         serverAliveCountMax = 3;
         hashKnownHosts = false;
-        userKnownHostsFile = "~/.ssh/known_hosts";
+        # No userKnownHostsFile here: ssh keeps the first value it reads, and this block
+        # comes first, so it would override every alias's own file. ~/.ssh/known_hosts is
+        # OpenSSH's default anyway.
         controlMaster = "no";
         controlPath = "~/.ssh/master-%r@%n:%p";
         controlPersist = "no";
       };
     };
     extraConfig = ''
-      Include /etc/ssh/ssh_config.d/*.conf
-      Host 100.94.200.120
-         IdentityFile ~/.ssh/Forgejo.pub
-         IdentityFile ~/.ssh/ssh_j4n-rpi5.pub
-         IdentitiesOnly yes
-      Host u505154.your-storagebox.de
-         IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
-         IdentitiesOnly yes
-      Host 188.245.240.115
-         IdentityFile ~/.ssh/SWE_HWR.pub
-         IdentitiesOnly yes
-      Host codeberg.org
-         IdentityFile ~/.ssh/Codeberg.pub
-         AddressFamily inet
-         IdentitiesOnly yes
-      Host netcache 152.53.17.131
-         HostName 100.95.163.72
-         User root
-         IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
-         AddressFamily inet
-         IdentitiesOnly yes
-      Host hetzner 91.99.52.144
-         IdentityFile ~/.ssh/Root_Hetzner_Coolify_Server.pub
-         User root
-         IdentitiesOnly yes
+          Include /etc/ssh/ssh_config.d/*.conf
+          Host 100.94.200.120
+             IdentityFile ~/.ssh/Forgejo.pub
+             IdentityFile ~/.ssh/ssh_j4n-rpi5.pub
+             IdentitiesOnly yes
+          Host u505154.your-storagebox.de
+             IdentityFile ~/.ssh/Hetzner_Backup_Storage_Box.pub
+             IdentitiesOnly yes
+          Host 188.245.240.115
+             IdentityFile ~/.ssh/SWE_HWR.pub
+             IdentitiesOnly yes
+          Host codeberg.org
+             IdentityFile ~/.ssh/Codeberg.pub
+             AddressFamily inet
+             IdentitiesOnly yes
+          Host netcache 152.53.17.131
+             HostName 100.95.163.72
+             User root
+             IdentityFile ~/.ssh/Netcup_VPS_netcache.pub
+             AddressFamily inet
+             IdentitiesOnly yes
+          Host hetzner 91.99.52.144
+             IdentityFile ~/.ssh/Root_Hetzner_Coolify_Server.pub
+             User root
+             IdentitiesOnly yes
     '';
 
   };
