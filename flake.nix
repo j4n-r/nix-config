@@ -35,7 +35,7 @@
       url = "github:numtide/llm-agents.nix";
     };
     hex = {
-      url = "github:anomalyco/hex/v3.2.0";
+      url = "github:anomalyco/hex/v3.4.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
