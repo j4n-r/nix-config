@@ -146,7 +146,6 @@
   imports = [
     ../../home/linux
     ../../home/base
-    ../../home/shared
   ];
 
   # Headless Amp runner so threads can be started on this PC from ampcode.com

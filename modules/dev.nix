@@ -19,7 +19,6 @@
           epkgs.lsp-grammarly
         ])
     )
-    vscode
     zigpkgs.master
     qemu
     quickemu
