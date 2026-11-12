@@ -33,13 +33,6 @@ in
       icon = "todoist";
     };
     # Helium web apps. Helium's own shortcuts would point at a versioned store path.
-    Amp = {
-      name = "Amp";
-      exec = "${pkgs.lib.getExe helium} --profile-directory=Default --app-id=bpgpkfmeagdpdcenbogglipmfkalmple";
-      icon = "chrome-bpgpkfmeagdpdcenbogglipmfkalmple-Default";
-      terminal = false;
-      settings.StartupWMClass = "crx_bpgpkfmeagdpdcenbogglipmfkalmple";
-    };
     ProtonDocs = {
       name = "Proton Docs";
       exec = "${pkgs.lib.getExe helium} --profile-directory=Default --app-id=pmijndpkpdodmjcnaoaocgnlempcpplp";

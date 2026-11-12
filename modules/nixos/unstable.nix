@@ -68,6 +68,7 @@ in
   ++ (with llmAgents; [
     opencode2WithWayland
     amp
+    amp-desktop
     piWithNativeLibs
     claude-code
     claude-desktop
