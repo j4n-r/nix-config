@@ -76,7 +76,6 @@
     #yaak
     seadrive-gui
 
-    typora
     # nixpkgs electron 43.8.3 renders an empty window (NixOS/nixpkgs#578970).
     # Electron 44 avoids it without relying on the end-of-life Electron 42.
     (obsidian.override { electron = electron_44; })
