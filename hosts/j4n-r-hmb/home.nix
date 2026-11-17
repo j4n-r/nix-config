@@ -13,8 +13,43 @@
   # default input (the AirPods for calls). Hex records through PipeWire's ALSA
   # plugin, which sends the stream to PIPEWIRE_NODE instead of the default.
   systemd.user.services.hex.Service.Environment = [
-    "PIPEWIRE_NODE=alsa_input.pci-0000_03_00.6.HiFi__Mic1__source"
+    "PIPEWIRE_NODE=hex_mic"
   ];
+
+  # The digital mic's left channel is stuck at a constant offset and its right
+  # channel is quiet (speech around -54 dBFS), so Hex's speech detector drops
+  # short dictations. This source takes only the right channel and adds 18 dB.
+  # PipeWire reads it at startup: systemctl --user restart pipewire
+  xdg.configFile."pipewire/pipewire.conf.d/90-hex-mic.conf".text = ''
+    context.modules = [
+      { name = libpipewire-module-filter-chain
+        args = {
+          node.description = "Hex Mic"
+          media.name = "Hex Mic"
+          audio.channels = 1
+          audio.position = [ MONO ]
+          filter.graph = {
+            nodes = [
+              { type = builtin name = gain label = mixer control = { "Gain 1" = 8.0 } }
+            ]
+            inputs = [ "gain:In 1" ]
+            outputs = [ "gain:Out" ]
+          }
+          capture.props = {
+            node.name = "capture.hex_mic"
+            audio.position = [ FR ]
+            stream.dont-remix = true
+            node.passive = true
+            target.object = "alsa_input.pci-0000_03_00.6.HiFi__Mic1__source"
+          }
+          playback.props = {
+            node.name = "hex_mic"
+            media.class = Audio/Source
+          }
+        }
+      }
+    ]
+  '';
 
   programs.git = {
     enable = true;
