@@ -12,6 +12,7 @@
     ./amp.nix
     ./fonts.nix
     ./fish.nix
+    ./nushell.nix
     ./starship.nix
     ./zathura.nix
     ./ghostty.nix

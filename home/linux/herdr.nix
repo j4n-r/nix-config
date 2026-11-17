@@ -9,7 +9,7 @@
     name = "rose-pine"
 
     [terminal]
-    default_shell = "fish"
+    default_shell = "nu"
     shell_mode = "login"
     new_cwd = "follow"
 

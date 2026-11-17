@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 # let
 #   ghostty-mock = pkgs.writeShellScriptBin "gostty-mock" ''
 #     true
@@ -10,6 +10,7 @@
     # package = ghostty-mock; # Set explicitly to null, as it is managed externally
     enableFishIntegration = true;
     settings = {
+      command = "${config.programs.nushell.package}/bin/nu";
       theme = "Rose Pine";
       # background-opacity = 0.8;
       window-theme = "ghostty";
