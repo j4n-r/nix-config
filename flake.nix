@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +64,6 @@
       self,
       nixpkgs,
       home-manager,
-      nix-darwin,
       emacs-overlay,
       zig-overlay,
       sops-nix,
@@ -174,31 +171,6 @@
         };
       };
 
-      darwinConfigurations."MacBook-Air-100011" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          username = "jr";
-          hostname = "MacBook-Air-100011";
-        };
-        modules = [
-          ./hosts/MacBook-Air-100011/user-hosts.nix
-          ./modules/base.nix
-          ./modules/dev.nix
-          ./modules/darwin/system.nix
-          ./modules/darwin/homebrew.nix
-          ./modules/darwin/base.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jr = import ./hosts/MacBook-Air-100011/home.nix;
-
-          }
-          ({
-            nixpkgs.overlays = [ emacs-overlay.overlays.default ];
-          })
-        ];
-      };
       checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }

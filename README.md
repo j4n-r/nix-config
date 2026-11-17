@@ -2,20 +2,6 @@
 
 Some Linux Desktop stuff expects this directory to be `~/nix-config`
 
-## Nix Darwin
-
-To rebuild on a new MacOS system navigate into the `nix-config` dir and run
-
-```
-nix run nix-darwin/master#darwin-rebuild -- switch --flake .
-```
-
-after the initial install the normal command will work
-
-```
-darwin-rebuild switch --flake ~/nix-config/ --show-trace
-```
-
 ## Secrets (sops-nix)
 
 Encrypted with [sops](https://github.com/getsops/sops) + age, committed to this repo,
@@ -150,11 +136,6 @@ nix.settings = {
 │   │   ├── starship.nix
 │   │   ├── zathura.nix
 │   │   └── zellij.nix
-│   ├── darwin
-│   │   ├── amethyst.nix
-│   │   ├── default.nix
-│   │   ├── karabiner.nix
-│   │   └── packages.nix
 │   └── linux
 │       ├── chromium.nix
 │       ├── default.nix
@@ -183,9 +164,6 @@ nix.settings = {
 │   │   ├── default.nix
 │   │   ├── hardware-configuration.nix
 │   │   └── home.nix
-│   ├── MacBook-Air-100011
-│   │   ├── home.nix
-│   │   └── user-hosts.nix
 │   └── netcache
 │       ├── default.nix
 │       ├── disk-config.nix
@@ -194,10 +172,6 @@ nix.settings = {
 │   └── ...
 ├── modules
 │   ├── base.nix
-│   ├── darwin
-│   │   ├── base.nix
-│   │   ├── homebrew.nix
-│   │   └── system.nix
 │   ├── dev.nix
 │   └── nixos
 │       ├── base.nix
