@@ -183,6 +183,8 @@
   imports = [
     ../../home/linux
     ../../home/base
+    # Work SSH hosts, kept in the private nix-private repo.
+    inputs.nix-private.homeModules.arrivo-ssh
   ];
 
   # Headless Amp runner so threads can be started on this PC from ampcode.com

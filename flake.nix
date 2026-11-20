@@ -53,6 +53,8 @@
       url = "github:roc-lang/roc-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Private modules (work hosts and endpoints); fetching it needs SSH access to GitHub.
+    nix-private.url = "git+ssh://git@github.com/j4n-r/nix-private";
     # Tracks imputnet/helium-linux releases via CI; `nix flake update` bumps Helium
     helium = {
       url = "github:amaanq/helium-flake";
@@ -82,6 +84,8 @@
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
             ./modules/nixos/git-signing.nix
+            # Grafana MCP for Amp, with its token from sops (private nix-private repo).
+            inputs.nix-private.nixosModules.arrivo-grafana-mcp
             ./modules/nixos/base.nix
             ./modules/nixos/unstable.nix
             ./modules/nixos/insecure.nix
@@ -121,6 +125,8 @@
             ./modules/dev.nix
             ./modules/nixos/desktop.nix
             ./modules/nixos/git-signing.nix
+            # Grafana MCP for Amp, with its token from sops (private nix-private repo).
+            inputs.nix-private.nixosModules.arrivo-grafana-mcp
             ./modules/nixos/base.nix
             ./modules/nixos/unstable.nix
             ./modules/nixos/insecure.nix

@@ -429,6 +429,21 @@
         "type": "github"
       }
     },
+    "nix-private": {
+      "locked": {
+        "lastModified": 1795177022,
+        "narHash": "sha256-/lEpibfiEmaN3XKHpTEeOnw4IZipYHf9+NZ89zBs5pc=",
+        "ref": "refs/heads/main",
+        "rev": "cc176b496cf61f6c9d4fcd703d66fbde1a105e16",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/j4n-r/nix-private"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/j4n-r/nix-private"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1793977579,
@@ -573,6 +588,7 @@
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "niri": "niri",
+        "nix-private": "nix-private",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "roc-overlay": "roc-overlay",
