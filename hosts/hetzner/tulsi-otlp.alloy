@@ -3,10 +3,12 @@ otelcol.receiver.otlp "tulsi" {
     endpoint = "127.0.0.1:4318"
   }
 
-  // Tulsi logs already reach Loki through the systemd journal.
+  // OTLP logs carry trace IDs; the journal copy also catches panics and
+  // output from before telemetry starts.
   output {
     metrics = [otelcol.exporter.otlphttp.tulsi_cloud.input]
     traces  = [otelcol.exporter.otlphttp.tulsi_cloud.input]
+    logs    = [otelcol.exporter.otlphttp.tulsi_cloud.input]
   }
 }
 
