@@ -38,5 +38,8 @@
 
     # Managed declaratively; update settings here rather than through Amp.
     xdg.configFile."amp/settings.json".text = builtins.toJSON config.amp.settings;
+
+    # Refuses every shell command of Amp's that would open an SSH connection.
+    xdg.configFile."amp/plugins/no-ssh.ts".source = ./amp-plugins/no-ssh.ts;
   };
 }
