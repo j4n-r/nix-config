@@ -210,6 +210,10 @@
         }
       ];
       debug.honor-xdg-activation-with-invalid-serial = true;
+      # Focus a new window only when it was launched with an activation token
+      # (user launches), so windows that agents open in the background, such as
+      # test VMs, don't steal focus.
+      debug.strict-new-window-focus-policy = true;
      binds = {
         "Super+Tab" = {
           repeat = false;
