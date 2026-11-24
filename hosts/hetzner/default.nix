@@ -76,6 +76,9 @@
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6xy5Wl65Vk7qvhTgXmxGRPqQb0wUUuyxL1ulcwAjoF Root Hetzner Coolify Server"
+    # nix-config CI copies the built closure here (`nix copy`), so comin finds it
+    # in the store instead of building. Tailscale addresses only, no shell.
+    ''from="100.64.0.0/10,fd7a:115c:a1e0::/48",command="nix-daemon --stdio",restrict ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImIZVpPxNfszvrfM3qhYSz83L8RHnlzpE+55uEPgPZr github-actions: nix-config closure upload''
   ];
 
   nix.settings.trusted-users = [

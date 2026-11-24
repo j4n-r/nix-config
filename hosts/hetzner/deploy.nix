@@ -1,7 +1,8 @@
 { config, inputs, ... }:
 # Pull-based deploys: comin polls the `deploy` branch, which CI fast-forwards
 # to main after its checks pass (.github/workflows/deploy.yml), then builds
-# and switches this host. comin's failure metrics alert through Grafana.
+# and switches this host. CI also copies the built closure here, so comin
+# usually finds it in the store. Grafana alerts on comin's failure metrics.
 {
   imports = [ inputs.comin.nixosModules.comin ];
 
@@ -12,6 +13,8 @@
         name = "origin";
         url = "https://github.com/j4n-r/nix-config.git";
         branches.main.name = "deploy";
+        # comin would otherwise activate a `testing-hetzner` branch unbuilt by CI.
+        branches.testing.name = "";
       }
     ];
     exporter.listen_address = "127.0.0.1";

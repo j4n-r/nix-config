@@ -34,9 +34,31 @@ jobs:
           echo "GIT_SSH_COMMAND=ssh -i $RUNNER_TEMP/tulsi_key -o IdentitiesOnly=yes -o UserKnownHostsFile=$RUNNER_TEMP/known_hosts" >> "$GITHUB_ENV"
       # netcache shares modules/nixos/alloy.nix; evaluating it catches breaking it.
       - name: Evaluate netcache
-        run: nix eval --raw .#nixosConfigurations.netcache.config.system.build.toplevel.drvPath
+        run: nix eval --no-update-lock-file --raw .#nixosConfigurations.netcache.config.system.build.toplevel.drvPath
       # The system closure includes system.checks, such as `alloy validate`.
       - name: Build hetzner
-        run: nix build --no-link -L .#nixosConfigurations.hetzner.config.system.build.toplevel
+        run: nix build -L --no-update-lock-file -o hetzner .#nixosConfigurations.hetzner.config.system.build.toplevel
+      # Copy the closure to hetzner over Tailscale, so comin finds it in the
+      # store instead of building. Optional: without it the server builds as before.
+      - name: Join Tailscale
+        uses: tailscale/github-action@v3
+        continue-on-error: true
+        timeout-minutes: 3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+      # The key only runs nix-daemon and only from Tailscale (hosts/hetzner).
+      - name: Copy to hetzner
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          HETZNER_KEY: ${{ secrets.HETZNER_UPLOAD_KEY }}
+        run: |
+          printf '%s\n' "$HETZNER_KEY" > "$RUNNER_TEMP/hetzner_key"
+          chmod 600 "$RUNNER_TEMP/hetzner_key"
+          echo '100.100.206.64 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID3BHspQaovzEtER28iFuTCnqAfcI30R2DUCIcuhaU+1' >> "$RUNNER_TEMP/known_hosts"
+          NIX_SSHOPTS="-i $RUNNER_TEMP/hetzner_key -o IdentitiesOnly=yes -o ConnectTimeout=10 -o UserKnownHostsFile=$RUNNER_TEMP/known_hosts" \
+            nix copy --substitute-on-destination --to ssh-ng://root@100.100.206.64 ./hetzner
       - name: Fast-forward deploy
         run: git push origin "$GITHUB_SHA:refs/heads/deploy"
