@@ -1,6 +1,7 @@
 keys:
   - &jan age1e35tg0m5qrndcu8axxdxhjzpvcwd762cpwef4q72csfvk6w0g9lssjy45e
   - &netcache age1xahur69ljdqc8qveugtkey3gt0uny8f5xx6ylzk5vjrppf29qdhq0spyhr
+  - &hetzner age1dn63348rn3w2axxc3nwrtanx2cp36q8e830v2vrhmq669tt5meuq58rhuw
 
 creation_rules:
   - path_regex: secrets/git-signing-key\.yaml$
@@ -20,3 +21,8 @@ creation_rules:
       - age:
         - *jan
         - *netcache
+  - path_regex: hosts/hetzner/secrets\.yaml$
+    key_groups:
+      - age:
+        - *jan
+        - *hetzner

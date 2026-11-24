@@ -114,6 +114,62 @@ nix.settings = {
 };
 ```
 
+## Hetzner (NixOS VPS, Hetzner Cloud ARM)
+
+Replaces the Coolify server at `91.99.52.144` (`aarch64-linux`). Runs Stirling PDF behind
+Caddy (`pdf.j4n.me`), Grafana Alloy, and Tailscale. Config in `hosts/hetzner/`. The laptop
+cannot build `aarch64` closures, so installs and deploys build on the server.
+
+### Install (wipes the disk)
+
+Pre-generate the SSH host key so its age key can encrypt the secrets before the install:
+
+```bash
+mkdir -p /tmp/hetzner-root/etc/ssh
+ssh-keygen -t ed25519 -N "" -C root@hetzner -f /tmp/hetzner-root/etc/ssh/ssh_host_ed25519_key
+nix run nixpkgs#ssh-to-age -- < /tmp/hetzner-root/etc/ssh/ssh_host_ed25519_key.pub
+# add the age key and a hosts/hetzner/secrets\.yaml$ rule to .sops.yaml, then:
+EDITOR=nvim sops hosts/hetzner/secrets.yaml   # alloy.env, same keys as netcache
+git add hosts/hetzner/secrets.yaml .sops.yaml
+nix run github:nix-community/nixos-anywhere -- --flake .#hetzner --build-on remote \
+  --extra-files /tmp/hetzner-root root@91.99.52.144
+ssh hetzner tailscale up
+```
+
+### Deploy
+
+Deploys are automatic. A push to `main` runs `.github/workflows/deploy.yml`, which builds the
+hetzner system on an arm64 runner and fast-forwards the `deploy` branch. comin on the server
+(`hosts/hetzner/deploy.nix`) polls `deploy` every 60 s, builds, and switches. A Tulsi push
+that passes its CI pins itself in `flake.lock` here (Tulsi's `deploy.yml`), which starts the
+same pipeline. comin's metrics go to Grafana (`job="comin"`).
+
+Keys: a read-only deploy key on `j4n-r/tulsi` (SOPS `tulsi-deploy-key` for the server,
+`TULSI_DEPLOY_KEY` secret in both repos for CI) and a write deploy key on this repo
+(`NIX_CONFIG_DEPLOY_KEY` in Tulsi) for the pin commit.
+
+Manual deploy, such as the first one that installs comin:
+
+```bash
+deploy .#hetzner   # remoteBuild: the server builds its own closure
+```
+
+### Tulsi first deployment
+
+Tulsi runs on `127.0.0.1:8081`, separate from Stirling PDF. Set a **proxied** Cloudflare A record for `tulsi.j4n.me` and use **Full (strict)** TLS. Caddy rejects direct requests to the Tulsi vhost and passes the client address from Cloudflare to Tulsi. Confirm that origin certificate issuance works and that direct HTTPS requests to the origin are rejected before relying on the site. Keep the [Cloudflare source ranges](https://www.cloudflare.com/ips/) in `hosts/hetzner/tulsi.nix` current.
+
+Publish the Tulsi revision that includes its NixOS module and `init-admin` before running `nix flake update tulsi`. Keep Tulsi's own nixpkgs pin; the host's stable Go is too old. The remote builder must be able to fetch the private Tulsi input. For local evaluation before publication, pass `--override-input tulsi git+file:///home/j4n-r/dev/tulsi --no-write-lock-file`.
+
+Edit `hosts/hetzner/secrets.yaml` with SOPS. Add two multiline dotenv values and extend the existing Alloy dotenv value:
+
+- `tulsi.env`: `SECRET_KEY` (32 random bytes, base64), `YOUTUBE_API_KEY`, and `BASE_URL`, `MODEL`, and `API_KEY` for each of the prefixes `AI`, `AI_DECISION`, `AI_IMAGE`, `AI_VISION`, and `AI_VIDEO` (for example, `AI_BASE_URL`). Keep the same `SECRET_KEY` on restore so Tulsi can read the AI keys stored in SQLite.
+- `tulsi-litestream.env`: `LITESTREAM_BUCKET`, `LITESTREAM_ENDPOINT` (for example `https://fsn1.your-objectstorage.com`), `LITESTREAM_REGION` (for example `fsn1`), `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`. Use credentials dedicated to this backup and a fresh `tulsi/hetzner` prefix.
+- `alloy.env`: add `TULSI_OTLP_ENDPOINT` (Grafana Cloud OTLP gateway base URL, including `/otlp`), `TULSI_OTLP_USERNAME`, and `TULSI_OTLP_API_KEY` (token with `metrics:write` and `traces:write`). Alloy receives Tulsi metrics and traces on loopback; Tulsi logs still go through the journal to Loki.
+
+For an intentionally fresh first deployment only, set `TULSI_ALLOW_EMPTY_DB=1` in `tulsi-litestream.env`. Without it, an absent database and missing replica block startup rather than silently starting empty. Build the native ARM64 closure before activation, then check `tulsi.service`, `tulsi-restore.service`, `tulsi-litestream.service`, and `alloy.service`. Run `sudo tulsi-init-admin jan` and confirm login.
+
+Once Litestream has replicated, restore into a **separate** file and check `PRAGMA integrity_check;` and that the test account is present. Use the Litestream executable and config shown by `systemctl cat tulsi-litestream` with the same `EnvironmentFile`, but run `restore -config CONFIG -o NEW_FILE /var/lib/tulsi/tulsi.db`. Test against the actual bucket and remove `TULSI_ALLOW_EMPTY_DB=1` before adding real data. On disaster recovery, confirm the restored data instead of initializing a new admin. NixOS rollback does not roll back SQLite.
+
 ## Overview
 
 ```

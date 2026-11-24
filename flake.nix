@@ -49,12 +49,19 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Pull-based deploys: hetzner polls the `deploy` branch and switches itself.
+    comin = {
+      url = "github:nlewo/comin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     roc-overlay = {
       url = "github:roc-lang/roc-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Private modules (work hosts and endpoints); fetching it needs SSH access to GitHub.
     nix-private.url = "git+ssh://git@github.com/j4n-r/nix-private";
+    # Keep Tulsi's own nixpkgs pin: it needs a newer Go than NixOS 26.05 provides.
+    tulsi.url = "git+ssh://git@github.com/j4n-r/tulsi.git";
     # Tracks imputnet/helium-linux releases via CI; `nix flake update` bumps Helium
     helium = {
       url = "github:amaanq/helium-flake";
@@ -167,6 +174,15 @@
             ./hosts/netcache
           ];
         };
+        hetzner = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.disko.nixosModules.disko
+            sops-nix.nixosModules.sops
+            ./hosts/hetzner
+          ];
+        };
       };
       deploy.nodes.netcache = {
         hostname = "netcache";
@@ -176,7 +192,28 @@
           path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.netcache;
         };
       };
+      # aarch64 server: the x86 laptop cannot build it, so the server builds its own closure.
+      deploy.nodes.hetzner = {
+        hostname = "91.99.52.144";
+        sshUser = "root";
+        remoteBuild = true;
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.hetzner;
+        };
+      };
 
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      # Each system checks only the nodes it can build.
+      checks = builtins.mapAttrs (
+        system: deployLib:
+        deployLib.deployChecks (
+          self.deploy
+          // {
+            nodes = nixpkgs.lib.filterAttrs (
+              _: node: node.profiles.system.path.system == system
+            ) self.deploy.nodes;
+          }
+        )
+      ) deploy-rs.lib;
     };
 }

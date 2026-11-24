@@ -1,4 +1,26 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  alloyFiles = lib.filter (f: f.enable && lib.hasPrefix "alloy/" f.target) (
+    lib.attrValues config.environment.etc
+  );
+in
+{
+  # Alloy keeps its old config on reload and only fails at the next restart,
+  # so a broken reference must fail the build instead.
+  system.checks = [
+    (pkgs.runCommand "alloy-config-valid" { } ''
+      mkdir alloy
+      ${lib.concatMapStrings (f: "cp ${f.source} alloy/${baseNameOf f.target}\n") alloyFiles}
+      ${lib.getExe config.services.alloy.package} validate alloy
+      touch $out
+    '')
+  ];
+
   services.alloy = {
     enable = true;
     environmentFile = "/run/secrets/alloy.env";

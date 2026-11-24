@@ -1,0 +1,42 @@
+# Builds the hetzner system on a native arm64 runner and, when it builds,
+# fast-forwards the `deploy` branch, which comin on hetzner polls and switches
+# to (hosts/hetzner/deploy.nix). A broken main never reaches the server.
+name: Deploy hetzner
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hetzner
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v31
+      # The private Tulsi input is fetched over SSH with a read-only deploy key.
+      - name: Tulsi deploy key
+        env:
+          TULSI_DEPLOY_KEY: ${{ secrets.TULSI_DEPLOY_KEY }}
+        run: |
+          printf '%s\n' "$TULSI_DEPLOY_KEY" > "$RUNNER_TEMP/tulsi_key"
+          chmod 600 "$RUNNER_TEMP/tulsi_key"
+          echo 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' > "$RUNNER_TEMP/known_hosts"
+          echo "GIT_SSH_COMMAND=ssh -i $RUNNER_TEMP/tulsi_key -o IdentitiesOnly=yes -o UserKnownHostsFile=$RUNNER_TEMP/known_hosts" >> "$GITHUB_ENV"
+      # netcache shares modules/nixos/alloy.nix; evaluating it catches breaking it.
+      - name: Evaluate netcache
+        run: nix eval --raw .#nixosConfigurations.netcache.config.system.build.toplevel.drvPath
+      # The system closure includes system.checks, such as `alloy validate`.
+      - name: Build hetzner
+        run: nix build --no-link -L .#nixosConfigurations.hetzner.config.system.build.toplevel
+      - name: Fast-forward deploy
+        run: git push origin "$GITHUB_SHA:refs/heads/deploy"

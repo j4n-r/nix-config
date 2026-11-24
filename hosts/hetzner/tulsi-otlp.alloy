@@ -1,0 +1,23 @@
+otelcol.receiver.otlp "tulsi" {
+  http {
+    endpoint = "127.0.0.1:4318"
+  }
+
+  // Tulsi logs already reach Loki through the systemd journal.
+  output {
+    metrics = [otelcol.exporter.otlphttp.tulsi_cloud.input]
+    traces  = [otelcol.exporter.otlphttp.tulsi_cloud.input]
+  }
+}
+
+otelcol.auth.basic "tulsi_cloud" {
+  username = sys.env("TULSI_OTLP_USERNAME")
+  password = sys.env("TULSI_OTLP_API_KEY")
+}
+
+otelcol.exporter.otlphttp "tulsi_cloud" {
+  client {
+    endpoint = sys.env("TULSI_OTLP_ENDPOINT")
+    auth     = otelcol.auth.basic.tulsi_cloud.handler
+  }
+}

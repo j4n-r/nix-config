@@ -6,7 +6,7 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disk-config.nix
-    ./alloy.nix
+    ../../modules/nixos/alloy.nix
   ];
 
   # Netcup stopped answering DHCP (2026-10-18), so addresses are static.
