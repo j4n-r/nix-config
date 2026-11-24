@@ -778,11 +778,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1795546426,
-        "narHash": "sha256-H34wKt9aSBtlVIHmyA/tZG+vnbkfCjivzg9Ar8GBaAk=",
+        "lastModified": 1795548682,
+        "narHash": "sha256-i2MAi1sI9coGNsojnsefgDKa81g0irXyeL3GdQMaQjY=",
         "ref": "refs/heads/main",
-        "rev": "0f6fd6903a1ab248bb40138b321e1e3b86d0c20e",
-        "revCount": 145,
+        "rev": "90607e890ab63b9e978fc9bdfc3bfa5c2f57f3da",
+        "revCount": 147,
         "type": "git",
         "url": "ssh://git@github.com/j4n-r/tulsi.git"
       },
