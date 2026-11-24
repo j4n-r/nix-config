@@ -20,6 +20,7 @@
     shellAliases = {
       cat = "bat";
       copy = "dms clipboard copy";
+      za = "zathura";
     };
 
     extraEnv = ''
